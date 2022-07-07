@@ -31,11 +31,12 @@ public class UserServlet extends HttpServlet {
     return json;
   }
 }*/
+package com.google.sps.servlets;
 
 import java.io.*;
 import java.sql.*;
 import javax.servlet.http.*;
-import com.google.appengine.api.utils.SystemProperty;
+//import com.google.appengine.api.utils.SystemProperty;
 import java.io.IOException;
 import java.util.Date;
 import javax.servlet.annotation.WebServlet;
@@ -43,16 +44,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@WebServlet("/get-user")
 public class UserServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     String url = null;
     try {
+      Class.forName("com.mysql.jdbc.GoogleDriver");
+      url = "jdbc:google:mysql://pminchu-sps-summer22:practice/guestbook?user=root";
+      /*
       if (SystemProperty.environment.value() ==
           SystemProperty.Environment.Value.Production) {
         // Load the class that provides the new "jdbc:google:mysql://" prefix.
-        Class.forName("com.mysql.jdbc.GoogleDriver");
-        url = "jdbc:google:mysql://pminchu-sps-summer22:practice/guestbook?user=root";
       } else {
         // Local MySQL instance to use during development.
         Class.forName("com.mysql.jdbc.Driver");
@@ -61,6 +64,7 @@ public class UserServlet extends HttpServlet {
         // Alternatively, connect to a Google Cloud SQL instance using:
         // jdbc:mysql://ip-address-of-google-cloud-sql-instance:3306/guestbook?user=root
       }
+      */
     } catch (Exception e) {
       e.printStackTrace();
       return;
@@ -93,6 +97,12 @@ public class UserServlet extends HttpServlet {
           }
         }
       } finally {
+        String getEntries = "SELECT * FROM entries";
+        PreparedStatement getEntriesStatement = conn.prepareStatement(getEntries);
+        //getEntriesSuccess = 2;
+        ResultSet entries = getEntriesStatement.executeQuery(getEntries);
+        entries.
+        resp.getWriter().println(entries);
         conn.close();
       }
     } catch (SQLException e) {

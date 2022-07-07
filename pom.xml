@@ -16,7 +16,7 @@
 
     <!-- Project-specific properties -->
     <exec.mainClass>com.google.sps.ServerMain</exec.mainClass>
-    <googleCloudProjectId>pminchu-sps-summer22</googleCloudProjectId>
+    <googleCloudProjectId>rwasim-sps-summer22</googleCloudProjectId>
   </properties>
 
   <dependencies>
