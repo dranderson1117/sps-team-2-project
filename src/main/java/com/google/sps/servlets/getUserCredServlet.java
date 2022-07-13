@@ -22,7 +22,7 @@ import com.google.cloud.datastore.Query;
 import com.google.cloud.datastore.QueryResults;
 import com.google.cloud.datastore.StructuredQuery.OrderBy;
 import com.google.gson.Gson;
-import com.User;
+import com.UserCred;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,28 +33,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /** Servlet responsible for listing tasks. */
-@WebServlet("/user-list")
-public class getUserServlet extends HttpServlet {
+@WebServlet("/get-user-cred")
+public class getUserCredServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
     Query<Entity> query =
-        Query.newEntityQueryBuilder().setKind("User").build();
+        Query.newEntityQueryBuilder().setKind("UserCred").build();
     QueryResults<Entity> results = datastore.run(query);
 
-    List<User> people = new ArrayList<>();
+    List<UserCred> people = new ArrayList<>();
     while (results.hasNext()) {
       Entity entity = results.next();
 
       //long id = entity.getKey().getId();
-      String name = entity.getString("Name");
       String email = entity.getString("Email");
-      String phoneNumber = entity.getString("Phone Number");
+      String password = entity.getString("Password");
+      String userID = entity.getString("userID");
       //long timestamp = entity.getLong("Time");
 
-      User user = new User(name, email, phoneNumber);
-      people.add(user);
+      UserCred creds = new UserCred(email, password, userID);
+      people.add(creds);
     }
 
     Gson gson = new Gson();

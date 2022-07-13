@@ -1,4 +1,4 @@
-package com.google.sps;
+package com;
 
 public class User {
     private String name;
