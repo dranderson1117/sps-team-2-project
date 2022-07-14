@@ -1,3 +1,5 @@
+package com.google.sps.servlets;
+
 /*import com.google.sps.User;
 import com.google.gson.Gson;
 import java.io.IOException;
@@ -6,21 +8,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 /** Servlet that responds with the current date. 
 @WebServlet("/get-user")
 public class UserServlet extends HttpServlet {
-
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     /*  User u = new User("name", "email", "phoneNumber", "major", "minor");
       String json = convertToJsonUsingGson(u);
-
     response.setContentType("application/json;");
     //response.getWriter().println("The server's current date is " + new Date());
     response.getWriter().println(json);
-
-
     Class.forName("com.mysql.jdbc.GoogleDriver");
     Url = "jdbc:google:mysql://ppID:practice/practice_database? user=root";
     Connection con = DriverManager.getConnection (Url);
@@ -31,7 +28,8 @@ public class UserServlet extends HttpServlet {
     return json;
   }
 }*/
-package com.google.sps.servlets;
+//package com.google.sps.servlets;
+
 
 import java.io.*;
 import java.sql.*;
@@ -60,7 +58,6 @@ public class UserServlet extends HttpServlet {
         // Local MySQL instance to use during development.
         Class.forName("com.mysql.jdbc.Driver");
         url = "jdbc:mysql://127.0.0.1:3306/guestbook?user=root";
-
         // Alternatively, connect to a Google Cloud SQL instance using:
         // jdbc:mysql://ip-address-of-google-cloud-sql-instance:3306/guestbook?user=root
       }
@@ -101,7 +98,8 @@ public class UserServlet extends HttpServlet {
         PreparedStatement getEntriesStatement = conn.prepareStatement(getEntries);
         //getEntriesSuccess = 2;
         ResultSet entries = getEntriesStatement.executeQuery(getEntries);
-        entries.
+        //entries.
+
         resp.getWriter().println(entries);
         conn.close();
       }

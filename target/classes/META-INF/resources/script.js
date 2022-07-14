@@ -31,4 +31,3 @@ async function getUser(){
     liElement.innerText = text;
     return liElement;
   }
-  

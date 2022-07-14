@@ -27,38 +27,40 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/form-handler")
-public class FormHandlerServlet extends HttpServlet {
+@WebServlet("/login-handler")
+public class LoginHandlerServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String name = Jsoup.clean(request.getParameter("name-input"), Safelist.none());
     String email = Jsoup.clean(request.getParameter("email"), Safelist.none());
-    String phoneNumber = Jsoup.clean(request.getParameter("ph"), Safelist.none());
-    String description = Jsoup.clean(request.getParameter("content"), Safelist.none());
-    long id = 789177;
+    String password = Jsoup.clean(request.getParameter("password"), Safelist.none());
+    //String userID = Jsoup.clean(request.getParameter("content"), Safelist.none());
 
     // // Print the input so you can see it in the server logs.
-    System.out.println("name: " + name);
-    System.out.println("email: " + email);
-    System.out.println("number: " + phoneNumber);
-    System.out.println("description: " + description);
+    System.out.println("Email: " + email);
+    System.out.println("Password: " + password);
+    //System.out.println("userID: " + userID);
 
 
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
-    KeyFactory keyFactory = datastore.newKeyFactory().setKind("User");
+    KeyFactory keyFactory = datastore.newKeyFactory().setKind("UserCred");
 
     FullEntity personEntity = 
     Entity.newBuilder(keyFactory.newKey())
-        .set("Name/ID",id )
-        .set("Name", name)
         .set("Email", email)
-        .set("Phone Number", phoneNumber)
+        .set("Password", password)
+        //.set("userID", userID)
         .build();
 
         datastore.put(personEntity);
+    KeyFactory keyFactory2 = datastore.newKeyFactory().setKind("User");
+    FullEntity userEntity =
+    Entity.newBuilder(keyFactory.newKey())
+        .set("Cred-ID", email)
+    //.set("userID", userID)
+    .build();
     // Print the value so you can see it in the server logs.
-    System.out.println("Name submitted: " + name+"  Email Submitted: " + email+" Phone Number Submitted: " + phoneNumber);
+    System.out.println("Email submitted: " + password+"  Password Submitted: " + email);
 
     // Write the value to the response so the user can see it.
     //response.getWriter().println("Name submitted: " + textValue[0]+"\nEmail Submitted: " + textValue[1]+"\nPhone Number Submitted: " + textValue[2]);
