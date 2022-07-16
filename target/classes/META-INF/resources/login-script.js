@@ -1,6 +1,7 @@
 async function validateLogin()
 {
   const email = document.getElementById("email");
+  sessionStorage.setItem("email", email.value);
   const password = document.getElementById("password");
 
   const submitButton = document.getElementById("login-button");
@@ -11,4 +12,5 @@ async function validateLogin()
   else{
     submitButton.disabled = true;
   }
+  location.href = 'https://summer22-sps-2.uc.r.appspot.com/';
 } 

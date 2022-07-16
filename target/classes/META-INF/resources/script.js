@@ -5,7 +5,6 @@ async function getUser(){
         fname: 'hello',
         content: 'world'
       }
-      ,sessionStorage.setItem("email", document.getElementById('email').value);
     });
     //const user = await response.json();
 
