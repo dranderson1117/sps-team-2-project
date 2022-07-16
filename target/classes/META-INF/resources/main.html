@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Class Chat</title>
+    <link rel="icon" href="images/moonfavi.ico" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet' >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+
+    <div class = "app"> 
+
+        <div class="sidebar">
+            <div class="logo-content">
+                <div class="logo" style="color:#3b305a ;">
+
+                    <i class='bx bxs-message-square-dots bx-md' ></i>
+                    <div class="logo-name" style="font-size:larger;">ClassChat</div>
+
+                </div>
+            </div>
+            
+            <!-- <div class="user" style="margin-top:1rem ;">
+                <i class='bx bxs-circle bx-lg'></i>
+
+            </div> -->
+            <div class="photo-wrapper">
+                <input type="file" class="my-file">
+
+            </div>
+            <h5 id="user-name" style="text-align: center; padding: 10px;">Kapa</h5>
+        
+            <ul class="nav-list">
+                <li>
+                    <!-- <a href="#"> -->
+                        <!-- <span>User Name</span> -->
+                        <div class = "btn-wrap"> 
+                            <!-- <button id="myBtn" class = "button-profile" data-text="User Profile"> -->
+                                <button  id="myBtn" type="button" class="btn btn-light btn-lg button-profile">
+                                    <i class='bx bx-user-circle'></i> 
+                                    <span>My Profile</span>
+                                </button>
+                                
+                                
+                            <!-- </button> -->
+                                    <!-- The Modal -->
+                                <div id="myModal" class="modal">
+    
+                                    <!-- Modal content -->
+                                            <div class="modal-content">
+                        
+                                            <span class="close">&times;</span>
+                                            
+
+                                            <div class="search-wrapper">
+                                                <label for="text" style="width: 100%;">
+                                                    Change User Name
+                                                </label>
+                                                <input type="text">
+                                                <label for = "search">School</label>
+                                                <div class="school-search-select search-select">
+                                                    
+                                                    <select class="selectpicker" data-live-search="true">
+                                                        <option>University of Pittsburgh</option>
+                                                        <option>New York University (NYU)</option>
+                                                        <option>University of General Tzo Chicken</option>
+                                                        <option>University of Sandwich</option>
+                                                        <option>University of Pizza</option>
+                                                        <option>University of General Tzo Chicken</option>
+                                                        <option>University of Ham</option>
+                                                        <option>University of Bur</option>
+                                                        <option>University of Ger</option>
+                                                    </select>
+                                                </div>
+
+
+                                                <label for = "search">Major</label>
+                                                <div class="major-search-select search-select">
+                                                    
+                                                    <select class="selectpicker" data-live-search="true">
+                                                        <option>Computer Science</option>
+                                                        <option>Computer Engineering</option>
+                                                        <option>Economics</option>
+                                                        <option>Mathematics</option>
+                                                        
+
+                                                    </select>
+                                                </div>
+                                                <label for = "search">Second Major (if applicable)</label>
+                                                <div class="major-search-select search-select">
+                                                    
+                                                    <select class="selectpicker" data-live-search="true" data-width="200px">
+                                                        <option>Computer Science</option>
+                                                        <option>Computer Engineering</option>
+                                                        <option>Economics</option>
+                                                        <option>Mathematics</option>
+                                                        
+
+                                                    </select>
+                                                </div>
+                                                <label for = "search">Minor</label>
+                                                <div class="major-search-select search-select">
+                                                    
+                                                    <select class="selectpicker" data-live-search="true">
+                                                        <option>Computer Science</option>
+                                                        <option>Computer Engineering</option>
+                                                        <option>Economics</option>
+                                                        <option>Mathematics</option>
+                                                        
+
+                                                    </select>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="save">
+                                                <button class="button-choice" style="margin-top: 20px;">Save</button>
+                                            </div>
+                                            
+                    </div>
+        
+                                </div>
+    
+                        </div>
+                    <!-- </a> -->
+                </li>
+                <li style="flex-direction: column;">
+
+                        <!-- <button id="open" class="button">Add Class</button> -->
+                        <button id="open" type="button" class="btn btn-light button-profile btn-lg">
+                            <i class='bx bx-search-alt' ></i>
+                            <span>Add Class</span>
+                        </button>
+
+                        <div class="modal-container" id="modal-container">
+                            <div class="modals" style="z-index: 100;">
+                                <div class="search-wrapper">
+                                    <!-- <label></label> -->
+                                    <label for = "search">Search</label>
+                                    <!-- <input type = "search" id = "search"> -->
+                                    <!-- add drop down menu as user enter -->
+                                    <div class="class-search-select search-select">
+                                                    
+                                        <select class="selectpicker" data-live-search="true">
+                                            <option><span id="class-id">CSCI-UA 480-002 </span>  Computer Graphics</option>
+                                            <option><span id="class-id">MATH-UA 251-001 </span> Math Modeling</option>
+                                            
+
+                                        </select>
+                                    </div>
+                                    
+                                </div>
+                                <button id="close" class="button-choice" style="margin-top: 20px; padding: 3px 5px;">Add</button>
+                            </div>
+                            
+
+                        </div>
+
+                </li>
+                <li>
+                    <button type="button" class="btn btn-light button-profile btn-lg">
+                        <i class='bx bxs-color' ></i>
+                        <span>My Friends</span>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-light button-profile btn-lg">
+                        <i class='bx bxs-purchase-tag-alt' ></i>
+                        <span>Tags</span>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-light button-profile btn-lg">
+                        <i class='bx bxs-edit' ></i>
+                        <span>Edit Bio</span>
+                    </button>
+                </li>
+                
+            </ul>
+            
+
+        </div>
+
+
+
+        <div class = "main-app">
+            <h1 class="main-element">Class Palette</h1>
+            <h5 style="margin-left: 3%;"> Click on a class card 👇</h5>
+            
+            <!-- Trigger/Open The Modal -->
+            <!-- <button id="myBtn">Open Modal</button> -->
+            <!-- <div class="course-card main-element">
+                <div class="class-text">
+                    <span class="class-id">Class ID</span>
+                    <h2 class="class-name">Class Name</h2>
+                    <p class="class-schedule">meeting class-schedule</p>
+                </div>
+                <div class="class-students">
+                    <img id = "user-pic" src="">
+                </div>
+                
+
+            </div> -->
+
+            <!-- <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div> -->
+
+            <div class="card-columns">
+                <div class="card">
+                  <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                  <div class="card-body" style="background-color: rgb(34, 67, 96); border-color: rgb(34, 67, 96);">
+                    <h5 class="card-title">Class ID</h5>
+                    <p class="card-text">What can computation add to human communication? Creating computer applications, instead of just using them, will give you a deeper understanding of the essential possibilities of computation. ICM introduces the fundamentals of programming: variables, conditionals, iteration, functions, and objects through drawing and animation. The JavaScript library p5 is the primary vehicle for the class. </p>
+                  </div>
+                </div>
+                <div class="card" style="background-color: rgb(46, 86, 69); border-color: rgb(46, 86, 69);">
+                    <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                    <div class="card-body">
+                      <h5 class="card-title">Class ID</h5>
+                      <p class="card-text">ICM introduces the fundamentals of programming: variables, conditionals, iteration, functions, and objects through drawing and animation. The JavaScript library p5 is the primary vehicle for the class.</p>
+                    </div>
+                </div>
+                
+                <div class="card" style="background-color: rgb(46, 86, 69); border-color: rgb(46, 86, 69);">
+                  <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                  <div class="card-body">
+                    <h5 class="card-title">Class ID</h5>
+                    <p class="card-text">ICM introduces the fundamentals of programming: variables, conditionals, iteration, functions, and objects through drawing and animation. The JavaScript library p5 is the primary vehicle for the class.</p>
+                  </div>
+                </div>
+                <!-- <div class="card bg-primary text-white text-center p-3">
+                  <blockquote class="blockquote mb-0">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
+                    <footer class="blockquote-footer">
+                      <small>
+                        Someone famous in <cite title="Source Title">Source Title</cite>
+                      </small>
+                    </footer>
+                  </blockquote>
+                </div> -->
+                <div class="card">
+                    <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                    <div class="card-body">
+                      <h5 class="card-title">Class ID</h5>
+                      <p class="card-text">What can computation add to human communication? Creating computer applications, instead of just using them</p>
+                    </div>
+                  </div>
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">Class ID</h5>
+                    <p class="card-text">ICM introduces the fundamentals of programming: variables, conditionals, iteration, functions, and objects through drawing and animation. The JavaScript library p5 is the primary vehicle for the class.</p>
+
+                  </div>
+                </div>
+            
+                <div class="card p-3 text-left">
+                     <h5 class="card-title">Class ID</h5>
+                  <blockquote class="blockquote mb-0">
+                    <p>What can computation add to human communication? Creating computer applications, instead of just using them</p>
+                    
+                  </blockquote>
+                </div>
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title"> Class ID</h5>
+                    <p class="card-text">What can computation add to human communication? Creating computer applications, instead of just using them</p>
+                  </div>
+                </div>
+              </div>
+
+
+        </div>
+
+    </div>
+
+    </body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+    <script src="main.js" defer></script>
+</html>
