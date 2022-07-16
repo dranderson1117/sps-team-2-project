@@ -32,6 +32,7 @@ public class LoginHandlerServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    //Cleaning and storing the user input into local variables
     String email = Jsoup.clean(request.getParameter("email"), Safelist.none());
     String password = Jsoup.clean(request.getParameter("password"), Safelist.none());
     //String userID = Jsoup.clean(request.getParameter("content"), Safelist.none());
@@ -41,10 +42,12 @@ public class LoginHandlerServlet extends HttpServlet {
     System.out.println("Password: " + password);
     //System.out.println("userID: " + userID);
 
-
+    //creates a new instance of datastore
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
+    //allows us to set the "kind" of the datastore entities we are creating
     KeyFactory keyFactory = datastore.newKeyFactory().setKind("UserCred");
 
+    //Creates a new entity and set its properties by key value pair
     FullEntity personEntity = 
     Entity.newBuilder(keyFactory.newKey())
         .set("Email", email)
