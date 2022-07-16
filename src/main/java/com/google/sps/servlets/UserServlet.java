@@ -30,6 +30,7 @@ public class UserServlet extends HttpServlet {
 }*/
 //package com.google.sps.servlets;
 
+
 import java.io.*;
 import java.sql.*;
 import javax.servlet.http.*;
@@ -98,6 +99,7 @@ public class UserServlet extends HttpServlet {
         //getEntriesSuccess = 2;
         ResultSet entries = getEntriesStatement.executeQuery(getEntries);
         //entries.
+
         resp.getWriter().println(entries);
         conn.close();
       }
