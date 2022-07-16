@@ -23,15 +23,12 @@ label {
 }
 
 #title {
-  margin-bottom: 10%;
+  margin-bottom: 20%;
+  font-size: 4.0rem;
+  color: darkslateblue;
 }
 
 #login-credentials {
-  /*
-  padding: 0 auto;
-  margin-top: 25vh;
-  margin: 0 auto;
-  */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,3 +43,28 @@ label {
 #login-credentials #password-div {
   margin-bottom: 20%!important;
 }
+
+#email, #password {
+  width: 100%;
+  height: 100%;
+  font-size: 1.4rem;
+}
+
+#login-button {
+  width: 75%;
+  height: 20%;
+  font-size: 1.7rem;
+  background-color: darkslateblue;
+  margin-bottoM: 10%;
+}
+
+#register-button {
+  width: 100%;
+  height: 20%;
+  font-size: 1.2rem;
+  background-color: transparent;
+  color: darkslateblue;
+  border: 0px solid transparent;
+  text-decoration: underline;
+}
+
