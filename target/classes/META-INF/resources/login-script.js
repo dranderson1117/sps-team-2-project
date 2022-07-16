@@ -7,8 +7,3 @@ async function validateLogin()
   const loginForm = document.getElementById("login-form");
   loginForm.submit();
 } 
-
-function routeToSignUpPage()
-{
-
-}
