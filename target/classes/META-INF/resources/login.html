@@ -14,7 +14,7 @@
   <body id="login-body">
     <div id="login-credentials">
       <h1 id="title">Chat App</h1>
-      <form>
+      <form action="/login-handler" method="POST" id="login-form">
         <div class="mb-3" id="email-div">
           <!-- <label for="usernameInput" class="form-label">Email</label> -->
           <input class="form-control" name="email" id="email" required="required" placeholder="Email Address">
@@ -24,9 +24,9 @@
           <!-- <input class="form-control" name="password" id="password" required="required" placeholder="Password" data-bs-toggle="popover" title="Password" data-bs-content="Password must contain:&#13 - At least 10 characters&#13; - 1 lowercase caracter&#13; - 1 uppercase character&#13; - 1 special character: (!.?$#)&#13; - 1 number"> -->
           <input class="form-control" name="password" id="password" required="required" placeholder="Password">
         </div>
+        <button id="login-button" type="button" class="btn btn-primary" onclick="validateLogin()">Login</button>
+        <button id="register-button" type="button" class="btn btn-primary" onclick="routeToSignUpPage()">New User? Sign Up Here!</button>
       </form>
-      <button id="login-button" type="button" class="btn btn-primary">Login</button>
-      <button id="register-button" type="button" class="btn btn-primary">New User? Sign Up Here!</button>
     </div>
 
     <script src="login-script.js"></script>
