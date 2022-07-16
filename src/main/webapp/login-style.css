@@ -1,0 +1,48 @@
+html {
+  font-family: 'Roboto', serif;
+  font-size: 12px;
+}
+
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+html, #login-body, #login-credentials {
+  background-color: #F7F9FE;
+}
+
+
+label {
+  display: block;
+  font-size: 1.5em;  
+}
+
+#title {
+  margin-bottom: 10%;
+}
+
+#login-credentials {
+  /*
+  padding: 0 auto;
+  margin-top: 25vh;
+  margin: 0 auto;
+  */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#login-credentials #email-div {
+  margin-bottom: 20%!important;
+}
+
+#login-credentials #password-div {
+  margin-bottom: 20%!important;
+}
