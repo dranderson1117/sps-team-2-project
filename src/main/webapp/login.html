@@ -11,10 +11,10 @@
     <!-- Adding Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   </head>
-  <body onload="enablePopovers()"  id="login-body">
+  <body id="login-body">
     <div id="login-credentials">
       <h1 id="title">Chat App</h1>
-      <form>
+      <form action="/login-handler" method="POST" id="login-form">
         <div class="mb-3" id="email-div">
           <!-- <label for="usernameInput" class="form-label">Email</label> -->
           <input class="form-control" name="email" id="email" required="required" placeholder="Email Address">
@@ -24,7 +24,9 @@
           <!-- <input class="form-control" name="password" id="password" required="required" placeholder="Password" data-bs-toggle="popover" title="Password" data-bs-content="Password must contain:&#13 - At least 10 characters&#13; - 1 lowercase caracter&#13; - 1 uppercase character&#13; - 1 special character: (!.?$#)&#13; - 1 number"> -->
           <input class="form-control" name="password" id="password" required="required" placeholder="Password">
         </div>
-        <button id="login-button" type="button" class="btn btn-primary"  onclick="validateLogin()">Login</button>
+        <button id="login-button" type="button" class="btn btn-primary" onclick="validateLogin()">Login</button>
+        <a id="sign-up-link" href="index.html">New User? Sign Up Here!</a>
+        <!-- <button id="register-button" type="button" class="btn btn-primary" onclick="routeToSignUpPage()">New User? Sign Up Here!</button> -->
       </form>
     </div>
 

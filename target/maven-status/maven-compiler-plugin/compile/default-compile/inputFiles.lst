@@ -1,9 +1,8 @@
-/home/pminchu/software-product-sprint/group/src/main/java/com/google/sps/servlets/getUserCredServlet.java
-/home/pminchu/software-product-sprint/group/src/main/java/com/google/sps/servlets/FormHandlerServlet.java
-/home/pminchu/software-product-sprint/group/src/main/java/com/google/sps/ServerMain.java
-/home/pminchu/software-product-sprint/group/src/main/java/com/google/sps/servlets/UserServlet.java
-/home/pminchu/software-product-sprint/group/src/main/java/com/google/sps/servlets/getUserServlet.java
-/home/pminchu/software-product-sprint/group/src/main/java/com/UserCred.java
-/home/pminchu/software-product-sprint/group/src/main/java/com/User.java
-/home/pminchu/software-product-sprint/group/src/main/java/com/google/sps/servlets/LoginHandlerServlet.java
-
+/home/rwasim/sps-test-collab-tutorial/src/main/java/com/google/sps/servlets/getUserCredServlet.java
+/home/rwasim/sps-test-collab-tutorial/src/main/java/com/User.java
+/home/rwasim/sps-test-collab-tutorial/src/main/java/com/google/sps/servlets/UserServlet.java
+/home/rwasim/sps-test-collab-tutorial/src/main/java/com/UserCred.java
+/home/rwasim/sps-test-collab-tutorial/src/main/java/com/google/sps/servlets/FormHandlerServlet.java
+/home/rwasim/sps-test-collab-tutorial/src/main/java/com/google/sps/servlets/LoginHandlerServlet.java
+/home/rwasim/sps-test-collab-tutorial/src/main/java/com/google/sps/ServerMain.java
+/home/rwasim/sps-test-collab-tutorial/src/main/java/com/google/sps/servlets/getUserServlet.java
