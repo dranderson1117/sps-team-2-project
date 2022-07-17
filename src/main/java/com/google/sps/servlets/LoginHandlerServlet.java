@@ -56,18 +56,15 @@ public class LoginHandlerServlet extends HttpServlet {
         .build();
 
         datastore.put(personEntity);
-    KeyFactory keyFactory2 = datastore.newKeyFactory().setKind("User");
-    FullEntity userEntity =
-    Entity.newBuilder(keyFactory.newKey())
-        .set("Cred-ID", email)
-    //.set("userID", userID)
-    .build();
+
     // Print the value so you can see it in the server logs.
     System.out.println("Email submitted: " + password+"  Password Submitted: " + email);
 
     // Write the value to the response so the user can see it.
     //response.getWriter().println("Name submitted: " + textValue[0]+"\nEmail Submitted: " + textValue[1]+"\nPhone Number Submitted: " + textValue[2]);
     //response.sendRedirect("/contacts-list");
-    response.sendRedirect("/index.html");
+    response.getWriter().println("<script>location.href = 'https://summer22-sps-2.uc.r.appspot.com/main.html';</script>");
+
+    //response.sendRedirect("/login.html");
   }
 }

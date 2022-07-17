@@ -1,111 +1,86 @@
+// Copyright 2019 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package com.google.sps.servlets;
 
-/*import com.google.sps.User;
+import com.google.cloud.datastore.Datastore;
+import com.google.cloud.datastore.DatastoreOptions;
+import com.google.cloud.datastore.Entity;
+import com.google.cloud.datastore.Query;
+import com.google.cloud.datastore.QueryResults;
+import com.google.cloud.datastore.StructuredQuery.OrderBy;
 import com.google.gson.Gson;
+import com.User;
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Safelist;
+
 import java.io.IOException;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-/** Servlet that responds with the current date. 
-@WebServlet("/get-user")
+
+/** Servlet responsible for listing tasks. */
+@WebServlet("/user-login")
 public class UserServlet extends HttpServlet {
+
   @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    /*  User u = new User("name", "email", "phoneNumber", "major", "minor");
-      String json = convertToJsonUsingGson(u);
-    response.setContentType("application/json;");
-    //response.getWriter().println("The server's current date is " + new Date());
-    response.getWriter().println(json);
-    Class.forName("com.mysql.jdbc.GoogleDriver");
-    Url = "jdbc:google:mysql://ppID:practice/practice_database? user=root";
-    Connection con = DriverManager.getConnection (Url);
-  }
-  private String convertToJsonUsingGson(User u) {
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String inputEmail = Jsoup.clean(request.getParameter("email"), Safelist.none());
+    String inputPassword = Jsoup.clean(request.getParameter("password"), Safelist.none());
+    Boolean login = false;
+    Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
+    Query<Entity> query =
+        Query.newEntityQueryBuilder().setKind("UserCred").build();
+    QueryResults<Entity> results = datastore.run(query);
     Gson gson = new Gson();
-    String json = gson.toJson(u);
-    return json;
-  }
-}*/
-//package com.google.sps.servlets;
 
 
-import java.io.*;
-import java.sql.*;
-import javax.servlet.http.*;
-//import com.google.appengine.api.utils.SystemProperty;
-import java.io.IOException;
-import java.util.Date;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+    List<User> userList = new ArrayList<>();
+    while (results.hasNext()) {
+      Entity entity = results.next();
 
-@WebServlet("/get-user")
-public class UserServlet extends HttpServlet {
-  @Override
-  public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-    String url = null;
-    try {
-      Class.forName("com.mysql.jdbc.GoogleDriver");
-      url = "jdbc:google:mysql://pminchu-sps-summer22:practice/guestbook?user=root";
-      /*
-      if (SystemProperty.environment.value() ==
-          SystemProperty.Environment.Value.Production) {
-        // Load the class that provides the new "jdbc:google:mysql://" prefix.
-      } else {
-        // Local MySQL instance to use during development.
-        Class.forName("com.mysql.jdbc.Driver");
-        url = "jdbc:mysql://127.0.0.1:3306/guestbook?user=root";
-        // Alternatively, connect to a Google Cloud SQL instance using:
-        // jdbc:mysql://ip-address-of-google-cloud-sql-instance:3306/guestbook?user=root
-      }
-      */
-    } catch (Exception e) {
-      e.printStackTrace();
-      return;
+      //long id = entity.getKey().getId();
+      String email = entity.getString("Email");
+      String password = entity.getString("Password");
+
+      User user = new User(email, password);
+      userList.add(user);
     }
-
-    PrintWriter out = resp.getWriter();
-    try {
-      Connection conn = DriverManager.getConnection(url);
-      try {
-        String fname = req.getParameter("fname");
-        String content = req.getParameter("content");
-        if (fname == "" || content == "") {
-          out.println(
-              "<html><head></head><body>You are missing either a message or a name! Try again! " +
-              "Redirecting in 3 seconds...</body></html>");
-        } else {
-          String statement = "INSERT INTO entries (guestName, content) VALUES( ? , ? )";
-          PreparedStatement stmt = conn.prepareStatement(statement);
-          stmt.setString(1, fname);
-          stmt.setString(2, content);
-          int success = 2;
-          success = stmt.executeUpdate();
-          if (success == 1) {
-            out.println(
-                "<html><head></head><body>Success! Redirecting in 3 seconds...</body></html>");
-          } else if (success == 0) {
-            out.println(
-                "<html><head></head><body>Failure! Please try again! " +
-                "Redirecting in 3 seconds...</body></html>");
-          }
+    for(int i =0; i <userList.size();i++){
+        if(inputEmail.equals(userList.get(i).getEmail()) & inputPassword.equals(userList.get(i).getPassword())){
+            login = true;
+            String userJson = gson.toJson(userList.get(i));
+            response.getWriter().println("<script>sessionStorage.setItem(\"user\",JSON.stringify("+userJson+"));</script>");
         }
-      } finally {
-        String getEntries = "SELECT * FROM entries";
-        PreparedStatement getEntriesStatement = conn.prepareStatement(getEntries);
-        //getEntriesSuccess = 2;
-        ResultSet entries = getEntriesStatement.executeQuery(getEntries);
-        //entries.
-
-        resp.getWriter().println(entries);
-        conn.close();
-      }
-    } catch (SQLException e) {
-      e.printStackTrace();
     }
-    resp.setHeader("Refresh", "3; url=/guestbook.jsp");
+
+    if(login){
+        String jsonList=gson.toJson(userList);
+
+        response.getWriter().println("<script>sessionStorage.setItem(\"userList\",JSON.stringify("+jsonList+"));</script>");
+        response.getWriter().println("<script>location.href = 'https://summer22-sps-2.uc.r.appspot.com/main.html';</script>");
+        //response.setContentType("application/json;");
+        //response.getWriter().println(jsonList);
+    }
+    else{
+        response.getWriter().println("<script>location.href = 'https://summer22-sps-2.uc.r.appspot.com/login-html';</script>");
+
+    }
+
+
   }
 }

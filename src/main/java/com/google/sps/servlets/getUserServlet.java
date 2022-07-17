@@ -50,10 +50,10 @@ public class getUserServlet extends HttpServlet {
       //long id = entity.getKey().getId();
       String name = entity.getString("Name");
       String email = entity.getString("Email");
-      String phoneNumber = entity.getString("Phone Number");
+      String password = entity.getString("Phone Number");
       //long timestamp = entity.getLong("Time");
 
-      User user = new User(name, email, phoneNumber);
+      User user = new User(email, password);
       people.add(user);
     }
 
