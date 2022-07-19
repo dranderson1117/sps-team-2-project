@@ -77,7 +77,7 @@ public class UserServlet extends HttpServlet {
         //response.getWriter().println(jsonList);
     }
     else{
-        response.getWriter().println("<script>location.href = 'https://summer22-sps-2.uc.r.appspot.com/login-html';</script>");
+        response.getWriter().println("<script>location.href = 'https://summer22-sps-2.uc.r.appspot.com/login.html';</script>");
 
     }
 
