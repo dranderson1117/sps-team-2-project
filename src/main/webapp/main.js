@@ -54,3 +54,13 @@ async function addSchoolOptions(){
   );
 }
 addSchoolOptions();
+
+// Load the users as modals in the tags modal when the "Tags" button is clicked
+function loadAllUsers(){
+  console.log("Loading All Users in Tags Modal");
+  let users = sessionStorage.userList;
+  for(let i = 0; i < users.length; i++){
+    let currUser = users[i];
+    console.log("Loading current user email: " + currUser.email + ", password: " + currUser.password);
+  } 
+}
