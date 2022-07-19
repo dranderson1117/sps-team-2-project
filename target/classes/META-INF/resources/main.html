@@ -162,7 +162,7 @@
                 </li>
                 <li>
                   <!-- Modal for Friends List -->
-                    <button type="button" class="btn btn-light button-profile btn-lg" data-toggle="modal" data-target="#friendsModal">
+                    <button type="button" class="btn btn-light button-profile btn-lg" data-toggle="modal" data-target="#friendsModal" onclick="loadFriends()">
                         <i class='bx bxs-color' ></i>
                         <span>My Friends</span>
                     </button>
@@ -174,9 +174,7 @@
                           <h5 class="modal-title">Friends</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
                         </div>
-                        <div class="modal-body">
-                          <p>Modal body goes here.</p>
-                          <div id="friends-modal-body"></div>
+                        <div class="modal-body" id="friends-modal-body">
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
