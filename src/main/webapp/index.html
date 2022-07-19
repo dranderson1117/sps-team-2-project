@@ -42,6 +42,7 @@
     <meta charset="utf-8">
     <title>Welcome to Classchat</title>
     <link rel="icon" href="images/moonfavi.ico" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="signup.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,7 +55,7 @@
     </div>
     <div class="sign-up-wrapper">
       <div class="title"> Sign up</div>
-      <form action="/login-handler" method="POST" id="signup-form">
+      <form  action="/login-handler" method="post" id="signup-form">
         <div class="formContainer">
         <div class = "form-items">
           <!-- <li id = "email"> -->
@@ -77,7 +78,7 @@
         <!-- <p>By creating an account you agree to our <a href="#"
         style="color:dodgerblue">Terms & Privacy</a><p> -->
         <div class = "submit">
-        <button type="button" class="sign-up-btn" onclick="submit();">
+        <button type="button" class="sign-up-btn" onclick="signup();">
           <div style="font-family:'Mukta', sans-serif; "> Get Started! </div>
         </button>
         </div>
@@ -85,3 +86,5 @@
         </div>
       </form>
   </div>
+</body>
+</html>
