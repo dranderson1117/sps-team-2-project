@@ -42,3 +42,15 @@ document.getElementById('close').addEventListener('click', ()=> {
 $(document).ready(function(){
   $('.search-select select').selectpicker();
 })
+
+async function addSchoolOptions(){
+  //fetch school data here
+  let schools = ["UniA", "UniB", "UniC"];
+  var selectSchool = document.getElementById("select-school");
+  Array.from(schools).forEach(function(el){
+      let option = new Option(el);
+      selectSchool.appendChild(option);
+  }
+  );
+}
+addSchoolOptions();
