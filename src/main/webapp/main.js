@@ -55,12 +55,52 @@ async function addSchoolOptions(){
 }
 addSchoolOptions();
 
-// Load the users as modals in the tags modal when the "Tags" button is clicked
+/**
+ * Loads all users via modals in the "Tags" modal 
+ */
 function loadAllUsers(){
   console.log("Loading All Users in Tags Modal");
-  let users = sessionStorage.userList;
+
+  let tagsModal = document.getElementById("tags-modal-body");
+  tagsModal.innerHTML = "";
+
+  /*
+  if(tagsModal.childElementCount() > 0){
+    return;
+  }*/
+
+  let users = JSON.parse(sessionStorage.userList);
   for(let i = 0; i < users.length; i++){
     let currUser = users[i];
     console.log("Loading current user email: " + currUser.email + ", password: " + currUser.password);
+    let newModal = document.createElement("div");
+    newModal.class = "modal fade";
+    newModal.tabIndex = "-1";
+    newModal.style = "display: inline-block;";
+    newModal.innerHTML = populateUserModal(currUser);
+    tagsModal.appendChild(newModal);
   } 
+}
+
+/**
+ * Creates a modal for the passed in user and returns the HTML code for the modal
+ * @param user - User object containing the user's name, email, password, major, and minor
+ * @returns userModal - String containing HTML code for modal populated with values from user object
+ */
+function populateUserModal(user){
+  //Currently adding the button based on a random event --- will need to change so that "Add Friend" button appears based on whether user is in friends list
+  let userModal = `<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 class="modal-title">${user.email}</h2>
+                      </div>
+                      <div class="modal-body">
+                        <p>${user.password}</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" style="display: ${Math.random(1231241) >= 0.5 ? "contents" : "none"};">Add Friend</button> 
+                      </div> 
+                    </div> 
+                  </div>`;
+  return userModal;
 }
