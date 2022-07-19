@@ -93,3 +93,74 @@ async function addSchoolOptions(){
   );
 }
 addSchoolOptions();
+
+/**
+ * Loads all users via modals in the "Tags" modal 
+ */
+function loadAllUsers(){
+  console.log("Loading All Users in Tags Modal");
+
+  let tagsModal = document.getElementById("tags-modal-body");
+  tagsModal.innerHTML = "";
+
+  /*
+  if(tagsModal.childElementCount() > 0){
+    return;
+  }*/
+
+  let users = JSON.parse(sessionStorage.userList);
+  for(let i = 0; i < users.length; i++){
+    let currUser = users[i];
+    console.log("Loading current user email: " + currUser.email + ", password: " + currUser.password);
+    let newModal = document.createElement("div");
+    newModal.class = "modal fade";
+    newModal.tabIndex = "-1";
+    newModal.innerHTML = populateUserModal(currUser);
+    tagsModal.appendChild(newModal);
+  } 
+}
+
+/**
+ * Loads the user's friends via modals in the "My Friends" modal 
+ */
+function loadFriends(){
+  console.log("Loading Friends in My Friends Modal");
+
+  let myFriendsModal = document.getElementById("friends-modal-body");
+  myFriendsModal.innerHTML = "";
+
+  let users = JSON.parse(sessionStorage.userList);
+  for(let i = 0; i < users.length; i++){
+    let currUser = users[i];
+    console.log("Loading current user email: " + currUser.email + ", password: " + currUser.password);
+    let newModal = document.createElement("div");
+    newModal.class = "modal fade";
+    newModal.tabIndex = "-1";
+    newModal.innerHTML = populateUserModal(currUser);
+    myFriendsModal.appendChild(newModal);
+  } 
+}
+
+
+/**
+ * Creates a modal for the passed in user and returns the HTML code for the modal
+ * @param user - User object containing the user's name, email, password, major, and minor
+ * @returns userModal - String containing HTML code for modal populated with values from user object
+ */
+function populateUserModal(user){
+  //Currently adding the button based on a random event --- will need to change so that "Add Friend" button appears based on whether user is in friends list
+  let userModal = `<div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 class="modal-title">${user.email}</h2>
+                      </div>
+                      <div class="modal-body">
+                        <p>${user.password}</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" style="display: ${true ? "contents" : "none"};">Add Friend</button> 
+                      </div> 
+                    </div> 
+                  </div>`;
+  return userModal;
+}
