@@ -3,16 +3,21 @@ package com;
 public class User {
     private String name;
     private String email;
-    private String phoneNumber;
+    private String password;
     private String major;
     private String minor;
 
 
-    public User(String name, String email, String phoneNumber){
-        this.name = name;
+    public User(String email, String password){
         this.email = email;
-        this.phoneNumber = phoneNumber;
+        this.password = password;
 
+    }
+    public String getEmail() {
+        return email;
+    }
+    public String getPassword() {
+        return password;
     }
 
 }
