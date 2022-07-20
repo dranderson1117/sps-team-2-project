@@ -16,44 +16,21 @@ body{
     width: 100%;
     background-color: #F7F9FE;
 }
-header,
-nav,
-aside,
-main,
-footer, .main-app {
-  margin: 0px;
-  padding: 16px;
-  /* outline just for visibility purposes */
-  /* outline: 1px solid #3a314f; */
-  border-radius: 2px;
-  border-right: 2px #3a314f;
-  border-bottom: 5px solid #fff;
-  box-shadow: 0 5px 0 #ffbf0e;
-  
+
+.app > .main-app {
 
 }
 
 .app{
     display: flex;
-    flex-direction: row wrap;
-    justify-content: space-between;
-
-    align-items: stretch;
-    height: 100vh;
-    width: 100%;
+    flex-direction: row;
 }
 
-.app > * {
-    padding: 10px;
-    flex: 1 100%;
-}
-
-.aside{
-  border: #3a314f;
-  outline: #3a314f;
-  flex-direction: column;
-  align-items: center;
-
+.app > .sidebar {
+    flex-grow: 1;
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -115,14 +92,13 @@ ul{
 
 
 .main-app{
-  display: grid;
+  /* display: grid;
+  background-color: #ffffff;
+  flex-direction: column; */
+  flex-basis: 75%;
   flex-grow: 0;
   flex-shrink: 0;
-  flex-basis: 75%;
-    /* margin: 10px; */
   padding: 30px;
-  background-color: #ffffff;
-  flex-direction: column;
     
     
 }
@@ -276,7 +252,9 @@ input[type="search"]{
   background-color: none;
 }
 
-.main-element{
+/* .main-element{
   padding: 20px;
-  /* margin: 10px; */
-}
+  margin-bottom: 0;
+} */
+
+.class-cards-wrapper{}
