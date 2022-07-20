@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Class Chat</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="icon" href="images/moonfavi.ico" />
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,14 +64,18 @@
                                             
 
                                             <div class="search-wrapper">
-                                                <label for="text" style="width: 100%;">
-                                                    Change User Name
-                                                </label>
-                                                <input type="text">
+                                                <form  id=userData>
+                                                    <label for="text" style="width: 100%;">
+                                                        Change User Name
+                                                    </label>
+                                                    <input type="text" id="username" name="username">
+                                                </form>
+                                                
                                                 <label for = "search">School</label>
                                                 <div class="school-search-select search-select">
                                                     
-                                                    <select class="selectpicker" id="select-school" data-live-search="true">
+                                                    <select class="selectpicker" data-live-search="true" form="userData" id="school" name="school">
+
                                                         <option>University of Pittsburgh</option>
                                                         <option>New York University (NYU)</option>
                                                         
@@ -81,7 +86,7 @@
                                                 <label for = "search">Major</label>
                                                 <div class="major-search-select search-select">
                                                     
-                                                    <select class="selectpicker" data-live-search="true">
+                                                    <select class="selectpicker" data-live-search="true" form="userData" id="major" name="major">
                                                         <option>Computer Science</option>
                                                         <option>Computer Engineering</option>
                                                         <option>Economics</option>
@@ -93,7 +98,7 @@
                                                 <label for = "search">Second Major (if applicable)</label>
                                                 <div class="major-search-select search-select">
                                                     
-                                                    <select class="selectpicker" data-live-search="true" data-width="200px">
+                                                    <select class="selectpicker" data-live-search="true" data-width="200px" form="userData" id="major2" name="major2">
                                                         <option>Computer Science</option>
                                                         <option>Computer Engineering</option>
                                                         <option>Economics</option>
@@ -105,7 +110,7 @@
                                                 <label for = "search">Minor</label>
                                                 <div class="major-search-select search-select">
                                                     
-                                                    <select class="selectpicker" data-live-search="true">
+                                                    <select class="selectpicker" data-live-search="true" form="userData" id="minor" name="minor">
                                                         <option>Computer Science</option>
                                                         <option>Computer Engineering</option>
                                                         <option>Economics</option>
@@ -117,7 +122,7 @@
                                                 
                                             </div>
                                             <div class="save">
-                                                <button class="button-choice" style="margin-top: 20px;">Save</button>
+                                                <button type="button" class="button-choice" style="margin-top: 20px;" onclick="submit();">Save</button>
                                             </div>
                                             
                     </div>

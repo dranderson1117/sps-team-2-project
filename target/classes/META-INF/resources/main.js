@@ -43,6 +43,45 @@ $(document).ready(function(){
   $('.search-select select').selectpicker();
 })
 
+/*async function submit()
+{
+  const email =   sessionStorage.getItem('email');
+  //location.href = 'https://summer22-sps-2.uc.r.appspot.com/';
+  const loginForm = document.getElementById("signup-form");
+  loginForm.submit();
+} */
+
+async function submit(){
+
+    const email =   sessionStorage.getItem('email');
+    const username = $('#username').val()
+    const school = $('#school').val()
+    const major = $('#major').val()
+    const major2 = $('#major2').val()
+    const minor = $('#minor').val()
+
+
+
+
+        const params = new URLSearchParams();
+        params.append('username', username);
+        params.append('email', email);
+        params.append('school', school);
+        params.append('major', major);
+        params.append('major2', major);
+        params.append('minor', minor);
+    fetch('/form-handler', {
+      method: 'POST',
+      body: params
+    }).then(response => response.text())
+    .then((sentiment) => {
+      //resultContainer.innerText = "Sentiment Analysis Score: " +sentiment;
+    });
+
+    location.reload();
+
+}
+
 async function addSchoolOptions(){
   //fetch school data here
   let schools = ["UniA", "UniB", "UniC"];
