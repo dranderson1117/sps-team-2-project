@@ -92,15 +92,15 @@ ul{
 
 
 .main-app{
-  /* display: grid;
-  background-color: #ffffff;
-  flex-direction: column; */
   flex-basis: 75%;
   flex-grow: 0;
   flex-shrink: 0;
   padding: 30px;
-    
-    
+  background-color: #ffffff;
+}
+
+.main-app >*{
+  padding: 10px;
 }
 
 @media all and (min-width: 600px) {
