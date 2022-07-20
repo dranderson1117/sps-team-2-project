@@ -1,0 +1,35 @@
+.friend-container{
+    /* width: 300px; */
+    border-radius: 10px;
+    color: #3a314f;
+    background-color: #F7F9FE;
+    padding: 10px 5px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: start;
+    align-items: center;
+    margin: 5px;
+}
+
+.friend-container-modal{
+    /* width: 300px; */
+    border-radius: 10px;
+    background-color: #F7F9FE;
+    padding: 10px 5px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: start;
+    align-items: center;
+}
+
+.avatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    overflow: cover;
+    border: 1px solid rgb(150, 150, 255);
+}

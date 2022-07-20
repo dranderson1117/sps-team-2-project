@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="main.css">
+
   </head>
   <body>
 
@@ -73,16 +74,14 @@
                                                 <label for = "search">School</label>
                                                 <div class="school-search-select search-select">
                                                     
+<<<<<<< HEAD
                                                     <select class="selectpicker" data-live-search="true" form="userData" id="school" name="school">
+=======
+                                                    <select class="selectpicker" id="select-school" data-live-search="true">
+>>>>>>> main
                                                         <option>University of Pittsburgh</option>
                                                         <option>New York University (NYU)</option>
-                                                        <option>University of General Tzo Chicken</option>
-                                                        <option>University of Sandwich</option>
-                                                        <option>University of Pizza</option>
-                                                        <option>University of General Tzo Chicken</option>
-                                                        <option>University of Ham</option>
-                                                        <option>University of Bur</option>
-                                                        <option>University of Ger</option>
+                                                        
                                                     </select>
                                                 </div>
 
@@ -170,16 +169,49 @@
 
                 </li>
                 <li>
-                    <button type="button" class="btn btn-light button-profile btn-lg">
+                  <!-- Modal for Friends List -->
+                    <button type="button" class="btn btn-light button-profile btn-lg" data-toggle="modal" data-target="#friendsModal" onclick="loadFriends()">
                         <i class='bx bxs-color' ></i>
                         <span>My Friends</span>
                     </button>
+
+                  <div class="modal fade" tabindex="-1" id="friendsModal" role="dialog">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Friends</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+                        </div>
+                        <div class="modal-body" id="friends-modal-body">
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-light button-profile btn-lg">
+                    <button type="button" class="btn btn-light button-profile btn-lg" data-toggle="modal" data-target="#tagsModal" onclick="loadAllUsers()">
                         <i class='bx bxs-purchase-tag-alt' ></i>
                         <span>Tags</span>
                     </button>
+
+                    <div class="modal fade" tabindex="-1" id="tagsModal" role="dialog">
+                      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">Tag-Based Search</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+                          </div>
+                          <div class="modal-body" id="tags-modal-body">
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                 </li>
                 <li>
                     <button type="button" class="btn btn-light button-profile btn-lg">
