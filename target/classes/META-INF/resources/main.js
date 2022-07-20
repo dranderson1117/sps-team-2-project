@@ -81,7 +81,6 @@ async function submit(){
     location.reload();
 
 }
-
 async function addSchoolOptions(){
   //fetch school data here
   let schools = ["UniA", "UniB", "UniC"];
@@ -148,7 +147,8 @@ function loadFriends(){
  * @returns userModal - String containing HTML code for modal populated with values from user object
  */
 function populateUserModal(user){
-  //Currently adding the button based on a random event --- will need to change so that "Add Friend" button appears based on whether user is in friends list
+  //Currently adding the button based on a random value --- will need to change so that "Add Friend" button appears based on whether user is in friends list
+  let isUserFriend = Math.random(Date.now()) >= 0.5;
   let userModal = `<div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -158,9 +158,10 @@ function populateUserModal(user){
                         <p>${user.password}</p>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" style="display: ${true ? "contents" : "none"};">Add Friend</button> 
+                        <button type="button" class="btn btn-primary" style="visibility: ${(isUserFriend ? "hidden" : "visible")};">"Add Friend"</button> 
                       </div> 
                     </div> 
                   </div>`;
   return userModal;
 }
+
