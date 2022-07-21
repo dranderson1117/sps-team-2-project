@@ -33,7 +33,7 @@
                 <input type="file" class="my-file">
 
             </div>
-            <h5 id="user-name" style="text-align: center; padding: 10px;">Kapa</h5>
+            <h5 id="side-bar-user-name" style="text-align: center; padding: 10px;">Kapa</h5>
         
             <ul class="nav-list">
                 <li>
@@ -123,6 +123,102 @@
                         </div>
                     <!-- </a> -->
                 </li>
+                <!-- New My Profile  -->
+                <p>New My Profile below</p>
+                <li>
+                  <button type="button" class="btn btn-light button-profile btn-lg" data-toggle="modal" data-target="#profileModal" onclick="loadAllUsers()">
+                    <i class='bx bx-user-circle'></i> 
+                      <span>My Profile</span>
+                  </button>
+
+                  <div class="modal fade" tabindex="-1" id="profileModal" role="dialog">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">My Profile</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+                        </div>
+                        <div class="modal-body" id="profile-modal-body">
+                          <div class="search-wrapper">
+                            <label for="text" style="width: 100%;">
+                                Change User Name
+                            </label>
+                            <!-- Move these functions to {function saveProfile() in main.js} -->
+                            <!-- How to get value set by a selector -->
+                            <!-- <button onclick="console.log(document.querySelector('.major-selector').value);console.log('new')"></button> -->
+                            <input type="text" id="user-name-input">
+                            <label for = "search">School</label>
+                            <div class="school-search-select search-select">
+                                
+                                <select class="selectpicker" id="select-school" data-live-search="true">
+                                    <option>University of Pittsburgh</option>
+                                    <option>New York University (NYU)</option>
+                                    
+                                </select>
+                            </div>
+
+
+                            <label for = "search">Major</label>
+                            <div class="major-search-select search-select">
+                                
+                                <select class="selectpicker major-selector" data-live-search="true">
+                                    <option>Computer Science</option>
+                                    <option>Computer Engineering</option>
+                                    <option>Economics</option>
+                                    <option>Mathematics</option>
+                                    
+
+                                </select>
+                            </div>
+                            <label for = "search">Second Major (if applicable)</label>
+                            <div class="major-search-select search-select">
+                                
+                                <select class="selectpicker major-selector second-major-selector" data-live-search="true" data-width="200px">
+                                    <option>Computer Science</option>
+                                    <option>Computer Engineering</option>
+                                    <option>Economics</option>
+                                    <option>Mathematics</option>
+                                    
+
+                                </select>
+                            </div>
+                            <label for = "search">Minor</label>
+                            <div class="major-search-select search-select">
+                                
+                                <select class="selectpicker minor-selector" data-live-search="true">
+                                    <option>Computer Science</option>
+                                    <option>Computer Engineering</option>
+                                    <option>Economics</option>
+                                    <option>Mathematics</option>
+                                </select>
+                            </div>
+                        </div>
+                          <div><p style="color: #3C4381; margin-top: 15px;">🌟I'd like to describe myself as a...</p></div>
+                          <div class="tag-wrapper" style="background-color: rgb(215, 225, 250);
+                          border-radius: 3px;
+                          display: flex;
+                          flex-direction: row;
+                          flex-wrap: wrap;
+                          width: 100%;">
+                            <user-tag tag-type = "Foodie"></user-tag>
+                            <user-tag tag-type = "Mentie"></user-tag>
+                            <user-tag tag-type = "Sportie"></user-tag>
+                            <user-tag tag-type = "Artie"></user-tag>
+                            <user-tag tag-type = "Techie"></user-tag>
+                            <user-tag tag-type = "Gamie"></user-tag>
+                            <!-- We can pass the tags to user's database by sth like the following function -->
+
+                            <button onclick="console.log(document.querySelector(`user-tag`).getAttribute(`tag-type`))">Pass Selected Tags' Value</button>
+                          </div>
+                        <script src="tags/tag.js"></script>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:#28213A" onclick="console.log(document.getElementById('side-bar-user-name').innerText=document.querySelector('#user-name-input').value);">Save</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
                 <li style="flex-direction: column;">
 
                         <!-- <button id="open" class="button">Add Class</button> -->
@@ -139,8 +235,8 @@
                                     <!-- <input type = "search" id = "search"> -->
                                     <!-- add drop down menu as user enter -->
                                     <div class="class-search-select search-select">
-                                                    
-                                        <select class="selectpicker" id="selectClasses" data-live-search="true">
+
+                                        <select class="selectpicker class-selector" id="selectClasses" data-live-search="true">
                                             <option><span id="class-id">CSCI-UA 480-002 </span>  Computer Graphics</option>
                                             <option><span id="class-id">MATH-UA 251-001 </span> Math Modeling</option>
                                             
@@ -155,6 +251,37 @@
 
                         </div>
 
+                </li>
+                <!-- New Add Classes Modal -->
+                <p>New Add Class Modal below</p>
+                <li>
+                  <button type="button" class="btn btn-light button-profile btn-lg" data-toggle="modal" data-target="#addClassModal" onclick="loadAllUsers()">
+                    <i class='bx bx-search-alt'></i> 
+                      <span>Add Classes</span>
+                  </button>
+
+                  <div class="modal fade" tabindex="-1" id="addClassModal" role="dialog">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Add Classes</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+                        </div>
+                        <div class="modal-body" id="class-modal-body">
+                          <div class="class-search-select search-select">
+                                                    
+                            <select class="selectpicker class-selector" data-live-search="true" style="width: 100%;">
+                                <option><span id="class-id">CSCI-UA 480-002 </span>  Computer Graphics</option>
+                                <option><span id="class-id">MATH-UA 251-001 </span> Math Modeling</option>
+                            </select>
+                        </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="addClassCard()" style="background-color:#28213A" >Add</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </li>
                 <li>
                   <!-- Modal for Friends List -->
@@ -195,18 +322,20 @@
                           <div class="modal-body" id="tags-modal-body">
                           </div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:#28213A" >Close</button>
                           </div>
                         </div>
                       </div>
                     </div>
                 </li>
-                <li>
-                    <button type="button" class="btn btn-light button-profile btn-lg">
+                <!-- Bio Feature is commented out -->
+                <!-- <li>
+                    <button type="button" class="btn btn-light button-profile btn-lg ">
                         <i class='bx bxs-edit' ></i>
                         <span>Edit Bio</span>
                     </button>
-                </li>
+                </li> -->
+                
                 
             </ul>
             
