@@ -19,9 +19,15 @@ import com.google.cloud.datastore.DatastoreOptions;
 import com.google.cloud.datastore.Entity;
 import com.google.cloud.datastore.FullEntity;
 import com.google.cloud.datastore.KeyFactory;
+import com.google.cloud.datastore.Value;
+
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Safelist;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -50,6 +56,7 @@ public class FormHandlerServlet extends HttpServlet {
 
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
     KeyFactory keyFactory = datastore.newKeyFactory().setKind("User");
+    List<String> courses = new ArrayList<>();
 
     FullEntity personEntity = 
     Entity.newBuilder(keyFactory.newKey())
@@ -59,6 +66,7 @@ public class FormHandlerServlet extends HttpServlet {
         .set("Major", major)
         .set("Minor", minor)
         .set("Major2", major2)
+        .set("courses", Collections.emptyList())
         .build();
 
         datastore.put(personEntity);
