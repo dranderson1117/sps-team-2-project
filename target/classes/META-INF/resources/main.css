@@ -89,7 +89,7 @@ ul{
 }
 
 .main-app{
-  flex-basis: 75%;
+  flex-basis: 77%;
   flex-grow: 0;
   flex-shrink: 0;
   padding: 30px;
@@ -164,23 +164,6 @@ input{
 }
 
 
-
-
-.course-card{
-  color: #F7F9FE;
-  display: grid;
-  grid-template-columns: 200px;
-  grid-template-rows: 20px 80px 40px;
-  grid-template-areas: "text" "text" "text";
-
-  border-radius: 5px;
-  background-color: #3a314f;
-  /* padding: 1rem; */
-  width: 250px;
-  height: 10rem;
-  margin: 20px;
-
-}
 
 .modal-container{
   position: fixed;
@@ -290,7 +273,7 @@ hr{
 
 .class-card{
   border: 2px solid #28213A;
-  margin: 30px;
+  margin: 15px;
   width: 300px;
   height: auto;
   border-radius: 8px;
@@ -305,6 +288,17 @@ hr{
   align-items: left;
 
 }
+.class-card >span{
+  font-size: large; 
+  color: #b4bbffb3; 
+  margin-bottom: 3px;   
+}
+
+.class-card >p{
+  font-size: large; 
+  margin: 3px;    
+}
+
 .class-card:hover{
   border: 2px solid #e1d6ff;
 
@@ -331,7 +325,7 @@ hr{
 .class-cards-wrapper{
   display: flex;
   flex-direction: row;
-  /* justify-content: space-between; */
+  /* justify-content:space-evenly; */
   flex-wrap: wrap;
 }
 #hint:hover{

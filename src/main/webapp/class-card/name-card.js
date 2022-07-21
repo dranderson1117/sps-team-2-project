@@ -1,7 +1,44 @@
 const nameCardTemplate = document.createElement('template');
 nameCardTemplate.innerHTML = 
+
 `   
-    <link rel="stylesheet" href="/Users/yuewenyang/Desktop/team-2-project/sps-test-collab-tutorial/src/main/webapp/class-card/name-card.css">
+    
+    <style>
+    .name-card{
+        display: flex;
+        flex-direction: row;
+        border-radius: 5px;
+        background-color: #F7F9FE;
+        margin: 10px;
+        width: 90%;
+        height: 40px;
+        align-items: center;
+        
+    }
+    .pic{
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        margin-right:20px;
+        width: 30px;
+        height: 30px;
+        background-size: 100% 100%;
+        overflow: cover;
+        border-radius: 50%;
+        border: 2px solid rgb(60, 60, 113);
+        
+    }
+    .name-card:hover{
+        border: 2px solid rgb(208, 208, 255);
+    }
+    p{
+        color: black;
+        margin-top: 5px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-left: 0px;
+    }
+    </style>
     <div class="name-card">
         <img class="pic" src="pic2.jpeg"/>
         <p>Name</p>
@@ -37,7 +74,7 @@ function createClassCard(classObj){
     // <div class="class-card"></div>
     newClassCard.innerHTML = `
     <div class="class-card" id=${classCardId}>
-            <p id="class-season">FALL 2022</p>
+            <span id="class-season">FALL 2022</span>
             <p class="class-content" id="class-id">${classObj.classId}</p>
             <p class="class-content" id="class-name">${classObj.className}</p>
             <hr/>
