@@ -168,7 +168,8 @@ function loadFriends(){
  * @param user - User object containing the user's name, email, password, major, and minor
  * @returns userModal - String containing HTML code for modal populated with values from user object
  */
-function populateUserModal(user){
+function populateUserModal(user)
+{
   //Currently adding the button based on a random value --- will need to change so that "Add Friend" button appears based on whether user is in friends list
   let isUserFriend = Math.random(Date.now()) >= 0.5;
   let userModal = `<div class="modal-dialog">
@@ -180,9 +181,25 @@ function populateUserModal(user){
                         <p>${user.password}</p>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" style="visibility: ${(isUserFriend ? "hidden" : "visible")};">"Add Friend"</button> 
+                        <button type="button" class="btn btn-primary" name="${user.email}" style="visibility: ${(isUserFriend ? "hidden" : "visible")};" onclick="addFriend(event)">Add Friend</button> 
                       </div> 
                     </div> 
                   </div>`;
   return userModal;
 }
+
+/**
+ * Event handler for when a "Add Friend" button is clicked
+ * @param {event} Event object 
+ */
+function addFriend(event)
+{
+  let friendEmail = event.currentTarget.name;
+
+  /* TODO - Add Code to add friend to User Object in Session Storage */
+
+  /* TODO - Add Code to add friend to User Objcet in Datastore  */
+  
+}
+
+
