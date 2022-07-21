@@ -60,17 +60,15 @@ async function updateProf(){
     const major = $('#major').val()
     const major2 = $('#major2').val()
     const minor = $('#minor').val()
+    
+    const params = new URLSearchParams();
+    params.append('username', username);
+    params.append('email', email);
+    params.append('school', school);
+    params.append('major', major);
+    params.append('major2', major);
+    params.append('minor', minor);
 
-
-
-
-        const params = new URLSearchParams();
-        params.append('username', username);
-        params.append('email', email);
-        params.append('school', school);
-        params.append('major', major);
-        params.append('major2', major);
-        params.append('minor', minor);
     fetch('/form-handler', {
       method: 'POST',
       body: params
@@ -88,13 +86,10 @@ async function addClass(){
     const email =   sessionStorage.getItem('email');
     const newClass = $('#selectClasses').val()
 
+    const params = new URLSearchParams();
+    params.append('newClass', newClass);
+    params.append('email', email);
 
-
-
-
-        const params = new URLSearchParams();
-        params.append('newClass', newClass);
-        params.append('email', email);
     fetch('/form-handler', {
       method: 'POST',
       body: params
@@ -111,7 +106,7 @@ async function addClass(){
 async function addSchoolOptions(){
     //fetch school data here
     let schools = ["UniA", "UniB", "UniC"];
-    var selectSchool = document.getElementById("select-school");
+    var selectSchool = document.getElementById("school");
     Array.from(schools).forEach(function(el){
         let option = new Option(el);
         selectSchool.appendChild(option);
