@@ -90,7 +90,7 @@ async function addClass(){
     params.append('newClass', newClass);
     params.append('email', email);
 
-    fetch('/form-handler', {
+    fetch('/add-class', {
       method: 'POST',
       body: params
     }).then(response => response.text())
