@@ -88,9 +88,6 @@ ul{
 
 }
 
-
-
-
 .main-app{
   flex-basis: 75%;
   flex-grow: 0;
@@ -258,3 +255,89 @@ input[type="search"]{
 } */
 
 .class-cards-wrapper{}
+
+
+.name-card{
+  display: flex;
+  flex-direction: row;
+  width: 280px;
+  border-radius: 5px;
+  background-color: #171c29;
+  margin: 10px;
+  
+}
+hr{
+  margin: 2%;
+}
+
+.pic{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  margin-right:20px;
+  width: 35px;
+  height: 35px;
+  background-size: 100% 100%;
+  overflow: cover;
+  border-radius: 50%;
+  border: 2px solid rgb(60, 60, 113);
+  background-image: url("codingGirl.jpeg");
+}
+
+.pic:hover{
+  border: 2px solid rgb(208, 208, 255);
+}
+
+.class-card{
+  border: 2px solid #28213A;
+  margin: 30px;
+  width: 300px;
+  height: auto;
+  border-radius: 8px;
+  background-color: #28213A;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  color: aliceblue;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+
+}
+.class-card:hover{
+  border: 2px solid #e1d6ff;
+
+}
+
+.class-content{
+  color: aliceblue;
+  font-weight: 400;
+}
+#class-season{
+  font-style: italic;
+  /* font-weight: bold; */
+}
+hr{
+  border: 0.5px solid#e1d6ff;
+  width: 100%;
+}
+
+.classmates{
+  overflow: scroll;
+  height: 200px;
+}
+
+.class-cards-wrapper{
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+}
+#hint:hover{
+  background-color: #a989ff18;
+  border-radius: 5px;
+  font-size:x-large;
+  /* color: red; */
+  
+}

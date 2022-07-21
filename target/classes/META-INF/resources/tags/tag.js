@@ -1,7 +1,17 @@
-const tagTemplate = document.createElement('template');
-tagTemplate.innerHTML = 
+const template = document.createElement('template');
+template.innerHTML = 
 `
     <style>
+        h3{
+           color: #2AC7EB;
+            
+        }
+        img{
+            width: 70px;
+            height: 70px;
+            border-radius: 50px;
+        }
+
         .tag-btn{
             border: 2px solid rgb(29, 35, 71);
             background-color: white;
@@ -15,7 +25,6 @@ tagTemplate.innerHTML =
             height: fit-content;
             padding: 3px 6px;
             margin: 6px;
-            overflow: scroll;
         }
         .tag-btn:hover{
             background-color: rgb(29, 35, 71);
@@ -37,7 +46,7 @@ tagTemplate.innerHTML =
         }
     </style>
     <div class="tag-btn">
-            <span>hello</span>
+            <span></span>
     </div>
     
 `
@@ -47,28 +56,33 @@ class Tag extends HTMLElement {
         super();
 
         this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(tagTemplate.content.cloneNode(true));
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
         this.shadowRoot.querySelector('span').innerText = this.getAttribute('tag-type');
+        this.innerHTML=``;
 
     }
 
     
     saveTag(tagButton){
+        // const element = this.querySelector(".tag-btn");
+        // const foodieTag = document.querySelector(".tag-content");
         if(!tagButton.classList.contains("tag-btn-selected")){
             tagButton.classList.add("tag-btn-selected");
             console.log(this.getAttribute("tag-type"));
             console.log("selected!")
+            // tagArray.add(foodieTag.textContent);
         }else{
             tagButton.classList.remove("tag-btn-selected");
             console.log(this.getAttribute("tag-type"));
             console.log("removed!")
+            // tagArray.delete(foodieTag.textContent);
         }
         
     }
 
     connectedCallback(){
         const tagButton = this.shadowRoot.querySelector(".tag-btn");
-        // console.log(tagButton.classList.contains("tag-btn-selected"));
+        console.log(tagButton.classList.contains("tag-btn-selected"));
         tagButton.addEventListener('click', ()=> this.saveTag(tagButton));
     }
 
