@@ -25,6 +25,7 @@ window.onclick = function(event) {
 }
 
 
+
 const open = document.getElementById('open');
 const close = document.getElementById('close');
 const modal_container = document.getElementById('modal-container');
@@ -43,6 +44,10 @@ $(document).ready(function(){
   $('.search-select select').selectpicker();
 })
 
+<<<<<<< HEAD
+//<<<<<<< HEAD
+=======
+>>>>>>> ea95e004e3247ebf0d161c82e1b45d6b04f49d42
 /*async function submit()
 {
   const email =   sessionStorage.getItem('email');
@@ -51,7 +56,7 @@ $(document).ready(function(){
   loginForm.submit();
 } */
 
-async function submit(){
+async function updateProf(){
 
     const email =   sessionStorage.getItem('email');
     const username = $('#username').val()
@@ -80,17 +85,46 @@ async function submit(){
 
     location.reload();
 
+<<<<<<< HEAD
+
+}
+async function addClass(){
+
+    const email =   sessionStorage.getItem('email');
+    const newClass = $('#selectClasses').val()
+
+
+
+
+
+        const params = new URLSearchParams();
+        params.append('newClass', newClass);
+        params.append('email', email);
+    fetch('/form-handler', {
+      method: 'POST',
+      body: params
+    }).then(response => response.text())
+    .then((sentiment) => {
+      //resultContainer.innerText = "Sentiment Analysis Score: " +sentiment;
+    });
+
+    location.reload();
+
+
 }
 
+=======
+}
+>>>>>>> ea95e004e3247ebf0d161c82e1b45d6b04f49d42
 async function addSchoolOptions(){
-  //fetch school data here
-  let schools = ["UniA", "UniB", "UniC"];
-  var selectSchool = document.getElementById("select-school");
-  Array.from(schools).forEach(function(el){
-      let option = new Option(el);
-      selectSchool.appendChild(option);
-  }
-  );
+    //fetch school data here
+    let schools = ["UniA", "UniB", "UniC"];
+    var selectSchool = document.getElementById("select-school");
+    Array.from(schools).forEach(function(el){
+        let option = new Option(el);
+        selectSchool.appendChild(option);
+    }
+    );
 }
 addSchoolOptions();
 
@@ -163,4 +197,9 @@ function populateUserModal(user){
                     </div> 
                   </div>`;
   return userModal;
+<<<<<<< HEAD
 }
+=======
+}
+
+>>>>>>> ea95e004e3247ebf0d161c82e1b45d6b04f49d42
