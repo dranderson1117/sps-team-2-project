@@ -68,7 +68,7 @@ class Tag extends HTMLElement {
 
     connectedCallback(){
         const tagButton = this.shadowRoot.querySelector(".tag-btn");
-        console.log(tagButton.classList.contains("tag-btn-selected"));
+        // console.log(tagButton.classList.contains("tag-btn-selected"));
         tagButton.addEventListener('click', ()=> this.saveTag(tagButton));
     }
 

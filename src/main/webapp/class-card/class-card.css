@@ -1,0 +1,80 @@
+
+        body{
+            font-family: 'Mukta', sans-serif;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+        }
+
+        .name-card{
+            display: flex;
+            flex-direction: row;
+            width: 250px;
+            border-radius: 5px;
+            background-color: #171c29;
+            margin: 10px;
+            
+        }
+        hr{
+            margin: 2%;
+        }
+
+        .pic{
+            margin-top: 5px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            margin-right:20px;
+            width: 35px;
+            height: 35px;
+            background-size: 100% 100%;
+            overflow: cover;
+            border-radius: 50%;
+            border: 2px solid rgb(60, 60, 113);
+        }
+
+        .pic:hover{
+            border: 2px solid rgb(208, 208, 255);
+        }
+
+        .class-card{
+            border: 2px solid #28213A;
+            margin: 0px;
+            width: 300px;
+            height: auto;
+            border-radius: 8px;
+            background-color: #28213A;
+            padding: 15px 20px;
+            display: flex;
+            flex-direction: column;
+            color: rgb(253, 253, 253);
+            font-weight: 400;
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+
+        }
+        .class-card:hover{
+            border: 2px solid #e1d6ff;
+
+        }
+
+        .class-content{
+            color: rgb(255, 255, 255);
+            /* font-weight: 800; */
+        }
+        #class-season{
+            font-style: italic;
+            /* font-weight: bold; */
+        }
+        hr{
+            border: 0.5px solid#e1d6ff;
+            width: 100%;
+        }
+
+        .classmates{
+            overflow: scroll;
+            height: 200px;
+        }
+
+        
