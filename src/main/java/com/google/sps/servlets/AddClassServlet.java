@@ -17,6 +17,7 @@ package com.google.sps.servlets;
 import com.google.cloud.datastore.Datastore;
 import com.google.cloud.datastore.DatastoreOptions;
 import com.google.cloud.datastore.Entity;
+import com.google.cloud.datastore.FullEntity;
 import com.google.cloud.datastore.KeyFactory;
 import com.google.cloud.datastore.Query;
 import com.google.cloud.datastore.QueryResults;
@@ -59,14 +60,22 @@ public class AddClassServlet extends HttpServlet {
     List<UserCred> userList = new ArrayList<>();
     List<StringValue> courses = new ArrayList<>();
 
+
     while (results.hasNext()) {
       Entity entity = results.next();
 
       long id = entity.getKey().getId();
       String email = entity.getString("Email");
       if(inputEmail.equals(email) ){
-        entity.getList("courses").add(StringValue.of(newClass));
-        datastore.put(entity);
+
+        /*
+        FullEntity clonedEntity = Entity.newBuilder(keyFactory.newKey()).set("courses", entity.getList("courses")).build();
+        clonedEntity.getList("courses").add(StringValue.of(newClass));
+        
+        //datastore.delete(entity.getKey());
+
+        datastore.put(clonedEntity);
+        */
         /*
           Object courseList = entity.getList("courses");
           ((List<StringValue>) courseList).add(StringValue.of(newClass));
@@ -80,7 +89,6 @@ public class AddClassServlet extends HttpServlet {
           courses.add(StringValue.of(newClass));
         */
         
-        /*
         courses = entity.getList("courses");
         courses.add(StringValue.of(newClass));
           
@@ -92,7 +100,6 @@ public class AddClassServlet extends HttpServlet {
            set = Entity.newBuilder(set).set("courses", courses).build(); 
            datastore.put(set);
       //List<Value<?>> password = entity.getList("classes");
-      */
       }
 
       //UserCred user = new UserCred(email, password);

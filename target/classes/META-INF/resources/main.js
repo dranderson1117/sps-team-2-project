@@ -77,7 +77,7 @@ async function updateProf(){
       //resultContainer.innerText = "Sentiment Analysis Score: " +sentiment;
     });
 
-    location.reload();
+    //location.reload();
 
 
 }
