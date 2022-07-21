@@ -53,7 +53,7 @@ public class getUserCredServlet extends HttpServlet {
       String userID = entity.getString("userID");
       //long timestamp = entity.getLong("Time");
 
-      UserCred creds = new UserCred(email, password, userID);
+      UserCred creds = new UserCred(email, password);
       people.add(creds);
     }
 

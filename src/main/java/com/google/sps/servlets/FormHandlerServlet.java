@@ -19,9 +19,15 @@ import com.google.cloud.datastore.DatastoreOptions;
 import com.google.cloud.datastore.Entity;
 import com.google.cloud.datastore.FullEntity;
 import com.google.cloud.datastore.KeyFactory;
+import com.google.cloud.datastore.Value;
+
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Safelist;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,37 +38,45 @@ public class FormHandlerServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String name = Jsoup.clean(request.getParameter("name-input"), Safelist.none());
+    //String body = Jsoup.clean(request.getParameter("body"), Safelist.none());
+    String username = Jsoup.clean(request.getParameter("username"), Safelist.none());
     String email = Jsoup.clean(request.getParameter("email"), Safelist.none());
-    String phoneNumber = Jsoup.clean(request.getParameter("ph"), Safelist.none());
-    String description = Jsoup.clean(request.getParameter("content"), Safelist.none());
+    String school = Jsoup.clean(request.getParameter("school"), Safelist.none());
+    String major = Jsoup.clean(request.getParameter("major"), Safelist.none());
+    String major2 = Jsoup.clean(request.getParameter("major2"), Safelist.none());
+    String minor = Jsoup.clean(request.getParameter("minor"), Safelist.none());
     long id = 789177;
 
     // // Print the input so you can see it in the server logs.
-    System.out.println("name: " + name);
+    System.out.println("name: " + school);
     System.out.println("email: " + email);
-    System.out.println("number: " + phoneNumber);
-    System.out.println("description: " + description);
+    System.out.println("number: " + major);
+    System.out.println("description: " + minor);
 
 
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
     KeyFactory keyFactory = datastore.newKeyFactory().setKind("User");
+    List<String> courses = new ArrayList<>();
 
     FullEntity personEntity = 
     Entity.newBuilder(keyFactory.newKey())
-        .set("Name/ID",id )
-        .set("Name", name)
+        .set("Username", username)
         .set("Email", email)
-        .set("Phone Number", phoneNumber)
+        .set("School", school)
+        .set("Major", major)
+        .set("Minor", minor)
+        .set("Major2", major2)
+        .set("courses", Collections.emptyList())
         .build();
 
         datastore.put(personEntity);
     // Print the value so you can see it in the server logs.
-    System.out.println("Name submitted: " + name+"  Email Submitted: " + email+" Phone Number Submitted: " + phoneNumber);
+    //System.out.println("Name submitted: " + name+"  Email Submitted: " + email+" Phone Number Submitted: " + phoneNumber);
 
     // Write the value to the response so the user can see it.
     //response.getWriter().println("Name submitted: " + textValue[0]+"\nEmail Submitted: " + textValue[1]+"\nPhone Number Submitted: " + textValue[2]);
     //response.sendRedirect("/contacts-list");
-    response.sendRedirect("/index.html");
+    //response.sendRedirect("/main.html");
+    response.getWriter().println("y" );
   }
 }
