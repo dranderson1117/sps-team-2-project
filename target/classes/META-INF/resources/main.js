@@ -69,7 +69,7 @@ async function updateProf(){
     params.append('major2', major);
     params.append('minor', minor);
 
-    fetch('/form-handler', {
+    await fetch('/form-handler', {
       method: 'POST',
       body: params
     }).then(response => response.text())
@@ -83,14 +83,17 @@ async function updateProf(){
 }
 async function addClass(){
 
-    const email =   sessionStorage.getItem('email');
+    const email =  sessionStorage.getItem('email');
     const newClass = $('#selectClasses').val()
 
     const params = new URLSearchParams();
     params.append('newClass', newClass);
     params.append('email', email);
 
-    fetch('/add-class', {
+
+    console.log(email);
+    console.log(newClass);
+    await fetch('/add-class', {
       method: 'POST',
       body: params
     }).then(response => response.text())
@@ -98,9 +101,7 @@ async function addClass(){
       //resultContainer.innerText = "Sentiment Analysis Score: " +sentiment;
     });
 
-    location.reload();
-
-
+    //location.reload();
 }
 
 async function addSchoolOptions(){

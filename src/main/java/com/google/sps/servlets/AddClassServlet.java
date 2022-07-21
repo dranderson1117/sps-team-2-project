@@ -65,18 +65,34 @@ public class AddClassServlet extends HttpServlet {
       long id = entity.getKey().getId();
       String email = entity.getString("Email");
       if(inputEmail.equals(email) ){
-          
+        entity.getList("courses").add(StringValue.of(newClass));
+        datastore.put(entity);
+        /*
+          Object courseList = entity.getList("courses");
+          ((List<StringValue>) courseList).add(StringValue.of(newClass));
+          entity.set("courses", courseList);
+          datastore.update(entity);
+        */
+
+        /*
+        datastore.update();
           courses = entity.getList("courses");
           courses.add(StringValue.of(newClass));
-            
-        KeyFactory keyFactory = datastore.newKeyFactory().setKind("User");
-            com.google.cloud.datastore.Key setKey = keyFactory.newKey(id); 
-             Entity set = datastore.get(setKey); 
-  
-             //update the hasImage  
-             set = Entity.newBuilder(set).set("courses", courses).build(); 
-             datastore.put(set);
-        //List<Value<?>> password = entity.getList("classes");
+        */
+        
+        /*
+        courses = entity.getList("courses");
+        courses.add(StringValue.of(newClass));
+          
+          KeyFactory keyFactory = datastore.newKeyFactory().setKind("User");
+          com.google.cloud.datastore.Key setKey = keyFactory.newKey(id); 
+           Entity set = datastore.get(setKey); 
+
+           //update the hasImage  
+           set = Entity.newBuilder(set).set("courses", courses).build(); 
+           datastore.put(set);
+      //List<Value<?>> password = entity.getList("classes");
+      */
       }
 
       //UserCred user = new UserCred(email, password);
@@ -89,8 +105,12 @@ public class AddClassServlet extends HttpServlet {
 
         response.getWriter().println("<script>sessionStorage.setItem(\"userList\",JSON.stringify("+jsonList+"));</script>");
         response.getWriter().println("<script>location.href = 'https://summer22-sps-2.uc.r.appspot.com/main.html';</script>");
+
+        String jsonCourses = gson.toJson(courses);
+        response.getWriter().println("<script>sessionStorage.setItem(\"courses\",JSON.stringify("+jsonCourses+"));</script>");
         //response.setContentType("application/json;");
         //response.getWriter().println(jsonList);
+
     }
     else{
         response.getWriter().println("<script>location.href = 'https://summer22-sps-2.uc.r.appspot.com/login.html';</script>");
