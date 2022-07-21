@@ -59,6 +59,8 @@ public class AddClassServlet extends HttpServlet {
 
     List<UserCred> userList = new ArrayList<>();
     List<StringValue> courses = new ArrayList<>();
+    List<StringValue> coursesCopy = new ArrayList<>();
+
 
 
     while (results.hasNext()) {
@@ -90,14 +92,17 @@ public class AddClassServlet extends HttpServlet {
         */
         
         courses = entity.getList("courses");
-        courses.add(StringValue.of(newClass));
+
+        coursesCopy = new ArrayList<StringValue>(courses);
+
+        coursesCopy.add(StringValue.of(newClass));
           
           KeyFactory keyFactory = datastore.newKeyFactory().setKind("User");
           com.google.cloud.datastore.Key setKey = keyFactory.newKey(id); 
            Entity set = datastore.get(setKey); 
 
            //update the hasImage  
-           set = Entity.newBuilder(set).set("courses", courses).build(); 
+           set = Entity.newBuilder(set).set("courses", coursesCopy).build(); 
            datastore.put(set);
       //List<Value<?>> password = entity.getList("classes");
       }
@@ -113,7 +118,7 @@ public class AddClassServlet extends HttpServlet {
         response.getWriter().println("<script>sessionStorage.setItem(\"userList\",JSON.stringify("+jsonList+"));</script>");
         response.getWriter().println("<script>location.href = 'https://summer22-sps-2.uc.r.appspot.com/main.html';</script>");
 
-        String jsonCourses = gson.toJson(courses);
+        String jsonCourses = gson.toJson(coursesCopy);
         response.getWriter().println("<script>sessionStorage.setItem(\"courses\",JSON.stringify("+jsonCourses+"));</script>");
         //response.setContentType("application/json;");
         //response.getWriter().println(jsonList);
