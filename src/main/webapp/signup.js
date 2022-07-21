@@ -7,8 +7,3 @@ async function signup()
   const loginForm = document.getElementById("signup-form");
   loginForm.submit();
 } 
-if (sessionStorage.getItem('email') == null){
-    $(document).ready(function() { 
-        location.href= 'https://summer22-sps-2.uc.r.appspot.com/login.html'
-     });
-}
