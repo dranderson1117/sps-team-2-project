@@ -3,14 +3,18 @@ package com;
 public class UserCred {
     private String email;
     private String password;
-    private String userID;
 
 
-    public UserCred( String email,String password, String userID){
+    public UserCred( String email,String password){
         this.email = email;
         this.password = password;
-        this.userID = userID;
 
     }
 
+    public String getEmail() {
+        return email;
+    }
+    public String getPassword() {
+        return password;
+    }
 }

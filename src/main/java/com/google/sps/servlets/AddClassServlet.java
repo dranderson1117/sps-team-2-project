@@ -17,8 +17,11 @@ package com.google.sps.servlets;
 import com.google.cloud.datastore.Datastore;
 import com.google.cloud.datastore.DatastoreOptions;
 import com.google.cloud.datastore.Entity;
+import com.google.cloud.datastore.KeyFactory;
 import com.google.cloud.datastore.Query;
 import com.google.cloud.datastore.QueryResults;
+import com.google.cloud.datastore.StringValue;
+import com.google.cloud.datastore.Value;
 import com.google.cloud.datastore.StructuredQuery.OrderBy;
 import com.google.gson.Gson;
 import com.User;
@@ -29,6 +32,8 @@ import org.jsoup.safety.Safelist;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,39 +41,47 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /** Servlet responsible for listing tasks. */
-@WebServlet("/user-login")
-public class UserServlet extends HttpServlet {
+@WebServlet("/add-class")
+public class AddClassServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String inputEmail = Jsoup.clean(request.getParameter("email"), Safelist.none());
-    String inputPassword = Jsoup.clean(request.getParameter("password"), Safelist.none());
+    String newClass = Jsoup.clean(request.getParameter("newClass"), Safelist.none());
     Boolean login = false;
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
     Query<Entity> query =
-        Query.newEntityQueryBuilder().setKind("UserCred").build();
+        Query.newEntityQueryBuilder().setKind("User").build();
     QueryResults<Entity> results = datastore.run(query);
     Gson gson = new Gson();
 
 
     List<UserCred> userList = new ArrayList<>();
+    List<StringValue> courses = new ArrayList<>();
+
     while (results.hasNext()) {
       Entity entity = results.next();
 
-      //long id = entity.getKey().getId();
+      long id = entity.getKey().getId();
       String email = entity.getString("Email");
-      String password = entity.getString("Password");
+      if(inputEmail.equals(email) ){
+          courses = entity.getList("courses");
+            //arr = courses.toArray();
+            
+        KeyFactory keyFactory = datastore.newKeyFactory().setKind("User");
+            com.google.cloud.datastore.Key setKey = keyFactory.newKey(id); 
+             Entity set = datastore.get(setKey); 
+  
+             //update the hasImage  
+             set = Entity.newBuilder(set).set("hasImage", false).build(); 
+             datastore.put(set);
+        //List<Value<?>> password = entity.getList("classes");
+      }
 
-      UserCred user = new UserCred(email, password);
-      userList.add(user);
+      //UserCred user = new UserCred(email, password);
+      //userList.add(user);
     }
-    for(int i =0; i <userList.size();i++){
-        if(inputEmail.equals(userList.get(i).getEmail()) & inputPassword.equals(userList.get(i).getPassword())){
-            login = true;
-            String userJson = gson.toJson(userList.get(i));
-            response.getWriter().println("<script>sessionStorage.setItem(\"user\",JSON.parse("+userJson+"));</script>");
-        }
-    }
+
 
     if(login){
         String jsonList=gson.toJson(userList);
