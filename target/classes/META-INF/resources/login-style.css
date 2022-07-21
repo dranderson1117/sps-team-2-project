@@ -1,5 +1,5 @@
 html {
-  font-family: 'Roboto', serif;
+  font-family: 'Mukta', sans-serif;
   font-size: 12px;
 }
 
@@ -25,8 +25,19 @@ label {
 #title {
   margin-bottom: 20%;
   font-size: 4.0rem;
-  color: darkslateblue;
+  color: #28213A;
+  margin: 40px;
 }
+
+#login-subtitle:hover{
+  padding: 3px;
+  border-radius: 8px;
+  background-color: #5d6dff46;
+  width: fit-content;
+  /* display: none; */
+
+}
+
 
 #login-credentials {
   display: flex;
@@ -54,7 +65,7 @@ label {
   width: 75%;
   height: 20%;
   font-size: 1.7rem;
-  background-color: darkslateblue;
+  background-color: #14133e;
   margin-bottoM: 10%;
 }
 
@@ -64,6 +75,6 @@ label {
   height: 20%;
   text-decoration: underline;
   font-size: 1.2rem;
-  color: darkslateblue;
+  color: #3C4381;
 }
 
