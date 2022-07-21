@@ -44,7 +44,10 @@ $(document).ready(function(){
   $('.search-select select').selectpicker();
 })
 
+<<<<<<< HEAD
 //<<<<<<< HEAD
+=======
+>>>>>>> ea95e004e3247ebf0d161c82e1b45d6b04f49d42
 /*async function submit()
 {
   const email =   sessionStorage.getItem('email');
@@ -82,6 +85,7 @@ async function updateProf(){
 
     location.reload();
 
+<<<<<<< HEAD
 
 }
 async function addClass(){
@@ -109,6 +113,9 @@ async function addClass(){
 
 }
 
+=======
+}
+>>>>>>> ea95e004e3247ebf0d161c82e1b45d6b04f49d42
 async function addSchoolOptions(){
     //fetch school data here
     let schools = ["UniA", "UniB", "UniC"];
@@ -190,4 +197,9 @@ function populateUserModal(user){
                     </div> 
                   </div>`;
   return userModal;
+<<<<<<< HEAD
 }
+=======
+}
+
+>>>>>>> ea95e004e3247ebf0d161c82e1b45d6b04f49d42

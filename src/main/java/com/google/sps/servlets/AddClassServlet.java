@@ -65,15 +65,16 @@ public class AddClassServlet extends HttpServlet {
       long id = entity.getKey().getId();
       String email = entity.getString("Email");
       if(inputEmail.equals(email) ){
+          
           courses = entity.getList("courses");
-            //arr = courses.toArray();
+          courses.add(StringValue.of(newClass));
             
         KeyFactory keyFactory = datastore.newKeyFactory().setKind("User");
             com.google.cloud.datastore.Key setKey = keyFactory.newKey(id); 
              Entity set = datastore.get(setKey); 
   
              //update the hasImage  
-             set = Entity.newBuilder(set).set("hasImage", false).build(); 
+             set = Entity.newBuilder(set).set("courses", courses).build(); 
              datastore.put(set);
         //List<Value<?>> password = entity.getList("classes");
       }
