@@ -10,7 +10,7 @@
         .name-card{
             display: flex;
             flex-direction: row;
-            width: 280px;
+            width: 250px;
             border-radius: 5px;
             background-color: #171c29;
             margin: 10px;
@@ -31,7 +31,6 @@
             overflow: cover;
             border-radius: 50%;
             border: 2px solid rgb(60, 60, 113);
-            background-image: url("codingGirl.jpeg");
         }
 
         .pic:hover{
@@ -40,7 +39,7 @@
 
         .class-card{
             border: 2px solid #28213A;
-            margin: 30px;
+            margin: 0px;
             width: 300px;
             height: auto;
             border-radius: 8px;
@@ -48,7 +47,7 @@
             padding: 15px 20px;
             display: flex;
             flex-direction: column;
-            color: aliceblue;
+            color: rgb(253, 253, 253);
             font-weight: 400;
             display: flex;
             flex-direction: column;
@@ -61,8 +60,8 @@
         }
 
         .class-content{
-            color: aliceblue;
-            font-weight: 400;
+            color: rgb(255, 255, 255);
+            /* font-weight: 800; */
         }
         #class-season{
             font-style: italic;
