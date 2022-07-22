@@ -66,7 +66,8 @@ public class GetUserServlet extends HttpServlet {
   
       List<StringValue> courses = new ArrayList<>();
       List<StringValue> coursesCopy = new ArrayList<>();
-
+      
+      /*
       System.out.println("ENTITY-HOOP: " + entity);
       System.out.println("PROPERTIES-HOOP: " + entity.getProperties());
       
@@ -97,17 +98,22 @@ public class GetUserServlet extends HttpServlet {
         courses = new ArrayList<StringValue>();
 
       ListValue tempFriends = ((ListValue) entityProperties.get("friends"));
+      friendsCopy = new ArrayList<StringValue>();
       if(tempFriends != null)
       {
         friends = (List<StringValue>) (entityProperties.get("friends").toBuilder().get());
-        friendsCopy = new ArrayList<StringValue>(friends);
+        StringValue[] friendsString = (StringValue[]) friends.toArray();
+        for(StringValue friend : friendsString){
+          friendsCopy.add(friend.);
+        }
       }
       else
-        friends = new ArrayList<StringValue>();
+      */
       
 
       //long id = entity.getKey().getId();
-      /*
+
+      
       String username = entity.getString("Username");
       String email = entity.getString("Email");
       String school = entity.getString("School");
@@ -119,7 +125,7 @@ public class GetUserServlet extends HttpServlet {
       coursesCopy = new ArrayList<StringValue>(courses);
       friends = entity.getList("friends");
       friendsCopy = new ArrayList<StringValue>(friends);
-      */
+      
       System.out.println("username: " + username + ", tag: " + tag + ", courses: " + courses + ", friends: " + friends);
 
       User user = new User(email, username, major, major2, minor, school, tag, coursesCopy, friendsCopy);
@@ -131,6 +137,7 @@ public class GetUserServlet extends HttpServlet {
     }
 
     userList.forEach(user -> System.out.println("User Email: " + user.getEmail()));
+
 
     String jsonList = gson.toJson(userList);
     response.getWriter().println("<script>sessionStorage.setItem(\"userList\",JSON.stringify("+jsonList+"));</script>");
