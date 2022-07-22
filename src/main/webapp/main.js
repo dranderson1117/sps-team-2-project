@@ -208,7 +208,7 @@ function populateUserModal(user)
  * Event handler for when a "Add Friend" button is clicked
  * @param {event} Event object 
  */
-function addFriend(event)
+async function addFriend(event)
 {
   let friendEmail = event.currentTarget.name;
   const email =  sessionStorage.getItem('email');
