@@ -61,7 +61,15 @@ customElements.define('name-card', NameCard);
 
 // hard coded class object
 // shold fetch the class object each time when one class is added through the "add class" modal
-let classObj = {classId:"CSCI-UA 101",className:"Introduction to Computer Science", classList:["Jonny Yu","Amy Stamper","Annie Tian Fan","Yuewen Yang","Grace Yang"]};
+
+// let classObj = {classId:"CSCI-UA 101",className:"Introduction to Computer Science", classList:["Jonny Yu","Amy Stamper","Annie Tian Fan","Yuewen Yang","Grace Yang"]};
+function add(){
+    console.log(document.querySelector('#class-id').innerHTML);
+}
+
+let classObj = {classId:"CSCI-UA 102",className:"Data Structures", classList:["Jason Hu","Amy Stamper","Annie Tian Fan","Yuewen Yang","Grace Yang"]};
+
+
 var classCardCount = 0;
 // assign each class card with a unique class-class-code by the sequence when they're generated
 var classCardId = "class-card-" +  classCardCount.toString();
@@ -121,20 +129,3 @@ function addClassCard(){
         }
     }
 
-
-    // let x = 2;
-    function u(){
-        const y =2;
-        let x = 2;
-        var i = 2;
-        x++;
-        // y++;
-        console.log(i);
-        console.log("y: "+y);
-        console.log("x: "+x);
-    }
-u();
-    
-    // console.log(x++);
-    // console.log(y);
-    // console.log(i);
