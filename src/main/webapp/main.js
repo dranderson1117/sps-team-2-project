@@ -24,7 +24,7 @@ window.onclick = function(event) {
   }
 }
 
-window.onload = function(){
+/*window.onload = function(){
     const email = this.sessionStorage.getItem("email");
     const params = new URLSearchParams();
     params.append('email', email)
@@ -37,7 +37,7 @@ window.onload = function(){
         //resultContainer.innerText = "Sentiment Analysis Score: " +sentiment;
       });
 
-}
+}*/
 
 const open = document.getElementById('open');
 const close = document.getElementById('close');
@@ -208,7 +208,7 @@ function populateUserModal(user)
  * Event handler for when a "Add Friend" button is clicked
  * @param {event} Event object 
  */
-function addFriend(event)
+async function addFriend(event)
 {
   let friendEmail = event.currentTarget.name;
   const email =  sessionStorage.getItem('email');
@@ -219,7 +219,7 @@ function addFriend(event)
 
 
   console.log(email);
-  console.log(newClass);
+  console.log(friendEmail);
   await fetch('/add-friend', {
     method: 'POST',
     body: params
