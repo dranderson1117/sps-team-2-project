@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <title>Class Chat</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="icon" href="images/moonfavi.ico" />
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +35,13 @@
             <h5 id="side-bar-user-name" style="text-align: center; padding: 10px;">Kapa</h5>
         
             <ul class="nav-list">
-                
+              <!-- Old My Profile -->
+                <!-- <li> -->
+                    <!-- <a href="#"> -->
+                        <!-- <span>User Name</span> -->
+                        <!-- insert old code here -->
+                    <!-- </a> -->
+                <!-- </li> -->
                 <!-- New My Profile  -->
                 <!-- <p>New My Profile below</p> -->
                 <li>
@@ -65,7 +70,7 @@
                             <div class="school-search-select search-select">
                                 
                                 <select class="selectpicker" id="select-school" data-live-search="true">
-                                    <option>University of Pittsburgh</option>
+                                  
                                     <option>New York University (NYU)</option>
                                     
                                 </select>
@@ -80,6 +85,10 @@
                                     <option>Computer Engineering</option>
                                     <option>Economics</option>
                                     <option>Mathematics</option>
+                                    <option value="Art History">Art History</option>
+                                    <option value="Biology">Biology</option>
+                                    <option value="Integrated Media Arts">Integrated Media Arts</option>
+                                    <option value="Film&TV">Film&TV</option>
                                     
 
                                 </select>
@@ -100,8 +109,8 @@
                             <div id="minor" class="major-search-select search-select">
                                 
                                 <select class="selectpicker minor-selector" data-live-search="true">
-                                    <option>Computer Science</option>
-                                    <option>Computer Engineering</option>
+                                    <option>Business Studies</option>
+                                    <option>Music Technology</option>
                                     <option>Economics</option>
                                     <option>Mathematics</option>
                                 </select>
@@ -122,9 +131,9 @@
                             <user-tag tag-type = "Gamie"></user-tag>
                             <!-- We can pass the tags to user's database by sth like the following function -->
 
-                            <!-- <button onclick="console.log((document.querySelector(`user-tag`).getAttribute(`tag-type`))); updateProf();">Pass Selected Tags' Value</button> -->
+                            <!-- <button onclick="console.log(document.querySelector(`user-tag`).getAttribute(`tag-type`))">Pass Selected Tags' Value</button> -->
                           </div>
-                        <script src="tags/tag.js"></script>
+                        <!-- <script src="tags/tag.js"></script> -->
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:#28213A" onclick=" updateProf(); console.log(document.getElementById('side-bar-user-name').innerText=document.querySelector('#user-name-input').value);">Save</button>
@@ -133,7 +142,7 @@
                     </div>
                   </div>
                 </li>
-                
+                <!-- insert old add class here -->
                 <!-- New Add Classes Modal -->
                 <!-- <p>New Add Class Modal below</p> -->
                 <li>
@@ -152,7 +161,7 @@
                         <div class="modal-body" id="class-modal-body">
                           <div class="class-search-select search-select">
                                                     
-                            <select id="selectClasses" class="selectpicker class-selector" data-live-search="true" style="width: 100%;">
+                            <select class="selectpicker class-selector" data-live-search="true" style="width: 100%;">
                                 <option><span id="class-id">CSCI-UA 480-002 </span>  Computer Graphics</option>
                                 <option><span id="class-id">MATH-UA 251-001 </span> Math Modeling</option>
                             </select>
@@ -202,6 +211,8 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
                           </div>
                           <div class="modal-body" id="tags-modal-body">
+                            <p>🎟 Classmates who are also...</p>
+                            
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:#28213A" >Close</button>
@@ -233,12 +244,9 @@
           <div>
             <h5 id="hint">Find classmates 👇</h5>
           </div>
-          <!-- <div onclick="addClassmates()">Click to add classmate list</div> -->
-          <!-- the following function should be called when each class is added -->
-          <!-- <div onclick="addClassCard()">Click to add class card</div> -->
           <li style="list-style: none;">
             <button type="button" class="btn btn-light button-profile btn-lg" data-toggle="modal" data-target="#userModal" onclick="loadAllUsers()">
-              <!-- <i class='bx bx-search-alt'></i>  -->
+              <i class='bx bx-search-alt'></i> 
                 <span>Click on a Name Card</span>
             </button>
 
@@ -256,10 +264,10 @@
                     <h7 style="font-size: medium;">Major: Economics</h7>
                     <p style="font-size: medium;">Second Major: Computer Science</p>
                     <a href="https://www.instagram.com/yuewenyyy/" target=”_blank”><i class='bx bxl-instagram-alt bx-lg' style="color: rgb(12, 13, 59);"></i> </a>
-                    <!-- <div class="tag-wrapper" style="display: flex; flex-direction:row">
+                    <div class="tag-wrapper" style="display: flex; flex-direction:row">
                       <user-tag tag-type = "Foodie"></user-tag>
                       <user-tag tag-type = "Techie"></user-tag>
-                    </div> -->
+                    </div>
                     
 
                   </div>
@@ -270,8 +278,9 @@
               </div>
             </div>
           </li>
-
-
+          <!-- <div onclick="addClassmates()">Click to add classmate list</div> -->
+          <!-- the following function should be called when each class is added -->
+          <!-- <div onclick="addClassCard()">Click to add class card</div> -->
           
           <div class="class-cards-wrapper">
             
@@ -288,5 +297,5 @@
 
     <script src="main.js" defer></script>
     <script src="class-card/name-card.js"></script>
-    <script src="components-update/tag.js"></script>
+    <script src="tags/tag.js"></script>
 </html>
