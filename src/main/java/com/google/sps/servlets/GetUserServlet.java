@@ -130,25 +130,23 @@ public class GetUserServlet extends HttpServlet {
 
       User user = new User(email, username, major, major2, minor, school, tag, coursesCopy, friendsCopy);
       userList.add(user);
-      if(email == inputEmail){
-        String userJson = gson.toJson(user);
-        response.getWriter().println("<script>sessionStorage.setItem(\"user\",JSON.parse("+userJson+"));</script>");
-      }
     }
 
     userList.forEach(user -> System.out.println("User Email: " + user.getEmail()));
 
-
+    
     String jsonList = gson.toJson(userList);
-    response.getWriter().println("<script>sessionStorage.setItem(\"userList\",JSON.stringify("+jsonList+"));</script>");
-    response.getWriter().println("<script>location.href = 'https://summer22-sps-2.uc.r.appspot.com/main.html';</script>");
+    //response.setContentType("application/json;");
+    response.getWriter().println(jsonList);
+
+    //response.getWriter().println("<script>sessionStorage.setItem(\"userList\",JSON.stringify("+jsonList+"));</script>");
+    //response.getWriter().println("<script>location.href = 'https://summer22-sps-2.uc.r.appspot.com/main.html';</script>");
 
     /*if(login){
         String jsonList=gson.toJson(userList);
 
         response.getWriter().println("<script>sessionStorage.setItem(\"userList\",JSON.stringify("+jsonList+"));</script>");
         response.getWriter().println("<script>location.href = 'https://summer22-sps-2.uc.r.appspot.com/main.html';</script>");
-        //response.setContentType("application/json;");
         //response.getWriter().println(jsonList);
     }
     else{
