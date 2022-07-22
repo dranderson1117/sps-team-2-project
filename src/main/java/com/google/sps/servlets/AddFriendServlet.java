@@ -68,7 +68,7 @@ public class AddFriendServlet extends HttpServlet {
 
       long id = entity.getKey().getId();
       String email = entity.getString("Email");
-      if(inputEmail.equals(email) ){
+      if(inputEmail.equals(email)){
 
         /*
         FullEntity clonedEntity = Entity.newBuilder(keyFactory.newKey()).set("courses", entity.getList("courses")).build();
