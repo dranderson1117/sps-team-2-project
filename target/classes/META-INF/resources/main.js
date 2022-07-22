@@ -24,12 +24,12 @@ window.onclick = function(event) {
   }
 }
 
-const getUsers = () => {
+const getUsers = async function() {
   const email = this.sessionStorage.getItem("email");
   const params = new URLSearchParams();
   params.append('email', email)
 
-  fetch('/get-user', {
+  await fetch('/get-user', {
       method: 'POST',
       body: params
     }).then(response => response.text())

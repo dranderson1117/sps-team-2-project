@@ -120,7 +120,7 @@ public class GetUserServlet extends HttpServlet {
       String major = entity.getString("Major");
       String minor = entity.getString("Minor");
       String major2 = entity.getString("Major2");
-      String tag = entity.getString("tag");
+      String tag = entity.getString("Tag");
       courses = entity.getList("courses");
       coursesCopy = new ArrayList<StringValue>(courses);
       friends = entity.getList("friends");
