@@ -24,7 +24,20 @@ window.onclick = function(event) {
   }
 }
 
+/*window.onload = function(){
+    const email = this.sessionStorage.getItem("email");
+    const params = new URLSearchParams();
+    params.append('email', email)
 
+    fetch('/get-user', {
+        method: 'POST',
+        body: params
+      }).then(response => response.text())
+      .then((sentiment) => {
+        //resultContainer.innerText = "Sentiment Analysis Score: " +sentiment;
+      });
+
+}*/
 
 const open = document.getElementById('open');
 const close = document.getElementById('close');
@@ -55,13 +68,15 @@ $(document).ready(function(){
 async function updateProf(){
 
     const email =   sessionStorage.getItem('email');
-    const username = $('#username').val()
-    const school = $('#school').val()
+    const tag = sessionStorage.getItem('tag');
+    const username = $('#user-name-input').val()
+    const school = $('#select-school').val()
     const major = $('#major').val()
     const major2 = $('#major2').val()
     const minor = $('#minor').val()
     
     const params = new URLSearchParams();
+    params.append('tag', tag)
     params.append('username', username);
     params.append('email', email);
     params.append('school', school);
@@ -193,13 +208,25 @@ function populateUserModal(user)
  * Event handler for when a "Add Friend" button is clicked
  * @param {event} Event object 
  */
-function addFriend(event)
+async function addFriend(event)
 {
   let friendEmail = event.currentTarget.name;
+  const email =  sessionStorage.getItem('email');
 
-  /* TODO - Add Code to add friend to User Object in Session Storage */
+  const params = new URLSearchParams();
+  params.append('friendEmail', friendEmail);
+  params.append('email', email);
 
-  /* TODO - Add Code to add friend to User Objcet in Datastore  */
+
+  console.log(email);
+  console.log(friendEmail);
+  await fetch('/add-friend', {
+    method: 'POST',
+    body: params
+  }).then(response => response.text())
+  .then((sentiment) => {
+    //resultContainer.innerText = "Sentiment Analysis Score: " +sentiment;
+  });
   
 }
 

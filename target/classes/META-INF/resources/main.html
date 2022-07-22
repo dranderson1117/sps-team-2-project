@@ -161,7 +161,7 @@
                             <label for = "search">Major</label>
                             <div class="major-search-select search-select">
                                 
-                                <select class="selectpicker major-selector" data-live-search="true">
+                                <select id="major" class="selectpicker major-selector" data-live-search="true">
                                     <option>Computer Science</option>
                                     <option>Computer Engineering</option>
                                     <option>Economics</option>
@@ -171,7 +171,7 @@
                                 </select>
                             </div>
                             <label for = "search">Second Major (if applicable)</label>
-                            <div class="major-search-select search-select">
+                            <div id="major2" class="major-search-select search-select">
                                 
                                 <select class="selectpicker major-selector second-major-selector" data-live-search="true" data-width="200px">
                                     <option>Computer Science</option>
@@ -183,7 +183,7 @@
                                 </select>
                             </div>
                             <label for = "search">Minor</label>
-                            <div class="major-search-select search-select">
+                            <div id="minor" class="major-search-select search-select">
                                 
                                 <select class="selectpicker minor-selector" data-live-search="true">
                                     <option>Computer Science</option>
@@ -208,12 +208,12 @@
                             <user-tag tag-type = "Gamie"></user-tag>
                             <!-- We can pass the tags to user's database by sth like the following function -->
 
-                            <button onclick="console.log(document.querySelector(`user-tag`).getAttribute(`tag-type`))">Pass Selected Tags' Value</button>
+                            <button onclick="console.log((document.querySelector(`user-tag`).getAttribute(`tag-type`))); updateProf();">Pass Selected Tags' Value</button>
                           </div>
                         <script src="tags/tag.js"></script>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:#28213A" onclick="console.log(document.getElementById('side-bar-user-name').innerText=document.querySelector('#user-name-input').value);">Save</button>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:#28213A" onclick=" updateProf(); console.log(document.getElementById('side-bar-user-name').innerText=document.querySelector('#user-name-input').value);">Save</button>
                         </div>
                       </div>
                     </div>
@@ -235,8 +235,10 @@
                                     <!-- <input type = "search" id = "search"> -->
                                     <!-- add drop down menu as user enter -->
                                     <div class="class-search-select search-select">
+                                                    
+                                        <select class="selectpicker class-selector"  data-live-search="true">
 
-                                        <select class="selectpicker class-selector" id="selectClasses" data-live-search="true">
+
                                             <option><span id="class-id">CSCI-UA 480-002 </span>  Computer Graphics</option>
                                             <option><span id="class-id">MATH-UA 251-001 </span> Math Modeling</option>
                                             
@@ -245,7 +247,7 @@
                                     </div>
                                     
                                 </div>
-                                <button id="close" class="button-choice" style="margin-top: 20px; padding: 3px 5px;" onclick="addClass()">Add</button>
+                                <button id="close" class="button-choice" style="margin-top: 20px; padding: 3px 5px;">Add</button>
                             </div>
                             
 
@@ -270,14 +272,14 @@
                         <div class="modal-body" id="class-modal-body">
                           <div class="class-search-select search-select">
                                                     
-                            <select class="selectpicker class-selector" data-live-search="true" style="width: 100%;">
+                            <select id="selectClasses" class="selectpicker class-selector" data-live-search="true" style="width: 100%;">
                                 <option><span id="class-id">CSCI-UA 480-002 </span>  Computer Graphics</option>
                                 <option><span id="class-id">MATH-UA 251-001 </span> Math Modeling</option>
                             </select>
                         </div>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="addClassCard()" style="background-color:#28213A" >Add</button>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="addClassCard(); addClass();" style="background-color:#28213A" >Add</button>
                         </div>
                       </div>
                     </div>

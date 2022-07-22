@@ -42,13 +42,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /** Servlet responsible for listing tasks. */
-@WebServlet("/add-class")
-public class AddClassServlet extends HttpServlet {
+@WebServlet("/add-friend")
+public class AddFriendServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String inputEmail = Jsoup.clean(request.getParameter("email"), Safelist.none());
-    String newClass = Jsoup.clean(request.getParameter("newClass"), Safelist.none());
+    String newClass = Jsoup.clean(request.getParameter("friendEmail"), Safelist.none());
     Boolean login = false;
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
     Query<Entity> query =
@@ -58,8 +58,8 @@ public class AddClassServlet extends HttpServlet {
 
 
     List<UserCred> userList = new ArrayList<>();
-    List<StringValue> courses = new ArrayList<>();
-    List<StringValue> coursesCopy = new ArrayList<>();
+    List<StringValue> friends = new ArrayList<>();
+    List<StringValue> friendsCopy = new ArrayList<>();
 
 
 
@@ -68,7 +68,7 @@ public class AddClassServlet extends HttpServlet {
 
       long id = entity.getKey().getId();
       String email = entity.getString("Email");
-      if(inputEmail.equals(email) ){
+      if(inputEmail.equals(email)){
 
         /*
         FullEntity clonedEntity = Entity.newBuilder(keyFactory.newKey()).set("courses", entity.getList("courses")).build();
@@ -91,18 +91,18 @@ public class AddClassServlet extends HttpServlet {
           courses.add(StringValue.of(newClass));
         */
         
-        courses = entity.getList("courses");
+        friends = entity.getList("friends");
 
-        coursesCopy = new ArrayList<StringValue>(courses);
+        friendsCopy = new ArrayList<StringValue>(friends);
 
-        coursesCopy.add(StringValue.of(newClass));
+        friendsCopy.add(StringValue.of(newClass));
           
           KeyFactory keyFactory = datastore.newKeyFactory().setKind("User");
           com.google.cloud.datastore.Key setKey = keyFactory.newKey(id); 
            Entity set = datastore.get(setKey); 
 
            //update the hasImage  
-           set = Entity.newBuilder(set).set("courses", coursesCopy).build(); 
+           set = Entity.newBuilder(set).set("friends", friendsCopy).build(); 
            datastore.put(set);
       //List<Value<?>> password = entity.getList("classes");
       }

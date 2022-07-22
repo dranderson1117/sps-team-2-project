@@ -70,11 +70,13 @@ class Tag extends HTMLElement {
             tagButton.classList.add("tag-btn-selected");
             console.log(this.getAttribute("tag-type"));
             console.log("selected!")
+            sessionStorage.setItem('tag', this.getAttribute("tag-type"));
             // tagArray.add(foodieTag.textContent);
         }else{
             tagButton.classList.remove("tag-btn-selected");
             console.log(this.getAttribute("tag-type"));
             console.log("removed!")
+            sessionStorage.setItem('tag', null);
             // tagArray.delete(foodieTag.textContent);
         }
         

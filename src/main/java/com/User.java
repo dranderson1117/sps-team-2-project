@@ -1,6 +1,9 @@
 package com;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import com.google.cloud.datastore.StringValue;
 
 public class User {
     private String username;
@@ -8,19 +11,24 @@ public class User {
     private String major;
     private String major2;
     private String minor;
-    private ArrayList<String> courses;
-    private ArrayList<String> friends;
+    private String school;
+    private String tag;
+    private List<StringValue> courses;
+    private List<StringValue> friends;
 
 
 
 
-    public User(String email, String name, String major, String major2, String minor, ArrayList<String> courses, ArrayList friends){
+    public User(String email, String name, String major, String major2, String minor,String school, String tag, List<StringValue> coursesCopy, List<StringValue> friendsCopy){
         this.email = email;
         this.username = name;
         this.major = major;
         this.major2 = major2;
         this.minor = minor;
-        this.courses = courses;
+        this.school = school;
+        this.tag = tag;
+        this.courses = coursesCopy;
+        this.friends = friendsCopy;
 
 
     }
