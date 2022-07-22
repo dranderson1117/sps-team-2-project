@@ -24,7 +24,20 @@ window.onclick = function(event) {
   }
 }
 
+window.onload = function(){
+    const email = this.sessionStorage.getItem("email");
+    const params = new URLSearchParams();
+    params.append('email', email)
 
+    await fetch('/form-handler', {
+        method: 'POST',
+        body: params
+      }).then(response => response.text())
+      .then((sentiment) => {
+        //resultContainer.innerText = "Sentiment Analysis Score: " +sentiment;
+      });
+
+}
 
 const open = document.getElementById('open');
 const close = document.getElementById('close');
@@ -198,10 +211,22 @@ function populateUserModal(user)
 function addFriend(event)
 {
   let friendEmail = event.currentTarget.name;
+  const email =  sessionStorage.getItem('email');
 
-  /* TODO - Add Code to add friend to User Object in Session Storage */
+  const params = new URLSearchParams();
+  params.append('friendEmail', friendEmail);
+  params.append('email', email);
 
-  /* TODO - Add Code to add friend to User Objcet in Datastore  */
+
+  console.log(email);
+  console.log(newClass);
+  await fetch('/add-friend', {
+    method: 'POST',
+    body: params
+  }).then(response => response.text())
+  .then((sentiment) => {
+    //resultContainer.innerText = "Sentiment Analysis Score: " +sentiment;
+  });
   
 }
 
