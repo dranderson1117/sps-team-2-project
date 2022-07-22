@@ -55,13 +55,15 @@ $(document).ready(function(){
 async function updateProf(){
 
     const email =   sessionStorage.getItem('email');
-    const username = $('#username').val()
-    const school = $('#school').val()
+    const tag = sessionStorage.getItem('tag');
+    const username = $('#user-name-input').val()
+    const school = $('#select-school').val()
     const major = $('#major').val()
     const major2 = $('#major2').val()
     const minor = $('#minor').val()
     
     const params = new URLSearchParams();
+    params.append('tag', tag)
     params.append('username', username);
     params.append('email', email);
     params.append('school', school);

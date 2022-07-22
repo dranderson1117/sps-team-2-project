@@ -45,6 +45,8 @@ public class FormHandlerServlet extends HttpServlet {
     String major = Jsoup.clean(request.getParameter("major"), Safelist.none());
     String major2 = Jsoup.clean(request.getParameter("major2"), Safelist.none());
     String minor = Jsoup.clean(request.getParameter("minor"), Safelist.none());
+    String tag = Jsoup.clean(request.getParameter("tag"), Safelist.none());
+
     long id = 789177;
 
     // // Print the input so you can see it in the server logs.
@@ -66,7 +68,9 @@ public class FormHandlerServlet extends HttpServlet {
         .set("Major", major)
         .set("Minor", minor)
         .set("Major2", major2)
+        .set("tag", tag)
         .set("courses", Collections.emptyList())
+        .set("friends", Collections.emptyList())
         .build();
 
         datastore.put(personEntity);

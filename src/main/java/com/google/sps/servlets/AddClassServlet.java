@@ -112,23 +112,6 @@ public class AddClassServlet extends HttpServlet {
     }
 
 
-    if(login){
-        String jsonList=gson.toJson(userList);
-
-        response.getWriter().println("<script>sessionStorage.setItem(\"userList\",JSON.stringify("+jsonList+"));</script>");
-        response.getWriter().println("<script>location.href = 'https://summer22-sps-2.uc.r.appspot.com/main.html';</script>");
-
-        String jsonCourses = gson.toJson(coursesCopy);
-        response.getWriter().println("<script>sessionStorage.setItem(\"courses\",JSON.stringify("+jsonCourses+"));</script>");
-        //response.setContentType("application/json;");
-        //response.getWriter().println(jsonList);
-
-    }
-    else{
-        response.getWriter().println("<script>location.href = 'https://summer22-sps-2.uc.r.appspot.com/login.html';</script>");
-
-    }
-
 
   }
 }
