@@ -13,6 +13,31 @@
 // const close = document.getElementById('close');
 // const modal_container = document.getElementById('modal-container');
 
+
+const getUsers = async function() {
+  const email = this.sessionStorage.getItem("email");
+  const params = new URLSearchParams();
+  params.append('email', email)
+
+  await fetch('/get-user', {
+      method: 'POST',
+      body: params
+    }).then(response => response.text())
+    .then((sentiment) => {
+      //resultContainer.innerText = "Sentiment Analysis Score: " +sentiment;
+    });
+}
+
+window.onload = getUsers();
+
+const open = document.getElementById('open');
+const close = document.getElementById('close');
+const modal_container = document.getElementById('modal-container');
+
+document.getElementById('open').addEventListener('click', ()=> {
+  modal_container.classList.add('show');
+})
+
 // document.getElementById('open').addEventListener('click', ()=> {
 //   modal_container.classList.add('show');
 // })

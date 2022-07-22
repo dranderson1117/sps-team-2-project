@@ -8,6 +8,38 @@
 // var span = document.getElementsByClassName("close")[0];
 
 
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+const getUsers = async function() {
+  const email = this.sessionStorage.getItem("email");
+  const params = new URLSearchParams();
+  params.append('email', email)
+
+  await fetch('/get-user', {
+      method: 'POST',
+      body: params
+    }).then(response => response.text())
+    .then((sentiment) => {
+      //resultContainer.innerText = "Sentiment Analysis Score: " +sentiment;
+    });
+}
+
+
 
 
 // const open = document.getElementById('open');
