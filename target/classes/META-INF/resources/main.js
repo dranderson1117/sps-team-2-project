@@ -24,20 +24,21 @@ window.onclick = function(event) {
   }
 }
 
-/*window.onload = function(){
-    const email = this.sessionStorage.getItem("email");
-    const params = new URLSearchParams();
-    params.append('email', email)
+const getUsers = () => {
+  const email = this.sessionStorage.getItem("email");
+  const params = new URLSearchParams();
+  params.append('email', email)
 
-    fetch('/get-user', {
-        method: 'POST',
-        body: params
-      }).then(response => response.text())
-      .then((sentiment) => {
-        //resultContainer.innerText = "Sentiment Analysis Score: " +sentiment;
-      });
+  fetch('/get-user', {
+      method: 'POST',
+      body: params
+    }).then(response => response.text())
+    .then((sentiment) => {
+      //resultContainer.innerText = "Sentiment Analysis Score: " +sentiment;
+    });
+}
 
-}*/
+window.onload = getUsers();
 
 const open = document.getElementById('open');
 const close = document.getElementById('close');
@@ -68,7 +69,7 @@ $(document).ready(function(){
 async function updateProf(){
 
     const email =   sessionStorage.getItem('email');
-    const tag = sessionStorage.getItem('tag');
+    const userTag = sessionStorage.getItem('tag');
     const username = $('#user-name-input').val()
     const school = $('#select-school').val()
     const major = $('#major').val()
@@ -76,12 +77,12 @@ async function updateProf(){
     const minor = $('#minor').val()
     
     const params = new URLSearchParams();
-    params.append('tag', tag)
+    params.append('tag', userTag)
     params.append('username', username);
     params.append('email', email);
     params.append('school', school);
     params.append('major', major);
-    params.append('major2', major);
+    params.append('major2', major2);
     params.append('minor', minor);
 
     await fetch('/form-handler', {

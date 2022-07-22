@@ -68,7 +68,7 @@ public class FormHandlerServlet extends HttpServlet {
         .set("Major", major)
         .set("Minor", minor)
         .set("Major2", major2)
-        .set("tag", tag)
+        .set("Tag", tag)
         .set("courses", Collections.emptyList())
         .set("friends", Collections.emptyList())
         .build();

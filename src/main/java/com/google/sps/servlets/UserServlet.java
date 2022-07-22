@@ -21,8 +21,8 @@ import com.google.cloud.datastore.Query;
 import com.google.cloud.datastore.QueryResults;
 import com.google.cloud.datastore.StructuredQuery.OrderBy;
 import com.google.gson.Gson;
-import com.User;
 import com.UserCred;
+import com.User;
 
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Safelist;
@@ -51,7 +51,7 @@ public class UserServlet extends HttpServlet {
     Gson gson = new Gson();
 
 
-    List<UserCred> userList = new ArrayList<>();
+    List<UserCred> userCredList = new ArrayList<>();
     while (results.hasNext()) {
       Entity entity = results.next();
 
@@ -59,21 +59,21 @@ public class UserServlet extends HttpServlet {
       String email = entity.getString("Email");
       String password = entity.getString("Password");
 
-      UserCred user = new UserCred(email, password);
-      userList.add(user);
+      UserCred userCred = new UserCred(email, password);
+      userCredList.add(userCred);
     }
-    for(int i =0; i <userList.size();i++){
-        if(inputEmail.equals(userList.get(i).getEmail()) & inputPassword.equals(userList.get(i).getPassword())){
+    for(int i =0; i <userCredList.size();i++){
+        if(inputEmail.equals(userCredList.get(i).getEmail()) & inputPassword.equals(userCredList.get(i).getPassword())){
             login = true;
-            String userJson = gson.toJson(userList.get(i));
-            response.getWriter().println("<script>sessionStorage.setItem(\"userCreds\",JSON.parse("+userJson+"));</script>");
+            String userJson = gson.toJson(userCredList.get(i));
+            response.getWriter().println("<script>sessionStorage.setItem(\"userCred\",JSON.parse("+userJson+"));</script>");
         }
     }
 
     if(login){
-        String jsonList=gson.toJson(userList);
+        String jsonList=gson.toJson(userCredList);
 
-        response.getWriter().println("<script>sessionStorage.setItem(\"userList\",JSON.stringify("+jsonList+"));</script>");
+        response.getWriter().println("<script>sessionStorage.setItem(\"userCredList\",JSON.stringify("+jsonList+"));</script>");
         response.getWriter().println("<script>location.href = 'https://summer22-sps-2.uc.r.appspot.com/main.html';</script>");
         //response.setContentType("application/json;");
         //response.getWriter().println(jsonList);
