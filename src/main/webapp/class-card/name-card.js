@@ -129,20 +129,3 @@ function addClassCard(){
         }
     }
 
-
-    // let x = 2;
-    function u(){
-        const y =2;
-        let x = 2;
-        var i = 2;
-        x++;
-        // y++;
-        console.log(i);
-        console.log("y: "+y);
-        console.log("x: "+x);
-    }
-u();
-    
-    // console.log(x++);
-    // console.log(y);
-    // console.log(i);
