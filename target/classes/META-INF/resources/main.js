@@ -1,18 +1,9 @@
-// // Get the modal
-// var modal = document.getElementById("myModal");
-
-// // Get the button that opens the modal
-// var btn = document.getElementById("myBtn");
-
-// // Get the <span> element that closes the modal
-// var span = document.getElementsByClassName("close")[0];
-
-
-
-// const open = document.getElementById('open');
-// const close = document.getElementById('close');
-// const modal_container = document.getElementById('modal-container');
-
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 
 const getUsers = async function() {
   const email = this.sessionStorage.getItem("email");
@@ -23,20 +14,18 @@ const getUsers = async function() {
       method: 'POST',
       body: params
     }).then(response => response.text())
-    .then((sentiment) => {
-      //resultContainer.innerText = "Sentiment Analysis Score: " +sentiment;
+    .then((usersList) => {
+      sessionStorage.setItem("userList", usersList);
     });
 }
 
 window.onload = getUsers();
 
-const open = document.getElementById('open');
-const close = document.getElementById('close');
-const modal_container = document.getElementById('modal-container');
 
-document.getElementById('open').addEventListener('click', ()=> {
-  modal_container.classList.add('show');
-})
+
+// const open = document.getElementById('open');
+// const close = document.getElementById('close');
+// const modal_container = document.getElementById('modal-container');
 
 // document.getElementById('open').addEventListener('click', ()=> {
 //   modal_container.classList.add('show');
@@ -109,7 +98,7 @@ async function addClass(){
     //location.reload();
 }
 
-async function addSchoolOptions(){
+function addSchoolOptions(){
   //fetch school data here
   let schools = ["University of Pennsylvania", "Washington University in St. Louis", "University of Notre Dame","University of California--Los Angeles (UCLA)","Tufts University","University of North Carolina at Chapel Hill","University of Virginia","University of Illinois Urbana-Champaign (UIUC)","University of Pittsburgh"];
   var selectSchool = document.getElementById("select-school");
