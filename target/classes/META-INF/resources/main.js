@@ -7,22 +7,6 @@
 // // Get the <span> element that closes the modal
 // var span = document.getElementsByClassName("close")[0];
 
-// // When the user clicks on the button, open the modal
-// btn.onclick = function() {
-//   modal.style.display = "block";
-// }
-
-// // When the user clicks on <span> (x), close the modal
-// span.onclick = function() {
-//   modal.style.display = "none";
-// }
-
-// // When the user clicks anywhere outside of the modal, close it
-// window.onclick = function(event) {
-//   if (event.target == modal) {
-//     modal.style.display = "none";
-//   }
-// }
 
 
 // const open = document.getElementById('open');
@@ -49,7 +33,7 @@
 async function updateProf(){
 
     const email =   sessionStorage.getItem('email');
-    const tag = sessionStorage.getItem('tag');
+    const userTag = sessionStorage.getItem('tag');
     const username = $('#user-name-input').val()
     const school = $('#select-school').val()
     const major = $('#major').val()
@@ -57,12 +41,12 @@ async function updateProf(){
     const minor = $('#minor').val()
     
     const params = new URLSearchParams();
-    params.append('tag', tag)
+    params.append('tag', userTag)
     params.append('username', username);
     params.append('email', email);
     params.append('school', school);
     params.append('major', major);
-    params.append('major2', major);
+    params.append('major2', major2);
     params.append('minor', minor);
 
     await fetch('/form-handler', {
