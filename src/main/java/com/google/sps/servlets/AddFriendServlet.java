@@ -42,7 +42,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /** Servlet responsible for listing tasks. */
-@WebServlet("/add-class")
+@WebServlet("/add-friend")
 public class AddFriendServlet extends HttpServlet {
 
   @Override
@@ -68,7 +68,7 @@ public class AddFriendServlet extends HttpServlet {
 
       long id = entity.getKey().getId();
       String email = entity.getString("Email");
-      if(inputEmail.equals(email) ){
+      if(inputEmail.equals(email)){
 
         /*
         FullEntity clonedEntity = Entity.newBuilder(keyFactory.newKey()).set("courses", entity.getList("courses")).build();
