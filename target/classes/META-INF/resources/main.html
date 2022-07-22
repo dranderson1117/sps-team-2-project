@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <title>Class Chat</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="icon" href="images/moonfavi.ico" />
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,95 +35,15 @@
             <h5 id="side-bar-user-name" style="text-align: center; padding: 10px;">Kapa</h5>
         
             <ul class="nav-list">
-                <li>
+              <!-- Old My Profile -->
+                <!-- <li> -->
                     <!-- <a href="#"> -->
                         <!-- <span>User Name</span> -->
-                        <div class = "btn-wrap"> 
-                            <!-- <button id="myBtn" class = "button-profile" data-text="User Profile"> -->
-                                <button  id="myBtn" type="button" class="btn btn-light btn-lg button-profile">
-                                    <i class='bx bx-user-circle'></i> 
-                                    <span>My Profile</span>
-                                </button>
-                                
-                                
-                            <!-- </button> -->
-                                    <!-- The Modal -->
-                                <div id="myModal" class="modal">
-    
-                                    <!-- Modal content -->
-                                            <div class="modal-content">
-                        
-                                            <span class="close">&times;</span>
-                                            
-
-                                            <div class="search-wrapper">
-                                                <form  id=userData>
-                                                    <label for="text" style="width: 100%;">
-                                                        Change User Name
-                                                    </label>
-                                                    <input type="text" id="username" name="username">
-                                                </form>
-                                                
-                                                <label for = "search">School</label>
-                                                <div class="school-search-select search-select">
-                                                    
-                                                    <select class="selectpicker" data-live-search="true" form="userData" id="school" name="school">
-
-                                                        <option>University of Pittsburgh</option>
-                                                        <option>New York University (NYU)</option>
-                                                        
-                                                    </select>
-                                                </div>
-
-
-                                                <label for = "search">Major</label>
-                                                <div class="major-search-select search-select">
-                                                    
-                                                    <select class="selectpicker" data-live-search="true" form="userData" id="major" name="major">
-                                                        <option>Computer Science</option>
-                                                        <option>Computer Engineering</option>
-                                                        <option>Economics</option>
-                                                        <option>Mathematics</option>
-                                                        
-
-                                                    </select>
-                                                </div>
-                                                <label for = "search">Second Major (if applicable)</label>
-                                                <div class="major-search-select search-select">
-                                                    
-                                                    <select class="selectpicker" data-live-search="true" data-width="200px" form="userData" id="major2" name="major2">
-                                                        <option>Computer Science</option>
-                                                        <option>Computer Engineering</option>
-                                                        <option>Economics</option>
-                                                        <option>Mathematics</option>
-                                                        
-
-                                                    </select>
-                                                </div>
-                                                <label for = "search">Minor</label>
-                                                <div class="major-search-select search-select">
-                                                    
-                                                    <select class="selectpicker" data-live-search="true" form="userData" id="minor" name="minor">
-                                                        <option>Computer Science</option>
-                                                        <option>Computer Engineering</option>
-                                                        <option>Economics</option>
-                                                        <option>Mathematics</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="save">
-                                                <button type="button" class="button-choice" style="margin-top: 20px;" onclick="updateProf();">Save</button>
-                                            </div>
-                                            
-                    </div>
-        
-                                </div>
-    
-                        </div>
+                        <!-- insert old code here -->
                     <!-- </a> -->
-                </li>
+                <!-- </li> -->
                 <!-- New My Profile  -->
-                <p>New My Profile below</p>
+                <!-- <p>New My Profile below</p> -->
                 <li>
                   <button type="button" class="btn btn-light button-profile btn-lg" data-toggle="modal" data-target="#profileModal" onclick="loadAllUsers()">
                     <i class='bx bx-user-circle'></i> 
@@ -151,7 +70,7 @@
                             <div class="school-search-select search-select">
                                 
                                 <select class="selectpicker" id="select-school" data-live-search="true">
-                                    <option>University of Pittsburgh</option>
+                                  
                                     <option>New York University (NYU)</option>
                                     
                                 </select>
@@ -166,6 +85,10 @@
                                     <option>Computer Engineering</option>
                                     <option>Economics</option>
                                     <option>Mathematics</option>
+                                    <option value="Art History">Art History</option>
+                                    <option value="Biology">Biology</option>
+                                    <option value="Integrated Media Arts">Integrated Media Arts</option>
+                                    <option value="Film&TV">Film&TV</option>
                                     
 
                                 </select>
@@ -186,8 +109,8 @@
                             <div id="minor" class="major-search-select search-select">
                                 
                                 <select class="selectpicker minor-selector" data-live-search="true">
-                                    <option>Computer Science</option>
-                                    <option>Computer Engineering</option>
+                                    <option>Business Studies</option>
+                                    <option>Music Technology</option>
                                     <option>Economics</option>
                                     <option>Mathematics</option>
                                 </select>
@@ -208,9 +131,9 @@
                             <user-tag tag-type = "Gamie"></user-tag>
                             <!-- We can pass the tags to user's database by sth like the following function -->
 
-                            <button onclick="console.log((document.querySelector(`user-tag`).getAttribute(`tag-type`))); updateProf();">Pass Selected Tags' Value</button>
+                            <!-- <button onclick="console.log(document.querySelector(`user-tag`).getAttribute(`tag-type`))">Pass Selected Tags' Value</button> -->
                           </div>
-                        <script src="tags/tag.js"></script>
+                        <!-- <script src="tags/tag.js"></script> -->
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:#28213A" onclick=" updateProf(); console.log(document.getElementById('side-bar-user-name').innerText=document.querySelector('#user-name-input').value);">Save</button>
@@ -219,43 +142,9 @@
                     </div>
                   </div>
                 </li>
-                <li style="flex-direction: column;">
-
-                        <!-- <button id="open" class="button">Add Class</button> -->
-                        <button id="open" type="button" class="btn btn-light button-profile btn-lg">
-                            <i class='bx bx-search-alt' ></i>
-                            <span>Add Class</span>
-                        </button>
-
-                        <div class="modal-container" id="modal-container">
-                            <div class="modals" style="z-index: 100;">
-                                <div class="search-wrapper">
-                                    <!-- <label></label> -->
-                                    <label for = "search">Search</label>
-                                    <!-- <input type = "search" id = "search"> -->
-                                    <!-- add drop down menu as user enter -->
-                                    <div class="class-search-select search-select">
-                                                    
-                                        <select class="selectpicker class-selector"  data-live-search="true">
-
-
-                                            <option><span id="class-id">CSCI-UA 480-002 </span>  Computer Graphics</option>
-                                            <option><span id="class-id">MATH-UA 251-001 </span> Math Modeling</option>
-                                            
-
-                                        </select>
-                                    </div>
-                                    
-                                </div>
-                                <button id="close" class="button-choice" style="margin-top: 20px; padding: 3px 5px;">Add</button>
-                            </div>
-                            
-
-                        </div>
-
-                </li>
+                <!-- insert old add class here -->
                 <!-- New Add Classes Modal -->
-                <p>New Add Class Modal below</p>
+                <!-- <p>New Add Class Modal below</p> -->
                 <li>
                   <button type="button" class="btn btn-light button-profile btn-lg" data-toggle="modal" data-target="#addClassModal" onclick="loadAllUsers()">
                     <i class='bx bx-search-alt'></i> 
@@ -272,7 +161,7 @@
                         <div class="modal-body" id="class-modal-body">
                           <div class="class-search-select search-select">
                                                     
-                            <select id="selectClasses" class="selectpicker class-selector" data-live-search="true" style="width: 100%;">
+                            <select class="selectpicker class-selector" data-live-search="true" style="width: 100%;">
                                 <option><span id="class-id">CSCI-UA 480-002 </span>  Computer Graphics</option>
                                 <option><span id="class-id">MATH-UA 251-001 </span> Math Modeling</option>
                             </select>
@@ -322,6 +211,8 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
                           </div>
                           <div class="modal-body" id="tags-modal-body">
+                            <p>🎟 Classmates who are also...</p>
+                            
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:#28213A" >Close</button>
@@ -353,9 +244,43 @@
           <div>
             <h5 id="hint">Find classmates 👇</h5>
           </div>
+          <li style="list-style: none;">
+            <button type="button" class="btn btn-light button-profile btn-lg" data-toggle="modal" data-target="#userModal" onclick="loadAllUsers()">
+              <i class='bx bx-search-alt'></i> 
+                <span>Click on a Name Card</span>
+            </button>
+
+            <div class="modal fade" tabindex="-1" id="userModal" role="dialog">
+              <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Yuewen Yang</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+                  </div>
+                  <div class="modal-body" id="class-modal-body">
+                    <h4>New York University</h4>
+                    <h5>College of Arts and Sciences</h5>
+                    <!-- <p></p> -->
+                    <h7 style="font-size: medium;">Major: Economics</h7>
+                    <p style="font-size: medium;">Second Major: Computer Science</p>
+                    <a href="https://www.instagram.com/yuewenyyy/" target=”_blank”><i class='bx bxl-instagram-alt bx-lg' style="color: rgb(12, 13, 59);"></i> </a>
+                    <div class="tag-wrapper" style="display: flex; flex-direction:row">
+                      <user-tag tag-type = "Foodie"></user-tag>
+                      <user-tag tag-type = "Techie"></user-tag>
+                    </div>
+                    
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:#28213A" >Add Friend</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
           <!-- <div onclick="addClassmates()">Click to add classmate list</div> -->
           <!-- the following function should be called when each class is added -->
-          <div onclick="addClassCard()">Click to add class card</div>
+          <!-- <div onclick="addClassCard()">Click to add class card</div> -->
           
           <div class="class-cards-wrapper">
             
@@ -372,4 +297,5 @@
 
     <script src="main.js" defer></script>
     <script src="class-card/name-card.js"></script>
+    <script src="tags/tag.js"></script>
 </html>
