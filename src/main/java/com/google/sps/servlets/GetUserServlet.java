@@ -43,7 +43,7 @@ public class GetUserServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String inputEmail = Jsoup.clean(request.getParameter("email"), Safelist.none());
-]    Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
+    Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
     Query<Entity> query =
         Query.newEntityQueryBuilder().setKind("User").build();
     QueryResults<Entity> results = datastore.run(query);

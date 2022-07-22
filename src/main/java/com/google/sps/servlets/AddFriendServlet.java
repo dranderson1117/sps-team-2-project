@@ -42,7 +42,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /** Servlet responsible for listing tasks. */
-@WebServlet("/add-class")
+@WebServlet("/add-friend")
 public class AddFriendServlet extends HttpServlet {
 
   @Override

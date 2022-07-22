@@ -29,7 +29,7 @@ window.onload = function(){
     const params = new URLSearchParams();
     params.append('email', email)
 
-    await fetch('/form-handler', {
+    await fetch('/get-user', {
         method: 'POST',
         body: params
       }).then(response => response.text())
