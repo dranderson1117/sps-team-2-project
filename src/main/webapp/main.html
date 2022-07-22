@@ -122,7 +122,7 @@
                             <user-tag tag-type = "Gamie"></user-tag>
                             <!-- We can pass the tags to user's database by sth like the following function -->
 
-                            <button onclick="console.log((document.querySelector(`user-tag`).getAttribute(`tag-type`))); updateProf();">Pass Selected Tags' Value</button>
+                            <!-- <button onclick="console.log((document.querySelector(`user-tag`).getAttribute(`tag-type`))); updateProf();">Pass Selected Tags' Value</button> -->
                           </div>
                         <script src="tags/tag.js"></script>
                         </div>
@@ -235,7 +235,43 @@
           </div>
           <!-- <div onclick="addClassmates()">Click to add classmate list</div> -->
           <!-- the following function should be called when each class is added -->
-          <div onclick="addClassCard()">Click to add class card</div>
+          <!-- <div onclick="addClassCard()">Click to add class card</div> -->
+          <li style="list-style: none;">
+            <button type="button" class="btn btn-light button-profile btn-lg" data-toggle="modal" data-target="#userModal" onclick="loadAllUsers()">
+              <!-- <i class='bx bx-search-alt'></i>  -->
+                <span>Click on a Name Card</span>
+            </button>
+
+            <div class="modal fade" tabindex="-1" id="userModal" role="dialog">
+              <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Yuewen Yang</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+                  </div>
+                  <div class="modal-body" id="class-modal-body">
+                    <h4>New York University</h4>
+                    <h5>College of Arts and Sciences</h5>
+                    <!-- <p></p> -->
+                    <h7 style="font-size: medium;">Major: Economics</h7>
+                    <p style="font-size: medium;">Second Major: Computer Science</p>
+                    <a href="https://www.instagram.com/yuewenyyy/" target=”_blank”><i class='bx bxl-instagram-alt bx-lg' style="color: rgb(12, 13, 59);"></i> </a>
+                    <!-- <div class="tag-wrapper" style="display: flex; flex-direction:row">
+                      <user-tag tag-type = "Foodie"></user-tag>
+                      <user-tag tag-type = "Techie"></user-tag>
+                    </div> -->
+                    
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:#28213A" >Add Friend</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+
           
           <div class="class-cards-wrapper">
             
@@ -252,4 +288,5 @@
 
     <script src="main.js" defer></script>
     <script src="class-card/name-card.js"></script>
+    <script src="components-update/tag.js"></script>
 </html>
