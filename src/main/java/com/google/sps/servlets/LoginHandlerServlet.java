@@ -19,6 +19,9 @@ import com.google.cloud.datastore.DatastoreOptions;
 import com.google.cloud.datastore.Entity;
 import com.google.cloud.datastore.FullEntity;
 import com.google.cloud.datastore.KeyFactory;
+import com.google.cloud.datastore.Query;
+import com.google.cloud.datastore.QueryResults;
+
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Safelist;
 import java.io.IOException;
@@ -35,55 +38,72 @@ public class LoginHandlerServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     //Cleaning and storing the user input into local variables
-    String email = Jsoup.clean(request.getParameter("email"), Safelist.none());
+    String inputEmail = Jsoup.clean(request.getParameter("email"), Safelist.none());
     String password = Jsoup.clean(request.getParameter("password"), Safelist.none());
+    boolean signup = true;
     //String userID = Jsoup.clean(request.getParameter("content"), Safelist.none());
 
-    // // Print the input so you can see it in the server logs.
-    System.out.println("Email: " + email);
-    System.out.println("Password: " + password);
-    //System.out.println("userID: " + userID);
+
 
     //creates a new instance of datastore
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
     //allows us to set the "kind" of the datastore entities we are creating
     KeyFactory keyFactory = datastore.newKeyFactory().setKind("UserCred");
 
+
+    Query<Entity> query =
+    Query.newEntityQueryBuilder().setKind("UserCred").build();
+    QueryResults<Entity> results = datastore.run(query);
+
+    while (results.hasNext()) {
+        Entity entity = results.next();
+        String email = entity.getString("Email");
+        if(inputEmail.equals(email) ){
+            signup = false;
+        }
+    }
+
     //Creates a new entity and set its properties by key value pair
-    FullEntity personEntity = 
-    Entity.newBuilder(keyFactory.newKey())
-        .set("Email", email)
-        .set("Password", password)
-        //.set("userID", userID)
-        .build();
-
-        datastore.put(personEntity);
-
-        KeyFactory keyFactory2 = datastore.newKeyFactory().setKind("User");
-
-        //Creates a new entity and set its properties by key value pair
-        FullEntity personEntity2 = 
-        Entity.newBuilder(keyFactory2.newKey())
-        .set("Username", "")
-        .set("Email", email)
-        .set("School", "")
-        .set("Major", "")
-        .set("Minor", "")
-        .set("Major2", "")
-        .set("Tag", "")
-        .set("courses", Collections.emptyList())
-        .set("friends", Collections.emptyList())
-        .build();
+    if(signup){
+        FullEntity personEntity = 
+        Entity.newBuilder(keyFactory.newKey())
+            .set("Email", inputEmail)
+            .set("Password", password)
+            //.set("userID", userID)
+            .build();
     
-            datastore.put(personEntity2);
-    // Print the value so you can see it in the server logs.
-    System.out.println("Email submitted: " + password+"  Password Submitted: " + email);
+            datastore.put(personEntity);
+    
+            KeyFactory keyFactory2 = datastore.newKeyFactory().setKind("User");
+    
+            //Creates a new entity and set its properties by key value pair
+            FullEntity personEntity2 = 
+            Entity.newBuilder(keyFactory2.newKey())
+            .set("Username", "")
+            .set("Email", inputEmail)
+            .set("School", "")
+            .set("Major", "")
+            .set("Minor", "")
+            .set("Major2", "")
+            .set("Tag", "")
+            .set("courses", Collections.emptyList())
+            .set("friends", Collections.emptyList())
+            .build();
+        
+                datastore.put(personEntity2);
+        // Print the value so you can see it in the server logs.
+        System.out.println("Email submitted: " + password+"  Password Submitted: " + inputEmail);
+    
+        // Write the value to the response so the user can see it.
+        //response.getWriter().println("Name submitted: " + textValue[0]+"\nEmail Submitted: " + textValue[1]+"\nPhone Number Submitted: " + textValue[2]);
+        //response.sendRedirect("/contacts-list");
+        response.getWriter().println("<script>sessionStorage.setItem(\"email\","+inputEmail+");</script>");
+        response.getWriter().println("<script>location.href = 'https://summer22-sps-2.uc.r.appspot.com/main.html';</script>");
+    }
+    else{
+        response.getWriter().println("<script>location.href = 'https://summer22-sps-2.uc.r.appspot.com/login.html';</script>");
+    }
 
-    // Write the value to the response so the user can see it.
-    //response.getWriter().println("Name submitted: " + textValue[0]+"\nEmail Submitted: " + textValue[1]+"\nPhone Number Submitted: " + textValue[2]);
-    //response.sendRedirect("/contacts-list");
-    response.getWriter().println("<script>sessionStorage.setItem(\"email\","+email+");</script>");
-    response.getWriter().println("<script>location.href = 'https://summer22-sps-2.uc.r.appspot.com/main.html';</script>");
 
     //response.sendRedirect("/login.html");
   }
