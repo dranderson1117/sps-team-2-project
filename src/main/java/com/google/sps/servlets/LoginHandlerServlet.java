@@ -22,6 +22,8 @@ import com.google.cloud.datastore.KeyFactory;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Safelist;
 import java.io.IOException;
+import java.util.Collections;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -57,6 +59,23 @@ public class LoginHandlerServlet extends HttpServlet {
 
         datastore.put(personEntity);
 
+        KeyFactory keyFactory2 = datastore.newKeyFactory().setKind("User");
+
+        //Creates a new entity and set its properties by key value pair
+        FullEntity personEntity2 = 
+        Entity.newBuilder(keyFactory2.newKey())
+        .set("Username", "")
+        .set("Email", email)
+        .set("School", "")
+        .set("Major", "")
+        .set("Minor", "")
+        .set("Major2", "")
+        .set("Tag", "")
+        .set("courses", Collections.emptyList())
+        .set("friends", Collections.emptyList())
+        .build();
+    
+            datastore.put(personEntity2);
     // Print the value so you can see it in the server logs.
     System.out.println("Email submitted: " + password+"  Password Submitted: " + email);
 

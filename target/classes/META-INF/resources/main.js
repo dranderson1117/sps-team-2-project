@@ -1,9 +1,5 @@
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
+
 
 const getUsers = async function() {
   const email = this.sessionStorage.getItem("email");
@@ -82,7 +78,7 @@ async function updateProf(){
       //resultContainer.innerText = "Sentiment Analysis Score: " +sentiment;
     });
 
-    //location.reload();
+    location.reload();
 
 
 }

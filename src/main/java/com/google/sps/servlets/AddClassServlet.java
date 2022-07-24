@@ -49,15 +49,12 @@ public class AddClassServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String inputEmail = Jsoup.clean(request.getParameter("email"), Safelist.none());
     String newClass = Jsoup.clean(request.getParameter("newClass"), Safelist.none());
-    Boolean login = false;
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
     Query<Entity> query =
         Query.newEntityQueryBuilder().setKind("User").build();
     QueryResults<Entity> results = datastore.run(query);
-    Gson gson = new Gson();
 
 
-    List<UserCred> userList = new ArrayList<>();
     List<StringValue> courses = new ArrayList<>();
     List<StringValue> coursesCopy = new ArrayList<>();
 
@@ -70,26 +67,7 @@ public class AddClassServlet extends HttpServlet {
       String email = entity.getString("Email");
       if(inputEmail.equals(email) ){
 
-        /*
-        FullEntity clonedEntity = Entity.newBuilder(keyFactory.newKey()).set("courses", entity.getList("courses")).build();
-        clonedEntity.getList("courses").add(StringValue.of(newClass));
-        
-        //datastore.delete(entity.getKey());
 
-        datastore.put(clonedEntity);
-        */
-        /*
-          Object courseList = entity.getList("courses");
-          ((List<StringValue>) courseList).add(StringValue.of(newClass));
-          entity.set("courses", courseList);
-          datastore.update(entity);
-        */
-
-        /*
-        datastore.update();
-          courses = entity.getList("courses");
-          courses.add(StringValue.of(newClass));
-        */
         
         courses = entity.getList("courses");
 
@@ -104,11 +82,11 @@ public class AddClassServlet extends HttpServlet {
            //update the hasImage  
            set = Entity.newBuilder(set).set("courses", coursesCopy).build(); 
            datastore.put(set);
-      //List<Value<?>> password = entity.getList("classes");
       }
 
       //UserCred user = new UserCred(email, password);
       //userList.add(user);
+      
     }
 
 
