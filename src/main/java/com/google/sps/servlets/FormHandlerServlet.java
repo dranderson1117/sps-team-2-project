@@ -19,6 +19,8 @@ import com.google.cloud.datastore.DatastoreOptions;
 import com.google.cloud.datastore.Entity;
 import com.google.cloud.datastore.FullEntity;
 import com.google.cloud.datastore.KeyFactory;
+import com.google.cloud.datastore.Query;
+import com.google.cloud.datastore.QueryResults;
 import com.google.cloud.datastore.Value;
 
 import org.jsoup.Jsoup;
@@ -40,47 +42,49 @@ public class FormHandlerServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     //String body = Jsoup.clean(request.getParameter("body"), Safelist.none());
     String username = Jsoup.clean(request.getParameter("username"), Safelist.none());
-    String email = Jsoup.clean(request.getParameter("email"), Safelist.none());
+    String inputEmail = Jsoup.clean(request.getParameter("email"), Safelist.none());
     String school = Jsoup.clean(request.getParameter("school"), Safelist.none());
     String major = Jsoup.clean(request.getParameter("major"), Safelist.none());
     String major2 = Jsoup.clean(request.getParameter("major2"), Safelist.none());
     String minor = Jsoup.clean(request.getParameter("minor"), Safelist.none());
     String tag = Jsoup.clean(request.getParameter("tag"), Safelist.none());
 
-    long id = 789177;
-
     // // Print the input so you can see it in the server logs.
-    System.out.println("name: " + school);
-    System.out.println("email: " + email);
-    System.out.println("number: " + major);
-    System.out.println("description: " + minor);
 
 
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
-    KeyFactory keyFactory = datastore.newKeyFactory().setKind("User");
-    List<String> courses = new ArrayList<>();
+    Query<Entity> query =
+        Query.newEntityQueryBuilder().setKind("User").build();
+    QueryResults<Entity> results = datastore.run(query);
 
-    FullEntity personEntity = 
-    Entity.newBuilder(keyFactory.newKey())
-        .set("Username", username)
-        .set("Email", email)
-        .set("School", school)
-        .set("Major", major)
-        .set("Minor", minor)
-        .set("Major2", major2)
-        .set("Tag", tag)
-        .set("courses", Collections.emptyList())
-        .set("friends", Collections.emptyList())
-        .build();
+    while (results.hasNext()) {
+        Entity entity = results.next();
+  
+        long id = entity.getKey().getId();
+        String email = entity.getString("Email");
+        if(inputEmail.equals(email) ){
+  
+  
+    
+            
+            KeyFactory keyFactory = datastore.newKeyFactory().setKind("User");
+            com.google.cloud.datastore.Key setKey = keyFactory.newKey(id); 
+             Entity set = datastore.get(setKey); 
+  
+             //update the hasImage  
+             set = Entity.newBuilder(set)
+             .set("Username", username)
+             .set("School", school)
+             .set("Major", major)
+             .set("Minor", minor)
+             .set("Major2", major2)
+             .set("Tag", tag)
+             .build(); 
+             datastore.put(set);
 
-        datastore.put(personEntity);
-    // Print the value so you can see it in the server logs.
-    //System.out.println("Name submitted: " + name+"  Email Submitted: " + email+" Phone Number Submitted: " + phoneNumber);
+        }
+    }
+    response.getWriter().println("<script>location.href = 'https://summer22-sps-2.uc.r.appspot.com/main.html';</script>");
 
-    // Write the value to the response so the user can see it.
-    //response.getWriter().println("Name submitted: " + textValue[0]+"\nEmail Submitted: " + textValue[1]+"\nPhone Number Submitted: " + textValue[2]);
-    //response.sendRedirect("/contacts-list");
-    //response.sendRedirect("/main.html");
-    response.getWriter().println("y" );
   }
 }
