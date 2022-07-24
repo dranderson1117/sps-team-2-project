@@ -15,7 +15,18 @@ const getUsers = async function() {
       body: params
     }).then(response => response.text())
     .then((usersList) => {
-      sessionStorage.setItem("userList", usersList);
+      let users = JSON.parse(usersList);
+      let email = sessionStorage.getItem("email");
+      let newUserList = [];
+      for(let i = 0; i < users.length; i++)
+      {
+        let user = users[i];
+        if(user.email == email)
+          sessionStorage.setItem("user", JSON.stringify(user));
+        else
+          newUserList.push(user);
+      }
+      sessionStorage.setItem("userList", JSON.stringify(newUserList));
     });
 }
 
