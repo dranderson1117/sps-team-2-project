@@ -196,13 +196,23 @@ function populateUserModal(user)
  */
 async function addFriend(event)
 {
-  let friendEmail = event.currentTarget.name;
+  let friendButton = event.currentTarget;
+  let friendEmail = friendButton.name;
   const email =  sessionStorage.getItem('email');
 
   const params = new URLSearchParams();
   params.append('friendEmail', friendEmail);
   params.append('email', email);
 
+  friendButton.innerText = "Friend";
+  friendButton.setAttribute("disabled", "true");
+  friendButton.setAttribute("style", "background-color: green;");
+
+  //friendButton.setAttribute("style", "visibility: hidden;");
+
+  let user = JSON.parse(sessionStorage.getItem("user"));
+  user.friends.push(friendEmail);
+  sessionStorage.setItem("user", JSON.stringify(user));
 
   console.log(email);
   console.log(friendEmail);
@@ -213,7 +223,6 @@ async function addFriend(event)
   .then((sentiment) => {
     //resultContainer.innerText = "Sentiment Analysis Score: " +sentiment;
   });
-  
 }
 
 
