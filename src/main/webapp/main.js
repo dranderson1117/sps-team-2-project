@@ -1,5 +1,5 @@
 // When the user clicks anywhere outside of the modal, close it
-
+document.querySelector('#side-bar-user-name').textContent = JSON.parse(sessionStorage.user).username;
 
 const getUsers = async function() {
   const email = this.sessionStorage.getItem("email");
