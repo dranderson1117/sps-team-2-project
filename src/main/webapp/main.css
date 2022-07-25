@@ -254,7 +254,6 @@ hr{
   overflow: cover;
   border-radius: 50%;
   border: 2px solid rgb(60, 60, 113);
-  background-image: url("codingGirl.jpeg");
 }
 
 .pic:hover{

@@ -217,8 +217,22 @@ async function addFriend(event)
 }
 
 async function searchTag(){
-  const targetTag = document.querySelector("tag-option-selected");
+  const tagSearchResult = [];
+  const targetTag = document.querySelector(".tag-option-selected").innerHTML;
   console.log(targetTag.innerHTML);
+  let users = JSON.parse(sessionStorage.userList);
+  users.forEach(user => {
+    console.log(user.tag === targetTag);
+    if(user.tag === targetTag){
+      tagSearchResult.push(user);
+    }
+  });
+
+  console.log(users);
+
+  return tagSearchResult;
 }
+
+
 
 
