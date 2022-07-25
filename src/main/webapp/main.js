@@ -218,32 +218,35 @@ async function addFriend(event)
 
 async function searchTag(){
   const tagSearchResult = [];
-  const targetTag = document.querySelector(".tag-option-selected").innerHTML;
-  console.log(targetTag.innerHTML);
+  const targetTag = document.querySelector(".tag-option-selected").textContent;
+  console.log(targetTag.textContent);
   let users = JSON.parse(sessionStorage.userList);
   users.forEach(user => {
-    console.log(user.tag === targetTag);
     if(user.tag === targetTag){
       tagSearchResult.push(user);
     }
   });
-
-  console.log(users);
-
+  console.log(tagSearchResult.length);
+  if (tagSearchResult.length===0){
+    let emptySearchResult = document.createElement('p');
+    emptySearchResult.innerHTML = `Could not find them here...`;
+    document.querySelector('.tag-search-result').appendChild(emptySearchResult);
+  }
   return tagSearchResult;
 }
 
 async function addTagSearchResult(){
   const tagSearchResult = searchTag();
   (await tagSearchResult).forEach(user => {
+    // here we should insert usermodal
     let resultUser = document.createElement('p');
     resultUser.innerHTML = `${user.username}`;
     document.querySelector('.tag-search-result').appendChild(resultUser);
-
-    // console.log(document.querySelector('.tag-search-result').appendChild(document.createElement('p'))); 
   });  
 }
 
-
-
+async function clearTagSearchResult(){
+  document.querySelector('.tag-search-result').textContent='';
+  document.querySelectorAll('.tag-option').forEach(tagElement => {tagElement.classList.remove('tag-option-selected')});
+}
 
