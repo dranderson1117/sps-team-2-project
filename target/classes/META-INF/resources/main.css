@@ -333,3 +333,37 @@ hr{
   flex-wrap: wrap;
   width: 100%;
 }
+
+
+.tag-option{
+  border: 2px solid rgb(29, 35, 71);
+  background-color: white;
+  color:rgb(29, 35, 71);
+  padding: 14px 28px;
+  align-content: center;
+  font-size: small;
+  cursor: pointer;
+  border-radius: 5px;
+  width: fit-content;
+  height: fit-content;
+  padding: 3px 6px;
+  margin: 6px;
+}
+.tag-option:hover{
+  background-color: rgb(29, 35, 71);
+  border-radius: 5px;
+  width: fit-content;
+  height: fit-content;
+  padding: 3px 6px;
+  margin: 6px;
+  color: white;
+}
+.tag-option-selected{
+  background-color: rgb(29, 35, 71);
+  border-radius: 5px;
+  width: fit-content;
+  height: fit-content;
+  padding: 3px 6px;
+  margin: 6px;
+  color: rgb(255, 255, 255);
+}

@@ -233,6 +233,17 @@ async function searchTag(){
   return tagSearchResult;
 }
 
+async function addTagSearchResult(){
+  const tagSearchResult = searchTag();
+  (await tagSearchResult).forEach(user => {
+    let resultUser = document.createElement('p');
+    resultUser.innerHTML = `${user.username}`;
+    document.querySelector('.tag-search-result').appendChild(resultUser);
+
+    // console.log(document.querySelector('.tag-search-result').appendChild(document.createElement('p'))); 
+  });  
+}
+
 
 
 
