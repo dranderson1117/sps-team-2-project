@@ -39,10 +39,12 @@ nameCardTemplate.innerHTML =
         margin-left: 0px;
     }
     </style>
-    <div class="name-card">
-        <img class="pic" src="pic2.jpeg"/>
-        <p>Name</p>
-    </div>
+    <button type="button" class="btn btn-light button-profile text-left" data-toggle="modal" data-target="#userModal">
+        <div class="name-card">
+            <img class="pic" src="images/pic2.jpeg"/>
+            <p>Name</p>
+        </div>
+    </button>
 `
 
 class NameCard extends HTMLElement {
@@ -109,13 +111,61 @@ function addClassCard(){
 
 //function to create one name card
     function createNameCard(name, imglink){
-        let nameCard = document.createElement("name-card")
+        let nameCard = document.createElement("div");
+        nameCard.innerHTML = 
+
+`   
+    <style>
+    .name-card{
+        display: flex;
+        flex-direction: row;
+        border-radius: 5px;
+        background-color: #F7F9FE;
+        margin: 10px;
+        width: 90%;
+        height: 40px;
+        align-items: center;
+        
+    }
+    .pic{
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        margin-right:20px;
+        width: 30px;
+        height: 30px;
+        background-size: 100% 100%;
+        overflow: cover;
+        border-radius: 50%;
+        border: 2px solid rgb(60, 60, 113);
+        
+    }
+    .name-card:hover{
+        border: 2px solid rgb(208, 208, 255);
+    }
+    p{
+        color: black;
+        margin-top: 5px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-left: 0px;
+    }
+    </style>
+    <button type="button" class="btn btn-light button-profile text-left" data-toggle="modal" data-target="#userModal">
+        <div class="name-card">
+            <img class="pic" src="images/pic2.jpeg"/>
+            <p>Name</p>
+        </div>
+    </button>
+`
+
         nameCard.setAttribute('name', name);
         nameCard.setAttribute('imglink', imglink);
     
         nameCard.update();
         console.log(classCardId);
         console.log(document.querySelector("#"+classCardId));
+        console.log(nameCard);
         document.querySelector("#"+classCardId).querySelector(".classmates").appendChild(nameCard);
     }
     //hard coded name list
