@@ -325,3 +325,12 @@ hr{
   /* color: red; */
   
 }
+
+.tag-wrapper{
+  background-color: rgb(215, 225, 250);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}

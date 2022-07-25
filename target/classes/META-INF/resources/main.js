@@ -216,4 +216,9 @@ async function addFriend(event)
   
 }
 
+async function searchTag(){
+  const targetTag = document.querySelector("tag-option-selected");
+  console.log(targetTag.innerHTML);
+}
+
 

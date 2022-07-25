@@ -81,6 +81,7 @@
                             <div class="major-search-select search-select">
                                 
                                 <select id="major" class="selectpicker major-selector" data-live-search="true">
+                                    <option>Undecided</option>
                                     <option>Computer Science</option>
                                     <option>Computer Engineering</option>
                                     <option>Economics</option>
@@ -97,6 +98,7 @@
                             <div id="major2" class="major-search-select search-select">
                                 
                                 <select class="selectpicker major-selector second-major-selector" data-live-search="true" data-width="200px">
+                                    <option>N/A</option>
                                     <option>Computer Science</option>
                                     <option>Computer Engineering</option>
                                     <option>Economics</option>
@@ -109,6 +111,7 @@
                             <div id="minor" class="major-search-select search-select">
                                 
                                 <select class="selectpicker minor-selector" data-live-search="true">
+                                    <option>N/A</option>
                                     <option>Business Studies</option>
                                     <option>Music Technology</option>
                                     <option>Economics</option>
@@ -162,8 +165,19 @@
                           <div class="class-search-select search-select">
                                                     
                             <select id="selectClasses" class="selectpicker class-selector" data-live-search="true" style="width: 100%;">
-                                <option><span id="class-id">CSCI-UA 480-002 </span>  Computer Graphics</option>
-                                <option><span id="class-id">MATH-UA 251-001 </span> Math Modeling</option>
+                                <option><span id="class-id">CSCI-UA 480-002</span> Computer Graphics</option>
+                                <option><span id="class-id">MATH-UA 251-001</span> Math Modeling</option>
+                                <option><span id="class-id">IMNY-UT 288</span> Animation: Methods of Motion</option>
+                                <option><span id="class-id">IMNY-UT 284</span> Performative Avatars</option>
+                                <option><span id="class-id">IMNY-UT 285</span> Real-Time Media</option>
+                                <option><span id="class-id">CSCI-UA 467</span> Applied Internet Technology</option>
+                                <option><span id="class-id">CS 173 </span> Discrete Structures</option>
+                                <option><span id="class-id">CS 233</span> Computer Architecture</option>
+                                <option><span id="class-id">CS 242</span> Programming Studio</option>
+                                <option><span id="class-id">CS 2120</span> Discrete Mathematics and Theory 1</option>
+                                <option><span id="class-id">CS 3140 </span> Software Development Essentials</option>
+                                <option><span id="class-id">CS 0449</span> INTRODUCTION TO SYSTEMS SOFTWARE</option>
+                                <option><span id="class-id">CS 1502</span> IFORMAL METHODS IN COMPUTER SCIENCE</option>	
                             </select>
                         </div>
                         </div>
@@ -203,7 +217,7 @@
                         <span>Tags</span>
                     </button>
 
-                    <div class="modal fade" tabindex="-1" id="tagsModal" role="dialog">
+                    <!-- <div class="modal fade" tabindex="-1" id="tagsModal" role="dialog">
                       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -219,7 +233,82 @@
                           </div>
                         </div>
                       </div>
+                    </div> -->
+                    <div class="modal fade" tabindex="-1" id="tagsModal" role="dialog">
+                      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">Tag-based Search</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+                          </div>
+                          <div class="modal-body" id="profile-modal-body">
+                            <style>
+                              h3{
+                                 color: #2AC7EB;
+                                  
+                              }
+                              img{
+                                  width: 70px;
+                                  height: 70px;
+                                  border-radius: 50px;
+                              }
+                      
+                              .tag-option{
+                                  border: 2px solid rgb(29, 35, 71);
+                                  background-color: white;
+                                  color:rgb(29, 35, 71);
+                                  padding: 14px 28px;
+                                  align-content: center;
+                                  font-size: small;
+                                  cursor: pointer;
+                                  border-radius: 5px;
+                                  width: fit-content;
+                                  height: fit-content;
+                                  padding: 3px 6px;
+                                  margin: 6px;
+                              }
+                              .tag-option:hover{
+                                  background-color: rgb(29, 35, 71);
+                                  border-radius: 5px;
+                                  width: fit-content;
+                                  height: fit-content;
+                                  padding: 3px 6px;
+                                  margin: 6px;
+                                  color: white;
+                              }
+                              .tag-option-selected{
+                                  background-color: rgb(29, 35, 71);
+                                  border-radius: 5px;
+                                  width: fit-content;
+                                  height: fit-content;
+                                  padding: 3px 6px;
+                                  margin: 6px;
+                                  color: rgb(255, 255, 255);
+                              }
+                            </style>
+                            <div><p style="color: #3C4381; margin-top: 15px;">🌟Find friends who are...</p></div>
+                            <div class="tag-wrapper">
+                              <div class="tag-option tag-option-0" onclick="document.querySelector('.tag-option-0').classList.toggle('tag-option-selected')">Foodies</div>
+                              <div class="tag-option tag-option-1" onclick="document.querySelector('.tag-option-1').classList.toggle('tag-option-selected'); searchTag();">Menties</div>
+                              <div class="tag-option tag-option-2" onclick="document.querySelector('.tag-option-2').classList.toggle('tag-option-selected')">Sporties</div>
+                              <div class="tag-option tag-option-3" onclick="document.querySelector('.tag-option-3').classList.toggle('tag-option-selected')">Arties</div>
+                              <div class="tag-option tag-option-4" onclick="document.querySelector('.tag-option-4').classList.toggle('tag-option-selected')">Techies</div>
+                              <div class="tag-option tag-optiontag-option-5" onclick="document.querySelector('.tag-option-5').classList.toggle('tag-option-selected')">Gamies</div>
+                              
+                            </div>
+                            <div class="tag-search-result"></div>
+                            
+                            
+                            
+                          <!-- <script src="tags/tag.js"></script> -->
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:#28213A" onclick=" updateProf(); console.log(document.getElementById('side-bar-user-name').innerText=document.querySelector('#user-name-input').value);">Save</button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
+                    
                 </li>
                 <!-- Bio Feature is commented out -->
                 <!-- <li>
