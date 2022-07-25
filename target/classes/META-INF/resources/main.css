@@ -325,3 +325,16 @@ hr{
   /* color: red; */
   
 }
+
+/* Classes for "Add Friend" button in  */
+.add-friend-button-stranger{
+  color: white;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.add-friend-button-friend{
+  color: white !important;
+  background-color: green !important;
+  border-color: green !important;
+}

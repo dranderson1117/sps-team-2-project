@@ -173,7 +173,12 @@ function loadFriends(){
 function populateUserModal(user)
 {
   //Currently adding the button based on a random value --- will need to change so that "Add Friend" button appears based on whether user is in friends list
-  let isUserFriend = Math.random(Date.now()) >= 0.5;
+  let currUser = JSON.parse(sessionStorage.getItem("user"));
+  //currUser.friends.includes(user)
+  //let isUserFriend = Math.random(Date.now()) >= 0.5;
+  //${true ? "add-friend-button-stranger" : "add-friend-button-friend"}
+  let userIsFriend = currUser.friends.includes(user.email);
+  console.log(userIsFriend)
   let userModal = `<div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -183,7 +188,7 @@ function populateUserModal(user)
                         <p>${user.password}</p>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" name="${user.email}" style="visibility: ${(isUserFriend ? "hidden" : "visible")};" onclick="addFriend(event)">Add Friend</button> 
+                        <button type="button" class="btn btn-primary ${userIsFriend ? "add-friend-button-friend" : "add-friend-button-stranger"}" name="${user.email}" ${userIsFriend ? "disabled" : ""} onclick="addFriend(event)">${userIsFriend ? "Friend!" : "Add Friend"}</button> 
                       </div> 
                     </div> 
                   </div>`;
@@ -204,9 +209,10 @@ async function addFriend(event)
   params.append('friendEmail', friendEmail);
   params.append('email', email);
 
-  friendButton.innerText = "Friend";
+  friendButton.innerText = "Friend!";
+  //friendButton.class = "add-friend-button-friend";
   friendButton.setAttribute("disabled", "true");
-  friendButton.setAttribute("style", "background-color: green;");
+  friendButton.setAttribute("class", "btn btn-primary add-friend-button-friend");
 
   //friendButton.setAttribute("style", "visibility: hidden;");
 
