@@ -131,10 +131,11 @@ function loadAllUsers(){
     return;
   }*/
 
-  let users = JSON.parse(sessionStorage.userList);
+  let users = JSON.parse(sessionStorage.getItem("userList"));
   for(let i = 0; i < users.length; i++){
     let currUser = users[i];
     console.log("Loading current user email: " + currUser.email + ", password: " + currUser.password);
+
     let newModal = document.createElement("div");
     newModal.class = "modal fade";
     newModal.tabIndex = "-1";
@@ -152,10 +153,18 @@ function loadFriends(){
   let myFriendsModal = document.getElementById("friends-modal-body");
   myFriendsModal.innerHTML = "";
 
-  let users = JSON.parse(sessionStorage.userList);
+  let users = JSON.parse(sessionStorage.getItem("userList"));
+  let user = JSON.parse(sessionStorage.getItem("user"));
+  console.log(user.friends);
+  /* Add modals for users whose email addresses are in the current user's friends list --> are the current user's friends) */
   for(let i = 0; i < users.length; i++){
     let currUser = users[i];
     console.log("Loading current user email: " + currUser.email + ", password: " + currUser.password);
+
+    console.log(user.friends.includes(currUser.email));
+    if(!user.friends.includes(currUser.email))
+      continue;
+
     let newModal = document.createElement("div");
     newModal.class = "modal fade";
     newModal.tabIndex = "-1";
@@ -167,28 +176,28 @@ function loadFriends(){
 
 /**
  * Creates a modal for the passed in user and returns the HTML code for the modal
- * @param user - User object containing the user's name, email, password, major, and minor
- * @returns userModal - String containing HTML code for modal populated with values from user object
+ * @param currUser - User object containing the user's information
+ * @returns userModal - String containing HTML code for modal populated with values from currUser object
  */
-function populateUserModal(user)
+function populateUserModal(currUser)
 {
   //Currently adding the button based on a random value --- will need to change so that "Add Friend" button appears based on whether user is in friends list
-  let currUser = JSON.parse(sessionStorage.getItem("user"));
+  let user = JSON.parse(sessionStorage.getItem("user"));
   //currUser.friends.includes(user)
   //let isUserFriend = Math.random(Date.now()) >= 0.5;
   //${true ? "add-friend-button-stranger" : "add-friend-button-friend"}
-  let userIsFriend = currUser.friends.includes(user.email);
+  let userIsFriend = user.friends.includes(currUser.email);
   console.log(userIsFriend)
   let userModal = `<div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h2 class="modal-title">${user.email}</h2>
+                        <h2 class="modal-title">${currUser.username}</h2>
                       </div>
                       <div class="modal-body">
-                        <p>${user.password}</p>
+                        <p>${currUser.school}</p>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-primary ${userIsFriend ? "add-friend-button-friend" : "add-friend-button-stranger"}" name="${user.email}" ${userIsFriend ? "disabled" : ""} onclick="addFriend(event)">${userIsFriend ? "Friend!" : "Add Friend"}</button> 
+                        <button type="button" class="btn btn-primary ${userIsFriend ? "add-friend-button-friend" : "add-friend-button-stranger"}" name="${currUser.email}" ${userIsFriend ? "disabled" : ""} onclick="addFriend(event)">${userIsFriend ? "Friend!" : "Add Friend"}</button> 
                       </div> 
                     </div> 
                   </div>`;
