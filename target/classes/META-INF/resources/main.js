@@ -91,6 +91,9 @@ async function addClass(){
     params.append('newClass', newClass);
     params.append('email', email);
 
+    let user = JSON.parse(sessionStorage.getItem("user"));
+    user.courses.push(newClass);
+    sessionStorage.setItem("user", JSON.stringify(user));
 
     console.log(email);
     console.log(newClass);
