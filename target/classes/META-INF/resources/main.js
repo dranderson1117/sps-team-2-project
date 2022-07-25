@@ -91,6 +91,9 @@ async function addClass(){
     params.append('newClass', newClass);
     params.append('email', email);
 
+    let user = JSON.parse(sessionStorage.getItem("user"));
+    user.courses.push(newClass);
+    sessionStorage.setItem("user", JSON.stringify(user));
 
     console.log(email);
     console.log(newClass);
@@ -131,10 +134,11 @@ function loadAllUsers(){
     return;
   }*/
 
-  let users = JSON.parse(sessionStorage.userList);
+  let users = JSON.parse(sessionStorage.getItem("userList"));
   for(let i = 0; i < users.length; i++){
     let currUser = users[i];
     console.log("Loading current user email: " + currUser.email + ", password: " + currUser.password);
+
     let newModal = document.createElement("div");
     newModal.class = "modal fade";
     newModal.tabIndex = "-1";
@@ -152,10 +156,18 @@ function loadFriends(){
   let myFriendsModal = document.getElementById("friends-modal-body");
   myFriendsModal.innerHTML = "";
 
-  let users = JSON.parse(sessionStorage.userList);
+  let users = JSON.parse(sessionStorage.getItem("userList"));
+  let user = JSON.parse(sessionStorage.getItem("user"));
+  console.log(user.friends);
+  /* Add modals for users whose email addresses are in the current user's friends list --> are the current user's friends) */
   for(let i = 0; i < users.length; i++){
     let currUser = users[i];
     console.log("Loading current user email: " + currUser.email + ", password: " + currUser.password);
+
+    console.log(user.friends.includes(currUser.email));
+    if(!user.friends.includes(currUser.email))
+      continue;
+
     let newModal = document.createElement("div");
     newModal.class = "modal fade";
     newModal.tabIndex = "-1";
@@ -167,23 +179,28 @@ function loadFriends(){
 
 /**
  * Creates a modal for the passed in user and returns the HTML code for the modal
- * @param user - User object containing the user's name, email, password, major, and minor
- * @returns userModal - String containing HTML code for modal populated with values from user object
+ * @param currUser - User object containing the user's information
+ * @returns userModal - String containing HTML code for modal populated with values from currUser object
  */
-function populateUserModal(user)
+function populateUserModal(currUser)
 {
   //Currently adding the button based on a random value --- will need to change so that "Add Friend" button appears based on whether user is in friends list
-  let isUserFriend = Math.random(Date.now()) >= 0.5;
+  let user = JSON.parse(sessionStorage.getItem("user"));
+  //currUser.friends.includes(user)
+  //let isUserFriend = Math.random(Date.now()) >= 0.5;
+  //${true ? "add-friend-button-stranger" : "add-friend-button-friend"}
+  let userIsFriend = user.friends.includes(currUser.email);
+  console.log(userIsFriend)
   let userModal = `<div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h2 class="modal-title">${user.email}</h2>
+                        <h2 class="modal-title">${currUser.username}</h2>
                       </div>
                       <div class="modal-body">
-                        <p>${user.password}</p>
+                        <p>${currUser.school}</p>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" name="${user.email}" style="visibility: ${(isUserFriend ? "hidden" : "visible")};" onclick="addFriend(event)">Add Friend</button> 
+                        <button type="button" class="btn btn-primary ${userIsFriend ? "add-friend-button-friend" : "add-friend-button-stranger"}" name="${currUser.email}" ${userIsFriend ? "disabled" : ""} onclick="addFriend(event)">${userIsFriend ? "Friend!" : "Add Friend"}</button> 
                       </div> 
                     </div> 
                   </div>`;
@@ -196,13 +213,24 @@ function populateUserModal(user)
  */
 async function addFriend(event)
 {
-  let friendEmail = event.currentTarget.name;
+  let friendButton = event.currentTarget;
+  let friendEmail = friendButton.name;
   const email =  sessionStorage.getItem('email');
 
   const params = new URLSearchParams();
   params.append('friendEmail', friendEmail);
   params.append('email', email);
 
+  friendButton.innerText = "Friend!";
+  //friendButton.class = "add-friend-button-friend";
+  friendButton.setAttribute("disabled", "true");
+  friendButton.setAttribute("class", "btn btn-primary add-friend-button-friend");
+
+  //friendButton.setAttribute("style", "visibility: hidden;");
+
+  let user = JSON.parse(sessionStorage.getItem("user"));
+  user.friends.push(friendEmail);
+  sessionStorage.setItem("user", JSON.stringify(user));
 
   console.log(email);
   console.log(friendEmail);
@@ -213,7 +241,6 @@ async function addFriend(event)
   .then((sentiment) => {
     //resultContainer.innerText = "Sentiment Analysis Score: " +sentiment;
   });
-  
 }
 
 async function searchTag(){

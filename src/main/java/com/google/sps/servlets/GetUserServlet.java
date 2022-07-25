@@ -62,10 +62,12 @@ public class GetUserServlet extends HttpServlet {
       Entity entity = results.next();
 
       List<StringValue> friends = new ArrayList<>();
-      List<StringValue> friendsCopy = new ArrayList<>();
+      List<String> friendsCopy = new ArrayList<>();
+      //List<StringValue> friendsCopy = new ArrayList<>();
   
       List<StringValue> courses = new ArrayList<>();
-      List<StringValue> coursesCopy = new ArrayList<>();
+      List<String> coursesCopy = new ArrayList<>();
+      //List<StringValue> coursesCopy = new ArrayList<>();
       
       /*
       System.out.println("ENTITY-HOOP: " + entity);
@@ -121,10 +123,16 @@ public class GetUserServlet extends HttpServlet {
       String minor = entity.getString("Minor");
       String major2 = entity.getString("Major2");
       String tag = entity.getString("Tag");
+
+      //coursesCopy = new ArrayList<StringValue>(courses);
       courses = entity.getList("courses");
-      coursesCopy = new ArrayList<StringValue>(courses);
+      for(StringValue course : courses)
+        coursesCopy.add(course.toBuilder().get());
+
+      //friendsCopy = new ArrayList<StringValue>(friends);
       friends = entity.getList("friends");
-      friendsCopy = new ArrayList<StringValue>(friends);
+      for(StringValue friend : friends)
+        friendsCopy.add(friend.toBuilder().get());
       
       System.out.println("username: " + username + ", tag: " + tag + ", courses: " + courses + ", friends: " + friends);
 

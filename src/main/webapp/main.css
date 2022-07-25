@@ -325,6 +325,7 @@ hr{
   
 }
 
+
 .tag-wrapper{
   background-color: rgb(215, 225, 250);
   border-radius: 3px;
@@ -366,5 +367,19 @@ hr{
   padding: 3px 6px;
   margin: 6px;
   color: rgb(255, 255, 255);
+}
+
+
+/* Classes for "Add Friend" button in  */
+.add-friend-button-stranger{
+  color: white;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.add-friend-button-friend{
+  color: white !important;
+  background-color: green !important;
+  border-color: green !important;
 }
 

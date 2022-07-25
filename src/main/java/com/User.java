@@ -13,13 +13,13 @@ public class User {
     private String minor;
     private String school;
     private String tag;
-    private List<StringValue> courses;
-    private List<StringValue> friends;
+    private List<String> courses;
+    private List<String> friends;
 
 
 
 
-    public User(String email, String name, String major, String major2, String minor,String school, String tag, List<StringValue> coursesCopy, List<StringValue> friendsCopy){
+    public User(String email, String name, String major, String major2, String minor,String school, String tag, List<String> coursesCopy, List<String> friendsCopy){
         this.email = email;
         this.username = name;
         this.major = major;
