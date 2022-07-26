@@ -32,7 +32,7 @@
                 <input type="file" class="my-file">
 
             </div>
-            <h5 id="side-bar-user-name" style="text-align: center; padding: 10px;">Kapa</h5>
+            <h5 id="side-bar-user-name" style="text-align: center; padding: 10px;">👇change user name in My Profile</h5>
         
             <ul class="nav-list">
               <!-- Old My Profile -->
@@ -211,29 +211,42 @@
                     </div>
                   </div>
                 </li>
+                <!-- Modal for Tag-based Search -->
                 <li>
-                    <button type="button" class="btn btn-light button-profile btn-lg" data-toggle="modal" data-target="#tagsModal" onclick="loadAllUsers()">
+                    <button type="button" class="btn btn-light button-tags btn-lg" data-toggle="modal" data-target="#tagsModal">
                         <i class='bx bxs-purchase-tag-alt' ></i>
                         <span>Tags</span>
                     </button>
-
                     <div class="modal fade" tabindex="-1" id="tagsModal" role="dialog">
                       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title">Tag-Based Search</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+                            <h5 class="modal-title">Tag-based Search</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="clearTagSearchResult();">&times;</button>
                           </div>
                           <div class="modal-body" id="tags-modal-body">
-                            <p>🎟 Classmates who are also...</p>
                             
+                            <div><p style="color: #3C4381; margin-top: 15px;">🌟Find friends who are...</p></div>
+                            <div class="tag-wrapper">
+                              <div class="tag-option tag-option-0" onclick="document.querySelector('.tag-option-0').classList.toggle('tag-option-selected');">Foodie</div>
+                              <div class="tag-option tag-option-1" onclick="document.querySelector('.tag-option-1').classList.toggle('tag-option-selected');">Mentie</div>
+                              <div class="tag-option tag-option-2" onclick="document.querySelector('.tag-option-2').classList.toggle('tag-option-selected')">Sportie</div>
+                              <div class="tag-option tag-option-3" onclick="document.querySelector('.tag-option-3').classList.toggle('tag-option-selected')">Artie</div>
+                              <div class="tag-option tag-option-4" onclick="document.querySelector('.tag-option-4').classList.toggle('tag-option-selected')">Techies</div>
+                              <div class="tag-option tag-option-5" onclick="document.querySelector('.tag-option-5').classList.toggle('tag-option-selected')">Gamie</div>
+                            </div>
+                            <!-- serch result is returned-->
+                            <div class="tag-search-result">
+                            </div>
                           </div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:#28213A" >Close</button>
+                            <button type="button" class="btn btn-secondary" style="background-color:#28213A" onclick="addTagSearchResult()">Search</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:#28213A" onclick="clearTagSearchResult();">Close</button>
                           </div>
                         </div>
                       </div>
                     </div>
+                    
                 </li>
                 <!-- Bio Feature is commented out -->
                 <!-- <li>
