@@ -26,7 +26,9 @@ const getUsers = async function() {
     });
 }
 
-window.onload = getUsers();
+addEventListener('load', getUsers());
+//let window = document.getElement
+//window.onload = getUsers();
 
 
 
