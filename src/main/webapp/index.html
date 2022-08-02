@@ -98,12 +98,12 @@
       <form action="/login-handler" method="POST" id="signup-form">
         <div class="mb-3" id="email-div">
           <!-- <label for="usernameInput" class="form-label">Email</label> -->
-          <input class="form-control" name="email" id="email" required="required" placeholder="Email Address">
+          <input type="text" class="form-control" name="email" id="email" required="required" placeholder="Email Address">
         </div>
         <div class="mb-3" id="password-div">
           <!-- <label for="passwordInput" class="form-label">Password</label> -->
           <!-- <input class="form-control" name="password" id="password" required="required" placeholder="Password" data-bs-toggle="popover" title="Password" data-bs-content="Password must contain:&#13 - At least 10 characters&#13; - 1 lowercase caracter&#13; - 1 uppercase character&#13; - 1 special character: (!.?$#)&#13; - 1 number"> -->
-          <input class="form-control" name="password" id="password" required="required" placeholder="Password">
+          <input type="password" class="form-control" name="password" id="password" required="required" placeholder="Password">
         </div>
         <button id="login-button" type="button" class="btn btn-primary" onclick="signup()">Signup</button>
         <a id="sign-up-link" href="login.html">Returning User? Login Here!</a>
