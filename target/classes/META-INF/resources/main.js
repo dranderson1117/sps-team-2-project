@@ -199,7 +199,11 @@ function populateUserModal(currUser)
                         <h2 class="modal-title">${currUser.username}</h2>
                       </div>
                       <div class="modal-body">
-                        <p>${currUser.school}</p>
+                        <h6>${currUser.school}</h6>
+                        <h7 style="font-size: medium;">${currUser.major}</h7>
+                        <h7 style="font-size: medium;">${currUser.major2}</h7>
+                        <h7 style="font-size: medium;">${currUser.minor}</h7>
+                        <div class="tag-option" style="margin-left:0; margin-top: 3px;">${currUser.tag}</div>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-primary ${userIsFriend ? "add-friend-button-friend" : "add-friend-button-stranger"}" name="${currUser.email}" ${userIsFriend ? "disabled" : ""} onclick="addFriend(event)">${userIsFriend ? "Friend!" : "Add Friend"}</button> 
