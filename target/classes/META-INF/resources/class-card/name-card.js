@@ -67,6 +67,29 @@ customElements.define('name-card', NameCard);
 //     console.log(document.querySelector('#class-id').innerHTML);
 // }
 
+
+/**
+ * Checks every 0.5 second if the user is loaded in sessionStorage.
+ * Once the user is loaded into sessionStorage, add the class cards with the appropriate user modals
+ */
+const addCourseCards = () => {
+  if(sessionStorage.user){
+    let usersCourses = JSON.parse(sessionStorage.getItem("user")).courses;
+    let userList = JSON.parse(sessionStorage.getItem("userList"));
+    console.log(userList);
+    for(let i = 0; i < usersCourses.length; i++){
+      createClassCard(usersCourses[i], userList);
+    }
+  }
+  else{
+    console.log("waiting for user!");
+    setTimeout(addCourseCards, 500);
+  }
+}
+
+//Add the course cards once the window loads AND the user object has been loaded in session storage
+addEventListener('load', addCourseCards);
+
 let classObj = {classId:"CSCI-UA 102",className:"Data Structures", classList:["Jason Hu","Amy Stamper","Annie Tian Fan","Yuewen Yang","Grace Yang"]};
 
 
@@ -90,9 +113,6 @@ function createClassCard(courseAdd, userListAdd){
             <div style="padding: 0;"  class="classmates"></div>
         </div>
     `;
-    // need to change body to main-app
-    const users =  JSON.parse(sessionStorage.getItem('userList'));
-
     let userNames = [];
     for (const user of userListAdd) {
         if (user.courses.includes(newClass)) {

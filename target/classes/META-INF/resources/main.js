@@ -26,7 +26,9 @@ const getUsers = async function() {
     });
 }
 
-window.onload = getUsers();
+addEventListener('load', getUsers());
+//let window = document.getElement
+//window.onload = getUsers();
 
 
 
@@ -263,13 +265,15 @@ async function searchTag(){
 }
 
 async function addTagSearchResult(){
+  console.log("Loading Friends in My Friends Modal In Tags Modal");
   const tagSearchResult = searchTag();
-  (await tagSearchResult).forEach(user => {
-    // here we should insert usermodal
-    let resultUser = document.createElement('p');
-    resultUser.innerHTML = `${user.username}`;
-    document.querySelector('.tag-search-result').appendChild(resultUser);
-  });  
+  (await tagSearchResult).forEach(currUser => {
+    let newModal = document.createElement("div");
+    newModal.class = "modal fade";
+    newModal.tabIndex = "-1";
+    newModal.innerHTML = populateUserModal(currUser);
+    document.querySelector('.tag-search-result').appendChild(newModal);
+  }); 
 }
 
 async function clearTagSearchResult(){
