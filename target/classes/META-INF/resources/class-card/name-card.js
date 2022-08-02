@@ -63,9 +63,32 @@ customElements.define('name-card', NameCard);
 // shold fetch the class object each time when one class is added through the "add class" modal
 
 // let classObj = {classId:"CSCI-UA 101",className:"Introduction to Computer Science", classList:["Jonny Yu","Amy Stamper","Annie Tian Fan","Yuewen Yang","Grace Yang"]};
-function add(){
-    console.log(document.querySelector('#class-id').innerHTML);
+// function add(){
+//     console.log(document.querySelector('#class-id').innerHTML);
+// }
+
+
+/**
+ * Checks every 0.5 second if the user is loaded in sessionStorage.
+ * Once the user is loaded into sessionStorage, add the class cards with the appropriate user modals
+ */
+const addCourseCards = () => {
+  if(sessionStorage.user){
+    let usersCourses = JSON.parse(sessionStorage.getItem("user")).courses;
+    let userList = JSON.parse(sessionStorage.getItem("userList"));
+    console.log(userList);
+    for(let i = 0; i < usersCourses.length; i++){
+      createClassCard(usersCourses[i], userList);
+    }
+  }
+  else{
+    console.log("waiting for user!");
+    setTimeout(addCourseCards, 500);
+  }
 }
+
+//Add the course cards once the window loads AND the user object has been loaded in session storage
+addEventListener('load', addCourseCards);
 
 let classObj = {classId:"CSCI-UA 102",className:"Data Structures", classList:["Jason Hu","Amy Stamper","Annie Tian Fan","Yuewen Yang","Grace Yang"]};
 
@@ -73,33 +96,52 @@ let classObj = {classId:"CSCI-UA 102",className:"Data Structures", classList:["J
 var classCardCount = 0;
 // assign each class card with a unique class-class-code by the sequence when they're generated
 var classCardId = "class-card-" +  classCardCount.toString();
-function createClassCard(classObj){
+function createClassCard(courseAdd, userListAdd){
     let newClassCard = document.createElement('div');
+    const newClass = $('#selectClasses').val();
+
+    const {courseId, courseName} = parseCourseName(courseAdd);
     // set the innerHTML of the new class card to the following template
     // let numFix = "class-card-" +  classCardCount.toString();
-    console.log(classCardId);
-    console.log(classCardCount);
     // <div class="class-card"></div>
     newClassCard.innerHTML = `
     <div class="class-card" id=${classCardId}>
             <span id="class-season">FALL 2022</span>
-            <p class="class-content" id="class-id">${classObj.classId}</p>
-            <p class="class-content" id="class-name">${classObj.className}</p>
+            <p class="class-content" id="class-id">${courseId}</p>
+            <p class="class-content" id="class-name">${courseName}</p>
             <hr/>
             <div style="padding: 0;"  class="classmates"></div>
         </div>
     `;
-    // need to change body to main-app
+    let userNames = [];
+    for (const user of userListAdd) {
+        if (user.courses.includes(newClass)) {
+            userNames.push(user.username);
+        }
+    }
+
     document.querySelector(`.class-cards-wrapper`).appendChild(newClassCard);
-    addClassmates(classObj.classList);
+    addClassmates(userNames);
 }
 // append the created classcard to main-app-page
 function addClassCard(){
-    createClassCard(classObj);
+    const users =  JSON.parse(sessionStorage.getItem('userList'));
+    const newClass = $('#selectClasses').val();
+
+    createClassCard(newClass, users);
     classCardCount++;
     classCardId = "class-card-" +  classCardCount.toString();
     // console.log("classCardCount: "+classCardCount);
     // console.log("==============");
+}
+
+function parseCourseName(course) {
+    const courseId = course.split(' ').slice(0,2).join(' ');
+    const courseName = course.split(' ').slice(2).join(' ');
+    return {
+        courseId: courseId,
+        courseName: courseName
+    }
 }
 
 

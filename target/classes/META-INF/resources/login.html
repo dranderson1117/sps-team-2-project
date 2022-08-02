@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ClassChat Login</title>
+    <title>Nexum Login</title>
     <link rel="icon" href="images/moonfavi.ico" />
     <link rel="stylesheet" href="login-style.css">
     <!-- Adding "Mukta" and "Roboto" Fonts from Google Fonts -->
@@ -20,7 +20,7 @@
       
       <center style="padding: 15px; align-content: center;">
         <i class='bx bxs-message-square-dots bx-lg' onmouseover="document.getElementById('login-subtitle').innerText=`Hey, I sit next to you...✌️`" ></i>
-        <h2 id="title">Class Chat</h2>
+        <h2 id="title">Nexum</h2>
         <h5 id="login-subtitle"style="padding: 10px;" 
         onmouseover="document.getElementById('login-subtitle').innerText=`Hey, I sit next to you...✌️`">
       </h5>
@@ -29,12 +29,12 @@
       <form action="/user-login" method="POST" id="login-form">
         <div class="mb-3" id="email-div">
           <!-- <label for="usernameInput" class="form-label">Email</label> -->
-          <input class="form-control" name="email" id="email" required="required" placeholder="Email Address">
+          <input type="text" class="form-control" name="email" id="email" required="required" placeholder="Email Address">
         </div>
         <div class="mb-3" id="password-div">
           <!-- <label for="passwordInput" class="form-label">Password</label> -->
           <!-- <input class="form-control" name="password" id="password" required="required" placeholder="Password" data-bs-toggle="popover" title="Password" data-bs-content="Password must contain:&#13 - At least 10 characters&#13; - 1 lowercase caracter&#13; - 1 uppercase character&#13; - 1 special character: (!.?$#)&#13; - 1 number"> -->
-          <input class="form-control" name="password" id="password" required="required" placeholder="Password">
+          <input type="password" class="form-control" name="password" id="password" required="required" placeholder="Password">
         </div>
         <button id="login-button" type="button" class="btn btn-primary" onclick="validateLogin()">Login</button>
         <a id="sign-up-link" href="index.html">New User? Sign Up Here!</a>
