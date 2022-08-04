@@ -17,8 +17,11 @@ const getUsers = async function() {
       for(let i = 0; i < users.length; i++)
       {
         let user = users[i];
-        if(user.email == email)
+        if(user.email == email){
+          let userNameHeader = document.getElementById("side-bar-user-name");
+          userNameHeader.textContent = user.username;
           sessionStorage.setItem("user", JSON.stringify(user));
+        }
         else
           newUserList.push(user);
       }
@@ -71,6 +74,19 @@ async function updateProf(){
     params.append('major', major);
     params.append('major2', major2);
     params.append('minor', minor);
+
+    //let userNameHeader = document.getElementById("side-bar-user-name");
+    //userNameHeader.textContent = username;
+
+    //Update the user object in session storage 
+    let user = JSON.parse(sessionStorage.getItem("user"));
+    user.username = username;
+    user.tag = userTag;
+    user.school = school;
+    user.major = major;
+    user.major2 = major2;
+    user.minor = minor;
+    sessionStorage.setItem("user", JSON.stringify(user));
 
     await fetch('/form-handler', {
       method: 'POST',
