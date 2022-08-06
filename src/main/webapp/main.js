@@ -17,8 +17,11 @@ const getUsers = async function() {
       for(let i = 0; i < users.length; i++)
       {
         let user = users[i];
-        if(user.email == email)
+        if(user.email == email){
+          let userNameHeader = document.getElementById("side-bar-user-name");
+          userNameHeader.textContent = user.username;
           sessionStorage.setItem("user", JSON.stringify(user));
+        }
         else
           newUserList.push(user);
       }
@@ -71,6 +74,19 @@ async function updateProf(){
     params.append('major', major);
     params.append('major2', major2);
     params.append('minor', minor);
+
+    //let userNameHeader = document.getElementById("side-bar-user-name");
+    //userNameHeader.textContent = username;
+
+    //Update the user object in session storage 
+    let user = JSON.parse(sessionStorage.getItem("user"));
+    user.username = username;
+    user.tag = userTag;
+    user.school = school;
+    user.major = major;
+    user.major2 = major2;
+    user.minor = minor;
+    sessionStorage.setItem("user", JSON.stringify(user));
 
     await fetch('/form-handler', {
       method: 'POST',
@@ -199,7 +215,11 @@ function populateUserModal(currUser)
                         <h2 class="modal-title">${currUser.username}</h2>
                       </div>
                       <div class="modal-body">
-                        <p>${currUser.school}</p>
+                        <h6>${currUser.school}</h6>
+                        <h7 style="font-size: medium;">${currUser.major}</h7>
+                        <h7 style="font-size: medium;">${currUser.major2}</h7>
+                        <h7 style="font-size: medium;">${currUser.minor}</h7>
+                        <div class="tag-option" style="margin-left:0; margin-top: 3px;">${currUser.tag}</div>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-primary ${userIsFriend ? "add-friend-button-friend" : "add-friend-button-stranger"}" name="${currUser.email}" ${userIsFriend ? "disabled" : ""} onclick="addFriend(event)">${userIsFriend ? "Friend!" : "Add Friend"}</button> 
