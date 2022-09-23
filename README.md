@@ -1,1 +1,3 @@
-# sps-test-collab-tutorial
+# Sps-team-2: Nexum
+
+### ✌️Connect with your classmates!
