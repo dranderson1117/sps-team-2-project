@@ -98,10 +98,10 @@ public class LoginHandlerServlet extends HttpServlet {
         //response.getWriter().println("Name submitted: " + textValue[0]+"\nEmail Submitted: " + textValue[1]+"\nPhone Number Submitted: " + textValue[2]);
         //response.sendRedirect("/contacts-list");
         response.getWriter().println("<script>sessionStorage.setItem(\"email\","+inputEmail+");</script>");
-        response.getWriter().println("<script>location.href = 'https://summer22-sps-2.uc.r.appspot.com/main.html';</script>");
+        response.getWriter().println("<script>location.href = 'https://sps-team-2-nexum.appspot.com/main.html';</script>");
     }
     else{
-        response.getWriter().println("<script>location.href = 'https://summer22-sps-2.uc.r.appspot.com/login.html';</script>");
+        response.getWriter().println("<script>location.href = 'https://sps-team-2-nexum.appspot.com/login.html';</script>");
     }
 
 
