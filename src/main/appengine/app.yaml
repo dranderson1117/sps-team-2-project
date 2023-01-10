@@ -1,3 +1,1 @@
 runtime: java11
-beta_settings:
-  cloud_sql_instances: pminchu-sps-summer22:us-east4:practice

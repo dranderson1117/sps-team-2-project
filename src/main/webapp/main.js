@@ -268,7 +268,7 @@ async function addFriend(event)
 async function searchTag(){
   const tagSearchResult = [];
   const targetTag = document.querySelector(".tag-option-selected").textContent;
-  console.log(targetTag.textContent);
+  console.log(targetTag);
   let users = JSON.parse(sessionStorage.userList);
   users.forEach(user => {
     if(user.tag === targetTag){
