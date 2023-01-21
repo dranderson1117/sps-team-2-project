@@ -16,7 +16,7 @@
 
     <!-- Project-specific properties -->
     <exec.mainClass>com.google.sps.ServerMain</exec.mainClass>
-    <googleCloudProjectId>summer22-sps-2</googleCloudProjectId>
+    <googleCloudProjectId>sps-team-2-nexum</googleCloudProjectId>
   </properties>
 
   <dependencies>

@@ -84,7 +84,7 @@ public class FormHandlerServlet extends HttpServlet {
 
         }
     }
-    response.getWriter().println("<script>location.href = 'https://summer22-sps-2.uc.r.appspot.com/main.html';</script>");
+    response.getWriter().println("<script>location.href = 'https://sps-team-2-nexum.appspot.com/main.html';</script>");
 
   }
 }

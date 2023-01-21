@@ -50,18 +50,17 @@ public class UserServlet extends HttpServlet {
     QueryResults<Entity> results = datastore.run(query);
     Gson gson = new Gson();
 
-
     List<UserCred> userCredList = new ArrayList<>();
     while (results.hasNext()) {
       Entity entity = results.next();
 
-      //long id = entity.getKey().getId();
       String email = entity.getString("Email");
       String password = entity.getString("Password");
 
       UserCred userCred = new UserCred(email, password);
       userCredList.add(userCred);
     }
+
     for(int i =0; i <userCredList.size();i++){
         if(inputEmail.equals(userCredList.get(i).getEmail()) & inputPassword.equals(userCredList.get(i).getPassword())){
             login = true;
@@ -74,12 +73,10 @@ public class UserServlet extends HttpServlet {
         String jsonList=gson.toJson(userCredList);
 
         response.getWriter().println("<script>sessionStorage.setItem(\"userCredList\",JSON.stringify("+jsonList+"));</script>");
-        response.getWriter().println("<script>location.href = 'https://summer22-sps-2.uc.r.appspot.com/main.html';</script>");
-        //response.setContentType("application/json;");
-        //response.getWriter().println(jsonList);
+        response.getWriter().println("<script>location.href = 'https://sps-team-2-nexum.appspot.com/main.html';</script>");
     }
     else{
-        response.getWriter().println("<script>location.href = 'https://summer22-sps-2.uc.r.appspot.com/login.html';</script>");
+        response.getWriter().println("<script>location.href = 'https://sps-team-2-nexum.appspot.com/login.html';</script>");
 
     }
 
