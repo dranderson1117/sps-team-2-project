@@ -35,8 +35,6 @@ label {
   border-radius: 8px;
   background-color: #5d6dff46;
   width: fit-content;
-  /* display: none; */
-
 }
 
 
@@ -49,11 +47,11 @@ label {
 }
 
 #login-credentials #email-div {
-  margin-bottom: 20%!important;
+  margin-bottom: 15%!important;
 }
 
 #login-credentials #password-div {
-  margin-bottom: 20%!important;
+  margin-bottom: 15%!important;
 }
 
 #email, #password {

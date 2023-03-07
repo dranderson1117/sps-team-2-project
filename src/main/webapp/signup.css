@@ -10,35 +10,31 @@ text-align: center;
 }
 
 .sign-up-wrapper{
-    position: relative;
-    /* margin-left: auto; */
-    text-align: center;
-    top: 150px;
+  position: relative;
+  text-align: center;
+  top: 150px;
 }
 
 .title{
-    color: #14133e;
-    text-align: center;
-    
-    font-family: 'Mukta', sans-serif;
-    /* font-family: 'Roboto', sans-serif; */
-    font-weight: 900;
-    font-size:xx-large;
+  color: #14133e;
+  text-align: center;
+  font-family: 'Mukta', sans-serif;
+  font-weight: 900;
+  font-size:xx-large;
     
 }
 
 .form-items{
-    padding: 10px;
-    border: 50px;
+  padding: 10px;
+  border: 50px;
 }
 
 .sign-up-btn{
-    position: relative;
-    background-color: #14133e;
-    border-radius: 4px;
-    color: #ffffff;
-    width: 100px;
-    border: 50px;
-    padding: 10px;
-
+  position: relative;
+  background-color: #14133e;
+  border-radius: 4px;
+  color: #ffffff;
+  width: 100px;
+  border: 50px;
+  padding: 10px;
 }
