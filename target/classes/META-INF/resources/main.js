@@ -1,32 +1,29 @@
-// When the user clicks anywhere outside of the modal, close it
-//document.querySelector('#side-bar-user-name').textContent = JSON.parse(sessionStorage.user).username;
-
 const getUsers = async function() {
   const email = this.sessionStorage.getItem("email");
   const params = new URLSearchParams();
   params.append('email', email)
 
   await fetch('/get-user', {
-      method: 'POST',
-      body: params
-    }).then(response => response.text())
-    .then((usersList) => {
-      let users = JSON.parse(usersList);
-      let email = sessionStorage.getItem("email");
-      let newUserList = [];
-      for(let i = 0; i < users.length; i++)
-      {
-        let user = users[i];
-        if(user.email == email){
-          let userNameHeader = document.getElementById("side-bar-user-name");
-          userNameHeader.textContent = user.username;
-          sessionStorage.setItem("user", JSON.stringify(user));
-        }
-        else
-          newUserList.push(user);
+    method: 'POST',
+    body: params
+  }).then(response => response.text())
+  .then((usersList) => {
+    let users = JSON.parse(usersList);
+    let email = sessionStorage.getItem("email");
+    let newUserList = [];
+    for(let i = 0; i < users.length; i++)
+    {
+      let user = users[i];
+      if(user.email == email){
+        let userNameHeader = document.getElementById("side-bar-user-name");
+        userNameHeader.textContent = user.username;
+        sessionStorage.setItem("user", JSON.stringify(user));
       }
-      sessionStorage.setItem("userList", JSON.stringify(newUserList));
-    });
+      else
+        newUserList.push(user);
+    }
+    sessionStorage.setItem("userList", JSON.stringify(newUserList));
+  });
 }
 
 addEventListener('load', getUsers());
@@ -113,8 +110,6 @@ async function addClass(){
     user.courses.push(newClass);
     sessionStorage.setItem("user", JSON.stringify(user));
 
-    console.log(email);
-    console.log(newClass);
     await fetch('/add-class', {
       method: 'POST',
       body: params
@@ -142,21 +137,12 @@ addSchoolOptions();
  * Loads all users via modals in the "Tags" modal 
  */
 function loadAllUsers(){
-  console.log("Loading All Users in Tags Modal");
-
   let tagsModal = document.getElementById("tags-modal-body");
   tagsModal.innerHTML = "";
-
-  /*
-  if(tagsModal.childElementCount() > 0){
-    return;
-  }*/
 
   let users = JSON.parse(sessionStorage.getItem("userList"));
   for(let i = 0; i < users.length; i++){
     let currUser = users[i];
-    console.log("Loading current user email: " + currUser.email + ", password: " + currUser.password);
-
     let newModal = document.createElement("div");
     newModal.class = "modal fade";
     newModal.tabIndex = "-1";
@@ -169,20 +155,14 @@ function loadAllUsers(){
  * Loads the user's friends via modals in the "My Friends" modal 
  */
 function loadFriends(){
-  console.log("Loading Friends in My Friends Modal");
-
   let myFriendsModal = document.getElementById("friends-modal-body");
   myFriendsModal.innerHTML = "";
 
   let users = JSON.parse(sessionStorage.getItem("userList"));
   let user = JSON.parse(sessionStorage.getItem("user"));
-  console.log(user.friends);
   /* Add modals for users whose email addresses are in the current user's friends list --> are the current user's friends) */
   for(let i = 0; i < users.length; i++){
     let currUser = users[i];
-    console.log("Loading current user email: " + currUser.email + ", password: " + currUser.password);
-
-    console.log(user.friends.includes(currUser.email));
     if(!user.friends.includes(currUser.email))
       continue;
 
@@ -204,11 +184,7 @@ function populateUserModal(currUser)
 {
   //Currently adding the button based on a random value --- will need to change so that "Add Friend" button appears based on whether user is in friends list
   let user = JSON.parse(sessionStorage.getItem("user"));
-  //currUser.friends.includes(user)
-  //let isUserFriend = Math.random(Date.now()) >= 0.5;
-  //${true ? "add-friend-button-stranger" : "add-friend-button-friend"}
   let userIsFriend = user.friends.includes(currUser.email);
-  console.log(userIsFriend)
   let userModal = `<div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -244,18 +220,13 @@ async function addFriend(event)
   params.append('email', email);
 
   friendButton.innerText = "Friend!";
-  //friendButton.class = "add-friend-button-friend";
   friendButton.setAttribute("disabled", "true");
   friendButton.setAttribute("class", "btn btn-primary add-friend-button-friend");
-
-  //friendButton.setAttribute("style", "visibility: hidden;");
 
   let user = JSON.parse(sessionStorage.getItem("user"));
   user.friends.push(friendEmail);
   sessionStorage.setItem("user", JSON.stringify(user));
 
-  console.log(email);
-  console.log(friendEmail);
   await fetch('/add-friend', {
     method: 'POST',
     body: params
@@ -268,14 +239,12 @@ async function addFriend(event)
 async function searchTag(){
   const tagSearchResult = [];
   const targetTag = document.querySelector(".tag-option-selected").textContent;
-  console.log(targetTag);
   let users = JSON.parse(sessionStorage.userList);
   users.forEach(user => {
     if(user.tag === targetTag){
       tagSearchResult.push(user);
     }
   });
-  console.log(tagSearchResult.length);
   if (tagSearchResult.length===0){
     let emptySearchResult = document.createElement('p');
     emptySearchResult.innerHTML = `Could not find them here...`;
@@ -285,7 +254,6 @@ async function searchTag(){
 }
 
 async function addTagSearchResult(){
-  console.log("Loading Friends in My Friends Modal In Tags Modal");
   const tagSearchResult = searchTag();
   (await tagSearchResult).forEach(currUser => {
     let newModal = document.createElement("div");
