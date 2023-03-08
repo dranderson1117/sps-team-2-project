@@ -1,41 +1,3 @@
-<!--<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Post Requests</title>
-    <script src="script.js"></script>
-  </head>
-  <body>
-    <h1>Intro to Post Requests</h1>
-
-    <p>This is a form that sends a POST request to the server:</p>
-    <form action="/form-handler" method="POST">
-
-      <input type="text" name="name-input" placeholder="Your Name"/>
-      <input type="email" name="email" placeholder="Your Email"/>
-      <input type="text" name="ph" placeholder="Your Phone Number"/>
-
-      <br/><br/>
-
-      <select name="color-input">
-        <option value="red">Red</option>
-        <option value="green">Green</option>
-        <option value="blue">Blue</option>
-      </select>
-      <br/><br/>
-
-      <textarea name="content" placeholder="Your Description"></textarea>
-      <br/><br/>
-
-      <input type="submit"/>
-    </form>
-    <button onclick="getUser()">
-        Get User 
-    </button>
-    <div id="userContainer"></div>
-  </body>
-</html>
--->
 <!DOCTYPE html>
 <html>
   <head>
@@ -58,56 +20,27 @@
     <!-- Adding Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   </head>
-  <!--<body>
-    <div class="logo">
-      <img src=""></img>
-    </div>
-    <div class="sign-up-wrapper">
-      <div class="title"> Sign up</div>
-      <form  action="/login-handler" method="post" id="signup-form">
-        <div class="formContainer">
-        <div class = "form-items">
 
-            <input type="text" placeholder="Enter Email" name= "email" id="email" required>
-
-        </div>
-        <div class = "form-items"><input type="password" placeholder="Enter Password" name="password" id="password" required></div>
-        <div class = "submit">
-        <button type="button" class="sign-up-btn" onclick="signup();">
-          <div style="font-family:'Mukta', sans-serif; "> Get Started! </div>
-        </button>
-        </div>
-
-        </div>
-      </form>
-  </div>
-</body>-->
-
-
-<body id="user-login" style="background-color: #F7F9FE;">
+  <body id="user-login" style="background-color: #F7F9FE;">
     <div id="login-credentials">
       
-      <center style="padding: 15px; align-content: center;">
+      <div>
         <i class='bx bxs-message-square-dots bx-lg' onmouseover="document.getElementById('login-subtitle').innerText=`Hey, I sit next to you...✌️`" ></i>
         <h2 id="title">Nexum</h2>
         <h5 id="login-subtitle"style="padding: 10px;" 
         onmouseover="document.getElementById('login-subtitle').innerText=`Hey, I sit next to you...✌️`">
-      </h5>
-        <!-- <h5 id="login-subtitle-hover"style="padding: 10px;">Hey, I sit next to you...✌️</h5> -->
-      </center>
-      <form action="/login-handler" method="POST" id="signup-form">
+        </h5>
+      </div>
+
+      <form action="/user-signup" method="POST" id="signup-form">
         <div class="mb-3" id="email-div">
-          <!-- <label for="usernameInput" class="form-label">Email</label> -->
           <input type="text" class="form-control" name="email" id="email" required="required" placeholder="Email Address">
         </div>
         <div class="mb-3" id="password-div">
-          <!-- <label for="passwordInput" class="form-label">Password</label> -->
-          <!-- <input class="form-control" name="password" id="password" required="required" placeholder="Password" data-bs-toggle="popover" title="Password" data-bs-content="Password must contain:&#13 - At least 10 characters&#13; - 1 lowercase caracter&#13; - 1 uppercase character&#13; - 1 special character: (!.?$#)&#13; - 1 number"> -->
           <input type="password" class="form-control" name="password" id="password" required="required" placeholder="Password">
         </div>
         <button id="login-button" type="button" class="btn btn-primary" onclick="signup()">Signup</button>
         <a id="sign-up-link" href="login.html">Returning User? Login Here!</a>
-        <!-- <button id="register-button" type="button" class="btn btn-primary" onclick="routeToSignUpPage()">New User? Sign Up Here!</button> -->
       </form>
     </div>
 

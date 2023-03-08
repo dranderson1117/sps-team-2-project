@@ -19,10 +19,7 @@ import com.google.cloud.datastore.DatastoreOptions;
 import com.google.cloud.datastore.Entity;
 import com.google.cloud.datastore.Query;
 import com.google.cloud.datastore.QueryResults;
-import com.google.cloud.datastore.StructuredQuery.OrderBy;
-import com.google.gson.Gson;
 import com.UserCred;
-import com.User;
 
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Safelist;
@@ -35,9 +32,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** Servlet responsible for listing tasks. */
+/** Servlet responsible for user signup */
 @WebServlet("/user-login")
-public class UserServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -48,7 +45,6 @@ public class UserServlet extends HttpServlet {
     Query<Entity> query =
         Query.newEntityQueryBuilder().setKind("UserCred").build();
     QueryResults<Entity> results = datastore.run(query);
-    Gson gson = new Gson();
 
     List<UserCred> userCredList = new ArrayList<>();
     while (results.hasNext()) {
@@ -62,24 +58,17 @@ public class UserServlet extends HttpServlet {
     }
 
     for(int i =0; i <userCredList.size();i++){
-        if(inputEmail.equals(userCredList.get(i).getEmail()) & inputPassword.equals(userCredList.get(i).getPassword())){
-            login = true;
-            String userJson = gson.toJson(userCredList.get(i));
-            response.getWriter().println("<script>sessionStorage.setItem(\"userCred\",JSON.parse("+userJson+"));</script>");
-        }
+      if(inputEmail.equals(userCredList.get(i).getEmail()) & inputPassword.equals(userCredList.get(i).getPassword())){
+        login = true;
+      }
     }
 
     if(login){
-        String jsonList=gson.toJson(userCredList);
-
-        response.getWriter().println("<script>sessionStorage.setItem(\"userCredList\",JSON.stringify("+jsonList+"));</script>");
-        response.getWriter().println("<script>location.href = 'https://sps-team-2-nexum.appspot.com/main.html';</script>");
+      response.getWriter().println("<script>location.href = 'https://sps-team-2-nexum.appspot.com/main.html';</script>");
     }
     else{
-        response.getWriter().println("<script>location.href = 'https://sps-team-2-nexum.appspot.com/login.html';</script>");
+      response.getWriter().println("<script>location.href = 'https://sps-team-2-nexum.appspot.com/login.html';</script>");
 
     }
-
-
   }
 }

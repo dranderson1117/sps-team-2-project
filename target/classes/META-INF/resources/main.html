@@ -15,274 +15,245 @@
 
   </head>
   <body>
-
     <div class = "app"> 
+      <div class="sidebar">
+        <div class="logo-content">
+          <div class="logo" style="color:#3b305a ;">
+            <i class='bx bxs-message-square-dots bx-md' ></i>
+            <div class="logo-name" style="font-size:larger;">Nexum</div>
+          </div>
+        </div>
 
-        <div class="sidebar">
-            <div class="logo-content">
-                <div class="logo" style="color:#3b305a ;">
+        <div class="photo-wrapper">
+          <input type="file" class="my-file">
+        </div>
 
-                    <i class='bx bxs-message-square-dots bx-md' ></i>
-                    <div class="logo-name" style="font-size:larger;">Nexum</div>
+        <h5 id="side-bar-user-name" style="text-align: center; padding: 10px;"></h5>
+    
+        <ul class="nav-list">
+          <!-- Button & Modal Contents for updating Profile Information -->
+          <li>
+            <button type="button" class="btn btn-light button-profile btn-lg" data-toggle="modal" data-target="#profileModal">
+              <i class='bx bx-user-circle'></i> 
+              <span>My Profile</span>
+            </button>
+            <div class="modal fade" tabindex="-1" id="profileModal" role="dialog">
+              <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">My Profile</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+                  </div>
+                  <div class="modal-body" id="profile-modal-body">
+                    <div class="search-wrapper">
+                      <label for="text" style="width: 100%;">
+                          Change User Name
+                      </label>
+                      <!-- Move these functions to {function saveProfile() in main.js} -->
+                      <!-- How to get value set by a selector -->
+                      <!-- <button onclick="console.log(document.querySelector('.major-selector').value);console.log('new')"></button> -->
+                      <input type="text" id="user-name-input">
+                      <label for = "search">School</label>
+                      <div class="school-search-select search-select">
+                        <select class="selectpicker" id="select-school" data-live-search="true">
+                          <option>New York University (NYU)</option> 
+                        </select>
+                      </div>
 
+                      <label for = "search">Major</label>
+                      <div class="major-search-select search-select">
+                        <select id="major" class="selectpicker major-selector" data-live-search="true">
+                          <option>Undecided</option>
+                          <option>Computer Science</option>
+                          <option>Computer Engineering</option>
+                          <option>Economics</option>
+                          <option>Mathematics</option>
+                          <option value="Art History">Art History</option>
+                          <option value="Biology">Biology</option>
+                          <option value="Integrated Media Arts">Integrated Media Arts</option>
+                          <option value="Film&TV">Film&TV</option>
+                        </select>
+                      </div>
+
+                      <label for = "search">Second Major (if applicable)</label>
+                      <div class="major-search-select search-select">
+                        <select id="major2" class="selectpicker major-selector second-major-selector" data-live-search="true" data-width="200px">
+                          <option>N/A</option>
+                          <option>Computer Science</option>
+                          <option>Computer Engineering</option>
+                          <option>Economics</option>
+                          <option>Mathematics</option>
+                        </select>
+                      </div>
+
+                      <label for = "search">Minor</label>
+                      <div class="major-search-select search-select">
+                        <select id="minor" class="selectpicker minor-selector" data-live-search="true">
+                          <option>N/A</option>
+                          <option>Business Studies</option>
+                          <option>Music Technology</option>
+                          <option>Economics</option>
+                          <option>Mathematics</option>
+                        </select>
+                      </div>
+                  </div>
+                  
+                  <div><p style="color: #3C4381; margin-top: 15px;">🌟I'd describe myself as a...</p></div>
+                  <div class="tag-wrapper" style="background-color: rgb(215, 225, 250);
+                    border-radius: 3px;
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    width: 100%;">
+                      <user-tag tag-type = "Foodie"></user-tag>
+                      <user-tag tag-type = "Mentie"></user-tag>
+                      <user-tag tag-type = "Sportie"></user-tag>
+                      <user-tag tag-type = "Artie"></user-tag>
+                      <user-tag tag-type = "Techie"></user-tag>
+                      <user-tag tag-type = "Gamie"></user-tag>
+                      <!-- We can pass the tags to user's database by sth like the following function -->
+
+                      <!-- <button onclick="console.log(document.querySelector(`user-tag`).getAttribute(`tag-type`))">Pass Selected Tags' Value</button> -->
+                  </div>
+                  <!-- <script src="tags/tag.js"></script> -->
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:#28213A" onclick=" updateProf(); console.log(document.getElementById('side-bar-user-name').innerText=document.querySelector('#user-name-input').value);">Save</button>
+                  </div>
                 </div>
+              </div>
             </div>
-
-            <div class="photo-wrapper">
-                <input type="file" class="my-file">
-
-            </div>
-            <h5 id="side-bar-user-name" style="text-align: center; padding: 10px;"></h5>
-        
-            <ul class="nav-list">
-              <!-- Old My Profile -->
-                <!-- <li> -->
-                    <!-- <a href="#"> -->
-                        <!-- <span>User Name</span> -->
-                        <!-- insert old code here -->
-                    <!-- </a> -->
-                <!-- </li> -->
-                <!-- New My Profile  -->
-                <!-- <p>New My Profile below</p> -->
-                <li>
-                  <button type="button" class="btn btn-light button-profile btn-lg" data-toggle="modal" data-target="#profileModal">
-                    <i class='bx bx-user-circle'></i> 
-                      <span>My Profile</span>
-                  </button>
-
-                  <div class="modal fade" tabindex="-1" id="profileModal" role="dialog">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title">My Profile</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
-                        </div>
-                        <div class="modal-body" id="profile-modal-body">
-                          <div class="search-wrapper">
-                            <label for="text" style="width: 100%;">
-                                Change User Name
-                            </label>
-                            <!-- Move these functions to {function saveProfile() in main.js} -->
-                            <!-- How to get value set by a selector -->
-                            <!-- <button onclick="console.log(document.querySelector('.major-selector').value);console.log('new')"></button> -->
-                            <input type="text" id="user-name-input">
-                            <label for = "search">School</label>
-                            <div class="school-search-select search-select">
-                                
-                                <select class="selectpicker" id="select-school" data-live-search="true">
-                                  
-                                    <option>New York University (NYU)</option>
-                                    
-                                </select>
-                            </div>
-
-
-                            <label for = "search">Major</label>
-                            <div class="major-search-select search-select">
-                                
-                                <select id="major" class="selectpicker major-selector" data-live-search="true">
-                                    <option>Undecided</option>
-                                    <option>Computer Science</option>
-                                    <option>Computer Engineering</option>
-                                    <option>Economics</option>
-                                    <option>Mathematics</option>
-                                    <option value="Art History">Art History</option>
-                                    <option value="Biology">Biology</option>
-                                    <option value="Integrated Media Arts">Integrated Media Arts</option>
-                                    <option value="Film&TV">Film&TV</option>
-                                    
-
-                                </select>
-                            </div>
-                            <label for = "search">Second Major (if applicable)</label>
-                            <div class="major-search-select search-select">
-                                
-                                <select id="major2" class="selectpicker major-selector second-major-selector" data-live-search="true" data-width="200px">
-                                    <option>N/A</option>
-                                    <option>Computer Science</option>
-                                    <option>Computer Engineering</option>
-                                    <option>Economics</option>
-                                    <option>Mathematics</option>
-                                    
-
-                                </select>
-                            </div>
-                            <label for = "search">Minor</label>
-                            <div class="major-search-select search-select">
-                                
-                                <select id="minor" class="selectpicker minor-selector" data-live-search="true">
-                                    <option>N/A</option>
-                                    <option>Business Studies</option>
-                                    <option>Music Technology</option>
-                                    <option>Economics</option>
-                                    <option>Mathematics</option>
-                                </select>
-                            </div>
-                        </div>
-                          <div><p style="color: #3C4381; margin-top: 15px;">🌟I'd like to describe myself as a...</p></div>
-                          <div class="tag-wrapper" style="background-color: rgb(215, 225, 250);
-                          border-radius: 3px;
-                          display: flex;
-                          flex-direction: row;
-                          flex-wrap: wrap;
-                          width: 100%;">
-                            <user-tag tag-type = "Foodie"></user-tag>
-                            <user-tag tag-type = "Mentie"></user-tag>
-                            <user-tag tag-type = "Sportie"></user-tag>
-                            <user-tag tag-type = "Artie"></user-tag>
-                            <user-tag tag-type = "Techie"></user-tag>
-                            <user-tag tag-type = "Gamie"></user-tag>
-                            <!-- We can pass the tags to user's database by sth like the following function -->
-
-                            <!-- <button onclick="console.log(document.querySelector(`user-tag`).getAttribute(`tag-type`))">Pass Selected Tags' Value</button> -->
-                          </div>
-                        <!-- <script src="tags/tag.js"></script> -->
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:#28213A" onclick=" updateProf(); console.log(document.getElementById('side-bar-user-name').innerText=document.querySelector('#user-name-input').value);">Save</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <!-- insert old add class here -->
-                <!-- New Add Classes Modal -->
-                <!-- <p>New Add Class Modal below</p> -->
-                <li>
-                  <button type="button" class="btn btn-light button-profile btn-lg" data-toggle="modal" data-target="#addClassModal">
-                    <i class='bx bx-search-alt'></i> 
-                      <span>Add Classes</span>
-                  </button>
-
-                  <div class="modal fade" tabindex="-1" id="addClassModal" role="dialog">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title">Add Classes</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
-                        </div>
-                        <div class="modal-body" id="class-modal-body">
-                          <div class="class-search-select search-select">
-                                                    
-                            <select id="selectClasses" class="selectpicker class-selector" data-live-search="true" style="width: 100%;">
-                                <option><span id="class-id">CSCI-UA 480-002</span> Computer Graphics</option>
-                                <option><span id="class-id">MATH-UA 251-001</span> Math Modeling</option>
-                                <option><span id="class-id">IMNY-UT 288</span> Animation: Methods of Motion</option>
-                                <option><span id="class-id">IMNY-UT 284</span> Performative Avatars</option>
-                                <option><span id="class-id">IMNY-UT 285</span> Real-Time Media</option>
-                                <option><span id="class-id">CSCI-UA 467</span> Applied Internet Technology</option>
-                                <option><span id="class-id">CS 173 </span> Discrete Structures</option>
-                                <option><span id="class-id">CS 233</span> Computer Architecture</option>
-                                <option><span id="class-id">CS 242</span> Programming Studio</option>
-                                <option><span id="class-id">CS 2120</span> Discrete Mathematics and Theory 1</option>
-                                <option><span id="class-id">CS 3140 </span> Software Development Essentials</option>
-                                <option><span id="class-id">CS 0449</span> INTRODUCTION TO SYSTEMS SOFTWARE</option>
-                                <option><span id="class-id">CS 1502</span> IFORMAL METHODS IN COMPUTER SCIENCE</option>	
-                            </select>
-                        </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="addClassCard(); addClass();" style="background-color:#28213A" >Add</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <!-- Modal for Friends List -->
-                    <button type="button" class="btn btn-light button-profile btn-lg" data-toggle="modal" data-target="#friendsModal" onclick="loadFriends()">
-                        <i class='bx bxs-color' ></i>
-                        <span>My Friends</span>
-                    </button>
-
-                  <div class="modal fade" tabindex="-1" id="friendsModal" role="dialog">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title">Friends</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
-                        </div>
-                        <div class="modal-body" id="friends-modal-body">
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <!-- Modal for Tag-based Search -->
-                <li>
-                    <button type="button" class="btn btn-light button-tags btn-lg" data-toggle="modal" data-target="#tagsModal">
-                        <i class='bx bxs-purchase-tag-alt' ></i>
-                        <span>Tags</span>
-                    </button>
-                    <div class="modal fade" tabindex="-1" id="tagsModal" role="dialog">
-                      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title">Tag-based Search</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="clearTagSearchResult();">&times;</button>
-                          </div>
-                          <div class="modal-body" id="tags-modal-body">
-                            
-                            <div><p style="color: #3C4381; margin-top: 15px;">🌟Find friends who are...</p></div>
-                            <div class="tag-wrapper">
-                              <div class="tag-option tag-option-0" onclick="document.querySelector('.tag-option-0').classList.toggle('tag-option-selected');">Foodie</div>
-                              <div class="tag-option tag-option-1" onclick="document.querySelector('.tag-option-1').classList.toggle('tag-option-selected');">Mentie</div>
-                              <div class="tag-option tag-option-2" onclick="document.querySelector('.tag-option-2').classList.toggle('tag-option-selected')">Sportie</div>
-                              <div class="tag-option tag-option-3" onclick="document.querySelector('.tag-option-3').classList.toggle('tag-option-selected')">Artie</div>
-                              <div class="tag-option tag-option-4" onclick="document.querySelector('.tag-option-4').classList.toggle('tag-option-selected')">Techies</div>
-                              <div class="tag-option tag-option-5" onclick="document.querySelector('.tag-option-5').classList.toggle('tag-option-selected')">Gamie</div>
-                            </div>
-                            <!-- serch result is returned-->
-                            <div class="tag-search-result">
-                            </div>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" style="background-color:#28213A" onclick="addTagSearchResult()">Search</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:#28213A" onclick="clearTagSearchResult();">Close</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                </li>
-                <!-- Bio Feature is commented out -->
-                <!-- <li>
-                    <button type="button" class="btn btn-light button-profile btn-lg ">
-                        <i class='bx bxs-edit' ></i>
-                        <span>Edit Bio</span>
-                    </button>
-                </li> -->
-                
-                
-            </ul>
-            
-
-        </div>
-
-
-
-        <div class = "main-app">
-          <div>
-            <h1>Class Palette</h1>
-          </div>
-          <div>
-            <h5 id="hint">Find classmates 👇</h5>
-          </div>
-          <!-- <div onclick="addClassmates()">Click to add classmate list</div> -->
-          <!-- the following function should be called when each class is added -->
-          <!-- <div onclick="addClassCard()">Click to add class card</div> -->
+          </li>
           
-          <div class="class-cards-wrapper">
-            
-          </div>
-        </div>
+          <!-- Button & Modal for Choosing & Adding Classes -->
+          <li>
+            <button type="button" class="btn btn-light button-profile btn-lg" data-toggle="modal" data-target="#addClassModal">
+              <i class='bx bx-search-alt'></i> 
+              <span>Add Classes</span>
+            </button>
+            <div class="modal fade" tabindex="-1" id="addClassModal" role="dialog">
+              <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Add Classes</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+                  </div>
+                  <div class="modal-body" id="class-modal-body">
+                    <div class="class-search-select search-select">                    
+                      <select id="selectClasses" class="selectpicker class-selector" data-live-search="true" style="width: 100%;">
+                        <option><span id="class-id">CSCI-UA 480-002</span> Computer Graphics</option>
+                        <option><span id="class-id">MATH-UA 251-001</span> Math Modeling</option>
+                        <option><span id="class-id">IMNY-UT 288</span> Animation: Methods of Motion</option>
+                        <option><span id="class-id">IMNY-UT 284</span> Performative Avatars</option>
+                        <option><span id="class-id">IMNY-UT 285</span> Real-Time Media</option>
+                        <option><span id="class-id">CSCI-UA 467</span> Applied Internet Technology</option>
+                        <option><span id="class-id">CS 173 </span> Discrete Structures</option>
+                        <option><span id="class-id">CS 233</span> Computer Architecture</option>
+                        <option><span id="class-id">CS 242</span> Programming Studio</option>
+                        <option><span id="class-id">CS 2120</span> Discrete Mathematics and Theory 1</option>
+                        <option><span id="class-id">CS 3140 </span> Software Development Essentials</option>
+                        <option><span id="class-id">CS 0449</span> INTRODUCTION TO SYSTEMS SOFTWARE</option>
+                        <option><span id="class-id">CS 1502</span> IFORMAL METHODS IN COMPUTER SCIENCE</option>	
+                      </select>
+                  </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="addClassCard(); addClass();" style="background-color:#28213A" >Add</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <!-- Modal for Friends List -->
+            <button type="button" class="btn btn-light button-profile btn-lg" data-toggle="modal" data-target="#friendsModal" onclick="loadFriends()">  
+              <i class='bx bxs-color' ></i>
+              <span>My Friends</span>
+            </button>
+            <div class="modal fade" tabindex="-1" id="friendsModal" role="dialog">
+              <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Friends</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+                  </div>
+                  <div class="modal-body" id="friends-modal-body">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <!-- Button & Modal for Tag-based Search -->
+          <li>
+            <button type="button" class="btn btn-light button-tags btn-lg" data-toggle="modal" data-target="#tagsModal">
+                <i class='bx bxs-purchase-tag-alt' ></i>
+                <span>Tags</span>
+            </button>
+            <div class="modal fade" tabindex="-1" id="tagsModal" role="dialog">
+              <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Tag-based Search</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="clearTagSearchResult();">&times;</button>
+                  </div>
+                  <div class="modal-body" id="tags-modal-body">
+                    <div><p style="color: #3C4381; margin-top: 15px;">🌟Find friends who are...</p></div>
+                    <div class="tag-wrapper">
+                      <div class="tag-option tag-option-0" onclick="document.querySelector('.tag-option-0').classList.toggle('tag-option-selected');">Foodie</div>
+                      <div class="tag-option tag-option-1" onclick="document.querySelector('.tag-option-1').classList.toggle('tag-option-selected');">Mentie</div>
+                      <div class="tag-option tag-option-2" onclick="document.querySelector('.tag-option-2').classList.toggle('tag-option-selected')">Sportie</div>
+                      <div class="tag-option tag-option-3" onclick="document.querySelector('.tag-option-3').classList.toggle('tag-option-selected')">Artie</div>
+                      <div class="tag-option tag-option-4" onclick="document.querySelector('.tag-option-4').classList.toggle('tag-option-selected')">Techies</div>
+                      <div class="tag-option tag-option-5" onclick="document.querySelector('.tag-option-5').classList.toggle('tag-option-selected')">Gamie</div>
+                    </div>
+                    <!-- serch result is returned-->
+                    <div class="tag-search-result">
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" style="background-color:#28213A" onclick="addTagSearchResult()">Search</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:#28213A" onclick="clearTagSearchResult();">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <button type="button" class="btn btn-light button-tags btn-lg" onclick="signOut()">
+              <i class='bx bx-door-open'></i>
+              <span>Sign Out</span>
+            </button>
+          </li>
+          <!-- Bio Feature is commented out -->
+          <!-- <li>
+              <button type="button" class="btn btn-light button-profile btn-lg ">
+                  <i class='bx bxs-edit' ></i>
+                  <span>Edit Bio</span>
+              </button>
+          </li> -->
+        </ul>
+      </div>
 
+      <div class = "main-app">
+        <div>
+          <h1>Class Palette</h1>
+        </div>
+        <div>
+          <h5 id="hint">Find classmates 👇</h5>
+        </div>
+        <!-- <div onclick="addClassmates()">Click to add classmate list</div> -->
+        <!-- the following function should be called when each class is added -->
+        <!-- <div onclick="addClassCard()">Click to add class card</div> -->
+        
+        <div class="class-cards-wrapper">
+
+        </div>
+      </div>
     </div>
 
-    </body>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
@@ -291,4 +262,5 @@
     <script src="main.js" defer></script>
     <script src="class-card/name-card.js"></script>
     <script src="tags/tag.js"></script>
+  </body>
 </html>
