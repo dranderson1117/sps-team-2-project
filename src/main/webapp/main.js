@@ -269,3 +269,7 @@ async function clearTagSearchResult(){
   document.querySelectorAll('.tag-option').forEach(tagElement => {tagElement.classList.remove('tag-option-selected')});
 }
 
+function signOut(){
+  sessionStorage.clear();
+  location.href = 'https://sps-team-2-nexum.appspot.com/login.html';
+}
