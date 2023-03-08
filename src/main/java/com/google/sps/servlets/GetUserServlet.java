@@ -17,45 +17,34 @@ package com.google.sps.servlets;
 import com.google.cloud.datastore.Datastore;
 import com.google.cloud.datastore.DatastoreOptions;
 import com.google.cloud.datastore.Entity;
-import com.google.cloud.datastore.ListValue;
 import com.google.cloud.datastore.Query;
 import com.google.cloud.datastore.QueryResults;
 import com.google.cloud.datastore.StringValue;
-import com.google.cloud.datastore.Value;
-import com.google.cloud.datastore.StructuredQuery.OrderBy;
 import com.google.gson.Gson;
 import com.User;
-import com.UserCred;
-
-import org.jsoup.Jsoup;
-import org.jsoup.safety.Safelist;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** Servlet responsible for listing tasks. */
+/** 
+ * Servlet responsible for getting the user information based on the email address entered at signup or login. 
+ */
 @WebServlet("/get-user")
 public class GetUserServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String inputEmail = Jsoup.clean(request.getParameter("email"), Safelist.none());
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
     Query<Entity> query =
         Query.newEntityQueryBuilder().setKind("User").build();
     QueryResults<Entity> results = datastore.run(query);
     Gson gson = new Gson();
-
-
-
 
     List<User> userList = new ArrayList<>();
     while (results.hasNext()) {
@@ -63,58 +52,9 @@ public class GetUserServlet extends HttpServlet {
 
       List<StringValue> friends = new ArrayList<>();
       List<String> friendsCopy = new ArrayList<>();
-      //List<StringValue> friendsCopy = new ArrayList<>();
   
       List<StringValue> courses = new ArrayList<>();
       List<String> coursesCopy = new ArrayList<>();
-      //List<StringValue> coursesCopy = new ArrayList<>();
-      
-      /*
-      System.out.println("ENTITY-HOOP: " + entity);
-      System.out.println("PROPERTIES-HOOP: " + entity.getProperties());
-      
-      Map<String, Value<?>> entityProperties = entity.getProperties();
-      entityProperties.get("Username");
-      
-      String username = entityProperties.get("Username").toString();
-      String email = entityProperties.get("Email").toString();
-      String school = entityProperties.get("School").toString();
-      String major = entityProperties.get("Major").toString();
-      String minor = entityProperties.get("Minor").toString();
-      String major2 = entityProperties.get("Major2").toString();
-
-      String tag;
-      Value<String> tempTag = (Value<String>)entityProperties.get("tag");
-      if(tempTag != null)
-        tag = tempTag.toString();
-      else
-        tag = "";
-      
-      ListValue tempCourses = ((ListValue) entityProperties.get("courses"));
-      if(tempCourses != null)
-      {
-        courses = (List<StringValue>) (entityProperties.get("courses").toBuilder().get());
-        coursesCopy = new ArrayList<StringValue>(courses);
-      }
-      else
-        courses = new ArrayList<StringValue>();
-
-      ListValue tempFriends = ((ListValue) entityProperties.get("friends"));
-      friendsCopy = new ArrayList<StringValue>();
-      if(tempFriends != null)
-      {
-        friends = (List<StringValue>) (entityProperties.get("friends").toBuilder().get());
-        StringValue[] friendsString = (StringValue[]) friends.toArray();
-        for(StringValue friend : friendsString){
-          friendsCopy.add(friend.);
-        }
-      }
-      else
-      */
-      
-
-      //long id = entity.getKey().getId();
-
       
       String username = entity.getString("Username");
       String email = entity.getString("Email");
@@ -124,12 +64,10 @@ public class GetUserServlet extends HttpServlet {
       String major2 = entity.getString("Major2");
       String tag = entity.getString("Tag");
 
-      //coursesCopy = new ArrayList<StringValue>(courses);
       courses = entity.getList("courses");
       for(StringValue course : courses)
         coursesCopy.add(course.toBuilder().get());
 
-      //friendsCopy = new ArrayList<StringValue>(friends);
       friends = entity.getList("friends");
       for(StringValue friend : friends)
         friendsCopy.add(friend.toBuilder().get());
@@ -144,24 +82,6 @@ public class GetUserServlet extends HttpServlet {
 
     
     String jsonList = gson.toJson(userList);
-    //response.setContentType("application/json;");
     response.getWriter().println(jsonList);
-
-    //response.getWriter().println("<script>sessionStorage.setItem(\"userList\",JSON.stringify("+jsonList+"));</script>");
-    //response.getWriter().println("<script>location.href = 'https://summer22-sps-2.uc.r.appspot.com/main.html';</script>");
-
-    /*if(login){
-        String jsonList=gson.toJson(userList);
-
-        response.getWriter().println("<script>sessionStorage.setItem(\"userList\",JSON.stringify("+jsonList+"));</script>");
-        response.getWriter().println("<script>location.href = 'https://summer22-sps-2.uc.r.appspot.com/main.html';</script>");
-        //response.getWriter().println(jsonList);
-    }
-    else{
-        response.getWriter().println("<script>location.href = 'https://summer22-sps-2.uc.r.appspot.com/login.html';</script>");
-
-    }*/
-
-
   }
 }

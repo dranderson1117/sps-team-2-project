@@ -15,30 +15,27 @@
     <!-- Adding Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   </head>
+
   <body id="user-login" style="background-color: #F7F9FE;">
     <div id="login-credentials">
       
-      <center style="padding: 15px; align-content: center;">
+      <div>
         <i class='bx bxs-message-square-dots bx-lg' onmouseover="document.getElementById('login-subtitle').innerText=`Hey, I sit next to you...✌️`" ></i>
         <h2 id="title">Nexum</h2>
         <h5 id="login-subtitle"style="padding: 10px;" 
         onmouseover="document.getElementById('login-subtitle').innerText=`Hey, I sit next to you...✌️`">
-      </h5>
-        <!-- <h5 id="login-subtitle-hover"style="padding: 10px;">Hey, I sit next to you...✌️</h5> -->
-      </center>
+      	</h5>
+    	</div>
+
       <form action="/user-login" method="POST" id="login-form">
         <div class="mb-3" id="email-div">
-          <!-- <label for="usernameInput" class="form-label">Email</label> -->
           <input type="text" class="form-control" name="email" id="email" required="required" placeholder="Email Address">
         </div>
         <div class="mb-3" id="password-div">
-          <!-- <label for="passwordInput" class="form-label">Password</label> -->
-          <!-- <input class="form-control" name="password" id="password" required="required" placeholder="Password" data-bs-toggle="popover" title="Password" data-bs-content="Password must contain:&#13 - At least 10 characters&#13; - 1 lowercase caracter&#13; - 1 uppercase character&#13; - 1 special character: (!.?$#)&#13; - 1 number"> -->
           <input type="password" class="form-control" name="password" id="password" required="required" placeholder="Password">
         </div>
         <button id="login-button" type="button" class="btn btn-primary" onclick="validateLogin()">Login</button>
         <a id="sign-up-link" href="index.html">New User? Sign Up Here!</a>
-        <!-- <button id="register-button" type="button" class="btn btn-primary" onclick="routeToSignUpPage()">New User? Sign Up Here!</button> -->
       </form>
     </div>
 
