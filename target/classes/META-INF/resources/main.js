@@ -270,7 +270,6 @@ async function clearTagSearchResult(){
 }
 
 function signOut(){
-  
   sessionStorage.clear();
   location.href = 'https://sps-team-2-nexum.appspot.com/login.html';
 }
